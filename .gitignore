@@ -1,0 +1,10 @@
+node_modules/
+studio/node_modules/
+.env
+*.env
+studio/.env
+out/chunks/
+studio/out/chunks/
+*.log
+.DS_Store
+Thumbs.db

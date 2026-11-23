@@ -1,0 +1,997 @@
+{
+  "meta": {
+    "title": "Why It Sucks to Be a Royal Food Taster (in Ancient Rome)",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "duration_sec": 180.77,
+    "total_frames": 5424,
+    "clock": "voice",
+    "loop": false
+  },
+  "terms": [
+    "VERNA",
+    "PRAEGUSTATOR",
+    "FAMILIA CAESARIS",
+    "MANUMISSIO"
+  ],
+  "shots": [
+    {
+      "id": "B01_S01",
+      "start": 0.0,
+      "end": 5.49,
+      "type": "wide_establish",
+      "set": "palace_quarters_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "You're born in Rome, in the year 31, and you already have an owner.",
+      "characters": [
+        {
+          "id": "mother",
+          "pos": [
+            -0.9,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "sad_slump"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.8,
+            0,
+            0.3
+          ],
+          "scale": 0.65,
+          "emotion": "curious"
+        }
+      ],
+      "stamp": "ROME - AD 31"
+    },
+    {
+      "id": "B01_S02",
+      "start": 5.49,
+      "end": 9.8,
+      "type": "closeup_punch",
+      "set": "palace_quarters_day",
+      "grade": "day",
+      "camera": "punch_in",
+      "narration": "It isn't your mother. It isn't your father. It's the emperor.",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0,
+            0,
+            -0.2
+          ],
+          "scale": 1.12,
+          "emotion": "skeptical"
+        }
+      ],
+      "floatingTag": {
+        "target": "emperor",
+        "text": "THE EMPEROR"
+      }
+    },
+    {
+      "id": "B01_S03",
+      "start": 9.8,
+      "end": 14.9,
+      "type": "two_shot",
+      "set": "palace_quarters_day",
+      "grade": "day",
+      "camera": "orbit_gentle",
+      "narration": "Your mother is enslaved in the imperial household, which makes you one too.",
+      "characters": [
+        {
+          "id": "mother",
+          "pos": [
+            -1.1,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.0,
+            0,
+            0.2
+          ],
+          "scale": 0.65,
+          "emotion": "neutral"
+        }
+      ],
+      "floatingTag": {
+        "target": "mother",
+        "text": "IMPERIAL SERVANT"
+      }
+    },
+    {
+      "id": "B01_S04",
+      "start": 14.9,
+      "end": 20.0,
+      "type": "infographic_card",
+      "set": "infographic_parchment",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "Romans call a child born inside the household a verna. A house-born slave.",
+      "characters": [],
+      "infographic": {
+        "title": "ROMAN HOUSEHOLD LAW",
+        "stat": "VERNA",
+        "sub": "House-born enslaved child inside the familia Caesaris.",
+        "items": [
+          "BORN ON SITE",
+          "TRAINED EARLY",
+          "TRUSTED MORE",
+          "OWNED FOR LIFE"
+        ]
+      }
+    },
+    {
+      "id": "B01_S05",
+      "start": 20.0,
+      "end": 24.71,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "Which sounds polite in Latin, until you read who owns your tomorrow.",
+      "characters": [],
+      "bubble": {
+        "speaker": "akira",
+        "text": "READ THE FINE PRINT."
+      },
+      "akiraExpression": "smirk"
+    },
+    {
+      "id": "B02_S01",
+      "start": 24.71,
+      "end": 29.42,
+      "type": "wide_establish",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "By age six, you know every back staircase on the Palatine Hill.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -0.5,
+            0,
+            0.2
+          ],
+          "scale": 0.72,
+          "emotion": "curious"
+        },
+        {
+          "id": "head_chef",
+          "pos": [
+            1.2,
+            0,
+            -0.3
+          ],
+          "scale": 1.02,
+          "emotion": "talking_animated"
+        }
+      ],
+      "stamp": "6 YEARS OLD",
+      "floatingTag": {
+        "target": "head_chef",
+        "text": "STEWARD"
+      }
+    },
+    {
+      "id": "B02_S02",
+      "start": 29.42,
+      "end": 34.13,
+      "type": "two_shot",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "orbit_gentle",
+      "narration": "The imperial household\u2014the familia Caesaris\u2014runs like a small city under one roof.",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.1,
+            0,
+            0
+          ],
+          "scale": 1.02,
+          "emotion": "confident_point"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            1.2,
+            0,
+            -0.1
+          ],
+          "scale": 1.08,
+          "emotion": "neutral"
+        }
+      ],
+      "floatingTag": {
+        "target": "palace_guard",
+        "text": "PRAETORIAN"
+      }
+    },
+    {
+      "id": "B02_S03",
+      "start": 34.13,
+      "end": 38.44,
+      "type": "closeup_punch",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "punch_in",
+      "narration": "Bakers, scribes, barbers, bath attendants, and one job nobody volunteers for.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.72,
+          "emotion": "thinking_chin"
+        }
+      ],
+      "bubble": {
+        "speaker": "taster_protagonist",
+        "text": "WHO TASTES THE SOUP?"
+      }
+    },
+    {
+      "id": "B02_S04",
+      "start": 38.44,
+      "end": 43.54,
+      "type": "over_shoulder",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "ots_rack",
+      "narration": "Through a kitchen wall, you overhear an older servant whisper one word: praegustator.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.0,
+            0,
+            0.4
+          ],
+          "scale": 0.72,
+          "emotion": "curious"
+        },
+        {
+          "id": "mother",
+          "pos": [
+            1.0,
+            0,
+            -0.3
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        }
+      ],
+      "bubble": {
+        "speaker": "mother",
+        "text": "DON'T REPEAT THAT WORD."
+      }
+    },
+    {
+      "id": "B03_S01",
+      "start": 43.54,
+      "end": 49.34,
+      "type": "fly_through_transition",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "fly_through",
+      "narration": "Years pass as you turn nineteen. Emperor Claudius sits on the throne, and Rome is nervous.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "neutral"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            -1.8,
+            0,
+            -0.5
+          ],
+          "scale": 1.08,
+          "emotion": "neutral"
+        }
+      ],
+      "stamp": "19 YEARS OLD - AD 50"
+    },
+    {
+      "id": "B03_S02",
+      "start": 49.34,
+      "end": 52.87,
+      "type": "two_shot",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "orbit_gentle",
+      "narration": "The procurator praegustatorum\u2014the manager of imperial tasters\u2014calls your name.",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.1,
+            0,
+            0
+          ],
+          "scale": 1.02,
+          "emotion": "confident_point"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.1,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "shocked"
+        }
+      ],
+      "floatingTag": {
+        "target": "head_chef",
+        "text": "PROCURATOR"
+      },
+      "bubble": {
+        "speaker": "head_chef",
+        "text": "YOU START TONIGHT."
+      }
+    },
+    {
+      "id": "B03_S03",
+      "start": 52.87,
+      "end": 57.58,
+      "type": "closeup_punch",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "punch_in",
+      "narration": "Nobody asks what you think. You nod. You say nothing at all.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        }
+      ],
+      "floatingTag": {
+        "target": "taster_protagonist",
+        "text": "PRAEGUSTATOR"
+      }
+    },
+    {
+      "id": "B03_S04",
+      "start": 57.58,
+      "end": 62.29,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "Congratulations on your promotion. Your new job title is basically human canary.",
+      "characters": [],
+      "bubble": {
+        "speaker": "akira",
+        "text": "GREAT BENEFITS. SHORT CAREER."
+      },
+      "akiraExpression": "deadpan"
+    },
+    {
+      "id": "B04_S01",
+      "start": 62.29,
+      "end": 67.0,
+      "type": "wide_establish",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "Every evening, you stand beside the imperial triclinium before the guests recline.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.2,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "focused_reading"
+        },
+        {
+          "id": "emperor",
+          "pos": [
+            1.0,
+            0,
+            -0.5
+          ],
+          "scale": 1.12,
+          "emotion": "neutral"
+        }
+      ],
+      "stamp": "THE BANQUET ROUTINE"
+    },
+    {
+      "id": "B04_S02",
+      "start": 67.0,
+      "end": 72.8,
+      "type": "macro_prop_insert",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "macro_push",
+      "narration": "You learn the smells: bitter almond, sharp hemlock, acrid metallic salts hidden under honeyed wine.",
+      "characters": []
+    },
+    {
+      "id": "B04_S03",
+      "start": 72.8,
+      "end": 78.6,
+      "type": "top_down_overview",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "top_down_drift",
+      "narration": "You taste the water, the wine, the sauces, and every main platter in front of watching guards.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.7
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "emperor",
+          "pos": [
+            0,
+            0,
+            -1.4
+          ],
+          "scale": 1.12,
+          "emotion": "skeptical"
+        }
+      ]
+    },
+    {
+      "id": "B04_S04",
+      "start": 78.6,
+      "end": 84.4,
+      "type": "impact_slowmo",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "slowmo_impact",
+      "narration": "Every sip buys you five seconds of pure silence while the whole room waits to see if you sway.",
+      "characters": []
+    },
+    {
+      "id": "B04_S05",
+      "start": 84.4,
+      "end": 89.5,
+      "type": "two_shot",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "You stay steady. You nod. Only then does Claudius reach for his goblet.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.1,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "happy_relief"
+        },
+        {
+          "id": "emperor",
+          "pos": [
+            1.1,
+            0,
+            -0.2
+          ],
+          "scale": 1.12,
+          "emotion": "happy_relief"
+        }
+      ],
+      "bubble": {
+        "speaker": "emperor",
+        "text": "ACCEPTABLE."
+      }
+    },
+    {
+      "id": "B05_S01",
+      "start": 89.5,
+      "end": 93.81,
+      "type": "wide_establish",
+      "set": "palace_quarters_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "Three years pass, and the strangest thing happens: life gets comfortable.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -0.8,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "happy_relief"
+        },
+        {
+          "id": "mother",
+          "pos": [
+            1.0,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "happy_relief"
+        }
+      ],
+      "stamp": "3 YEARS PASS"
+    },
+    {
+      "id": "B05_S02",
+      "start": 93.81,
+      "end": 99.61,
+      "type": "infographic_card",
+      "set": "infographic_parchment",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "The truth is, imperial tasters weren't ragged beggars\u2014inscriptions show they had their own guild and real wealth.",
+      "characters": [],
+      "infographic": {
+        "title": "IMPERIAL TASTER GUILD",
+        "stat": "COLLEGIA",
+        "sub": "Epigraphic inscriptions record organized imperial praegustatores.",
+        "items": [
+          "PALACE QUARTERS",
+          "SILVER PAY",
+          "HIGH ACCESS",
+          "FATAL RISK"
+        ]
+      }
+    },
+    {
+      "id": "B05_S03",
+      "start": 99.61,
+      "end": 105.1,
+      "type": "two_shot",
+      "set": "palace_quarters_day",
+      "grade": "day",
+      "camera": "orbit_gentle",
+      "narration": "You earn silver tips, wear clean wool, and start saving toward manumissio\u2014your legal freedom.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.0,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "celebrate_arms_up"
+        },
+        {
+          "id": "head_chef",
+          "pos": [
+            1.1,
+            0,
+            -0.1
+          ],
+          "scale": 1.02,
+          "emotion": "skeptical"
+        }
+      ],
+      "bubble": {
+        "speaker": "taster_protagonist",
+        "text": "TWO MORE YEARS."
+      }
+    },
+    {
+      "id": "B06_S01",
+      "start": 105.1,
+      "end": 108.63,
+      "type": "wide_establish",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "slow_push",
+      "narration": "But life in the imperial palace has other plans.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "thinking_chin"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            1.2,
+            0,
+            -0.3
+          ],
+          "scale": 1.08,
+          "emotion": "skeptical"
+        }
+      ],
+      "stamp": "AUTUMN - AD 54"
+    },
+    {
+      "id": "B06_S02",
+      "start": 108.63,
+      "end": 114.43,
+      "type": "over_shoulder",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "ots_rack",
+      "narration": "The truth is, a taster only stops a clumsy poisoner. A smart one doesn't fight the taster\u2014they buy him.",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.0,
+            0,
+            0.3
+          ],
+          "scale": 1.02,
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.0,
+            0,
+            -0.3
+          ],
+          "scale": 0.96,
+          "emotion": "shocked"
+        }
+      ],
+      "bubble": {
+        "speaker": "head_chef",
+        "text": "KEEP YOUR EYES DOWN."
+      }
+    },
+    {
+      "id": "B06_S03",
+      "start": 114.43,
+      "end": 119.92,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "night_torch",
+      "camera": "static_punch",
+      "narration": "Wait\u2014ancient historians actually point straight at the emperor's own taster, Halotus, in AD 54.",
+      "characters": [],
+      "bubble": {
+        "speaker": "akira",
+        "text": "PLOT TWIST FROM TACITUS."
+      },
+      "akiraExpression": "smirk"
+    },
+    {
+      "id": "B07_S01",
+      "start": 119.92,
+      "end": 124.63,
+      "type": "two_shot",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "orbit_gentle",
+      "narration": "Late at night, the senior steward corners you by the oil lamps.",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.1,
+            0,
+            0.1
+          ],
+          "scale": 1.02,
+          "emotion": "sad_slump"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.1,
+            0,
+            0.1
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        }
+      ],
+      "stamp": "OCTOBER 12, AD 54",
+      "bubble": {
+        "speaker": "head_chef",
+        "text": "DO YOU THINK WE HAVE A CHOICE?"
+      }
+    },
+    {
+      "id": "B07_S02",
+      "start": 124.63,
+      "end": 130.43,
+      "type": "closeup_punch",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "punch_in",
+      "narration": "He tells you quietly that if you refuse the wrong patron, you disappear before sunrise\u2014and your mother with you.",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 1.02,
+          "emotion": "angry_glare"
+        }
+      ]
+    },
+    {
+      "id": "B07_S03",
+      "start": 130.43,
+      "end": 133.96,
+      "type": "closeup_punch",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "punch_in",
+      "narration": "You keep your face still. You count your breaths.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "sad_slump"
+        }
+      ]
+    },
+    {
+      "id": "B08_S01",
+      "start": 133.96,
+      "end": 139.45,
+      "type": "wide_establish",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "slow_push",
+      "narration": "The banquet hall glows with warm bronze lamps. The platter arrives: roasted wild mushrooms.",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0,
+            0,
+            -1.1
+          ],
+          "scale": 1.12,
+          "emotion": "happy_relief"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.3,
+            0,
+            0.3
+          ],
+          "scale": 0.96,
+          "emotion": "nervous_sweat"
+        }
+      ],
+      "stamp": "THE FINAL BANQUET"
+    },
+    {
+      "id": "B08_S02",
+      "start": 139.45,
+      "end": 144.16,
+      "type": "macro_prop_insert",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "macro_push",
+      "narration": "One mushroom sits slightly apart on the silver dish. Glossy. Warm. Silent.",
+      "characters": []
+    },
+    {
+      "id": "B08_S03",
+      "start": 144.16,
+      "end": 148.47,
+      "type": "low_angle_power",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "low_angle_tilt",
+      "narration": "The room waits. Your hand hovers. You taste from the edge.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "shocked"
+        }
+      ]
+    },
+    {
+      "id": "B09_S01",
+      "start": 148.47,
+      "end": 152.78,
+      "type": "whip_pan_cut",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "whip_right",
+      "narration": "Claudius eats. Hours later, the palace doors lock from the inside.",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0.9,
+            0,
+            -0.2
+          ],
+          "scale": 1.12,
+          "emotion": "shocked"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            -1.2,
+            0,
+            0.1
+          ],
+          "scale": 1.08,
+          "emotion": "angry_glare"
+        }
+      ]
+    },
+    {
+      "id": "B09_S02",
+      "start": 152.78,
+      "end": 158.27,
+      "type": "two_shot",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "slow_push",
+      "narration": "By morning, Claudius is dead, and Nero is hailed emperor by the Praetorian Guard.",
+      "characters": [
+        {
+          "id": "palace_guard",
+          "pos": [
+            -1.1,
+            0,
+            0
+          ],
+          "scale": 1.08,
+          "emotion": "confident_point"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.1,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "sad_slump"
+        }
+      ],
+      "stamp": "OCTOBER 13, AD 54"
+    },
+    {
+      "id": "B09_S03",
+      "start": 158.27,
+      "end": 164.07,
+      "type": "closeup_punch",
+      "set": "banquet_hall_day",
+      "grade": "night_torch",
+      "camera": "punch_in",
+      "narration": "Nobody puts you on trial. Nobody asks what you tasted. You survive\u2014and you never sleep soundly again.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "sad_slump"
+        }
+      ]
+    },
+    {
+      "id": "B10_S01",
+      "start": 164.07,
+      "end": 169.87,
+      "type": "wide_establish",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "narration": "In real history, Tacitus and Suetonius both record the rumor that Claudius's taster Halotus delivered the fatal dish\u2014though modern historians still debate whether it was poison or illness.",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0,
+            0,
+            0.2
+          ],
+          "scale": 0.96,
+          "emotion": "neutral"
+        }
+      ],
+      "stamp": "HISTORICAL EPILOGUE"
+    },
+    {
+      "id": "B10_S02",
+      "start": 169.87,
+      "end": 175.67,
+      "type": "infographic_card",
+      "set": "infographic_parchment",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "And the ultimate Roman irony? Years later, Emperor Galba didn't execute Halotus\u2014he promoted him to a lucrative procuratorship.",
+      "characters": [],
+      "infographic": {
+        "title": "HISTORICAL RECORD (SUETONIUS)",
+        "stat": "AD 54 -> 68",
+        "sub": "Halotus survived Claudius and later received a procuratorship under Galba.",
+        "items": [
+          "CLAUDIUS (AD 54)",
+          "NERO",
+          "GALBA (AD 68)",
+          "PROCURATOR"
+        ]
+      }
+    },
+    {
+      "id": "B10_S03",
+      "start": 175.67,
+      "end": 180.77,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "day",
+      "camera": "static_punch",
+      "narration": "In Ancient Rome, surviving dinner wasn't the hard part. Surviving the promotion was.",
+      "characters": [],
+      "bubble": {
+        "speaker": "akira",
+        "text": "DINNER IS SERVED."
+      },
+      "akiraExpression": "smirk"
+    }
+  ]
+}
