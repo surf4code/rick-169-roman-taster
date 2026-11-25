@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { ThreeCanvas } from "@remotion/three";
 import { useThree } from "@react-three/fiber";
-import shotPlan from "../data/styleTestShots.json";
+import styleShotPlan from "../data/styleTestShots.json";
 import { RICK_WARM_BRIGHT_DAY, RICK_WARM_TORCH_NIGHT } from "../utils/colorGrade";
 import { place, easeOut, clamp } from "../utils/anim";
 import { cameraFor } from "../utils/cameraModes";
@@ -28,11 +28,17 @@ const Rig: React.FC<{ mode: string; localT: number; dur: number }> = ({ mode, lo
 
 const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl };
 
-export const StyleTestOpening: React.FC = () => {
+const normalise = (plan: any) => ({
+  ...plan,
+  shots: plan.shots.map((x: any) => (x.startFrame !== undefined ? { ...x, start: x.startFrame / 30, end: (x.startFrame + x.durFrames) / 30 } : x)),
+});
+
+export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
+  const shotPlan = React.useMemo(() => normalise(plan || styleShotPlan), [plan]);
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
   const t = frame / fps;
-  const shot: any = shotPlan.shots.find((s) => t >= s.start && t < s.end) || shotPlan.shots[shotPlan.shots.length - 1];
+  const shot: any = shotPlan.shots.find((s: any) => t >= s.start && t < s.end) || shotPlan.shots[shotPlan.shots.length - 1];
   const localT = t - shot.start;
   const dur = shot.end - shot.start;
   const isNight = shot.grade === "night_torch";
@@ -42,8 +48,14 @@ export const StyleTestOpening: React.FC = () => {
   const rms = Math.round((0.35 + 0.35 * Math.abs(Math.sin(Math.floor(frame / 2) * 0.8))) * 4) / 4;
   const isCard = shot.type === "akira_cutaway" || shot.type === "infographic_card";
   // emotion may be a track: [[tSec, emotion], ...] -> expression changes on story beats inside a shot
-  const emoAt = (e: any): string => (Array.isArray(e) ? [...e].reverse().find(([ts]: [number, string]) => localT >= ts)?.[1] ?? e[0][1] : e);
-  const all: any[] = isCard ? [] : [...(shot.crowd || []).map((c: any) => ({ ...c, bg: true, emotion: emoAt(c.emotion) })), ...(shot.characters || []).map((c: any) => ({ ...c, emotion: emoAt(c.emotion) }))];
+  const emoInfo = (e: any): { cur: string; prev: string; since: number } => {
+    if (!Array.isArray(e)) return { cur: e, prev: e, since: 99 };
+    let idx = 0;
+    e.forEach(([ts]: [number, string], i: number) => { if (localT >= ts) idx = i; });
+    return { cur: e[idx][1], prev: idx > 0 ? e[idx - 1][1] : e[idx][1], since: idx > 0 ? localT - e[idx][0] : 99 };
+  };
+  const dec = (c: any, bg: boolean) => { const i = emoInfo(c.emotion); return { ...c, bg, emotion: i.cur, prevEmotion: i.prev, sinceT: i.since }; };
+  const all: any[] = isCard ? [] : [...(shot.crowd || []).map((c: any) => dec(c, true)), ...(shot.characters || []).map((c: any) => dec(c, false))];
   const markups: Record<string, string> = {};
   all.forEach((c) => {
     const talking = !c.bg && shot.bubble && shot.characters[shot.bubble.who]?.id === c.id;
@@ -83,7 +95,7 @@ export const StyleTestOpening: React.FC = () => {
           return <C key={i} position={pos} rotation={rot} scale={h.s ?? 1} {...(h.o || {})} />;
         })}
         {all.map((c: any, i: number) => (
-          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} time={frame / fps} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
+          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
         <PostFX focusDistance={0} worldFocus={focusDist} bokehScale={macro ? 3.4 : 1.6} grade={grade} />
       </ThreeCanvas>

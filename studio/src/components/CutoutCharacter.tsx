@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { continueRender, delayRender } from "remotion";
 import charactersData from "../data/characters.json";
 import { EmotionName, EMOTION_LIBRARY } from "../utils/emotions";
+import { GESTURES, blendGesture, hitEase } from "../utils/gestures";
 import { mulberry32 } from "../utils/anim";
 import { CharacterId, CharacterSvg } from "./CharacterSvg";
 
@@ -73,6 +74,8 @@ export function characterMarkup(i: CharacterMarkupInput): string {
       uid={`${characterId}-3d`}
       layer={layer}
       turn={turn}
+      browLiftL={GESTURES[emotion]?.browLiftL ?? 0}
+      browLiftR={GESTURES[emotion]?.browLiftR ?? 0}
     />
   );
 }
@@ -205,19 +208,54 @@ function ribbonGeometry(a: V2, mid: V2, b: V2, w0: number, w1: number, wob: numb
   return g;
 }
 
-const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; w1: number; z: number; hand?: number; wob?: number }> = ({ a, mid, b, w0, w1, z, hand = 0, wob = 0.25 }) => {
-  const key = [a, mid, b].map((p) => p.map((v) => v.toFixed(2)).join(",")).join("|") + w0 + w1;
-  const geo = React.useMemo(() => ribbonGeometry(a, mid, b, w0, w1, wob), [key]);
+const INK_MAT = { color: INK_COL, toneMapped: false, side: THREE.DoubleSide } as const;
+const bowed = (a: V2, b: V2, bow: number): V2 => {
+  const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
+  return [(a[0] + b[0]) / 2 + (-dy / l) * bow, (a[1] + b[1]) / 2 + (dx / l) * bow];
+};
+const Disc: React.FC<{ p: V2; d: number; z?: number }> = ({ p, d, z = 0 }) => (
+  <mesh position={[wx(p[0]), wy(p[1]), z]} scale={[d * 0.5 * U, d * 0.5 * U, 1]}><circleGeometry args={[1, 24]} /><meshBasicMaterial {...INK_MAT} /></mesh>
+);
+
+/** One bone: a tapered brush ribbon (slight bow so it never looks like a ruler line). */
+const Bone: React.FC<{ a: V2; b: V2; w0: number; w1: number; bow?: number }> = ({ a, b, w0, w1, bow = 1.4 }) => {
+  const key = [a, b].map((p) => p.map((v) => v.toFixed(2)).join(",")).join("|") + w0 + w1 + bow;
+  const m = bowed(a, b, bow);
+  const geo = React.useMemo(() => ribbonGeometry(a, m, b, w0, w1, 0.22), [key]);
   useEffect(() => () => geo.dispose(), [geo]);
-  const mat = { color: INK_COL, toneMapped: false, side: THREE.DoubleSide } as const;
+  return <mesh geometry={geo}><meshBasicMaterial {...INK_MAT} /></mesh>;
+};
+
+/** Jointed limb: root -> joint (elbow/knee) -> tip. Two bones + a visible round joint, hand/foot blob at the tip. */
+const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; wj: number; w1: number; z: number; hand?: number; thumb?: boolean }> = ({ a, mid, b, w0, wj, w1, z, hand = 0, thumb = false }) => {
+  const fx = b[0] - mid[0], fy = b[1] - mid[1], fl = Math.hypot(fx, fy) || 1;
   return (
     <group position={[0, 0, z]}>
-      <mesh geometry={geo}><meshBasicMaterial {...mat} /></mesh>
-      <mesh position={[wx(a[0]), wy(a[1]), 0]} scale={[w0 * 0.5 * U, w0 * 0.5 * U, 1]}><circleGeometry args={[1, 18]} /><meshBasicMaterial {...mat} /></mesh>
-      <mesh position={[wx(b[0]), wy(b[1]), 0]} scale={[(hand || w1) * 0.5 * U, (hand || w1) * 0.5 * U, 1]}><circleGeometry args={[1, 22]} /><meshBasicMaterial {...mat} /></mesh>
+      <Bone a={a} b={mid} w0={w0} w1={wj} />
+      <Bone a={mid} b={b} w0={wj} w1={w1} />
+      <Disc p={a} d={w0} />
+      <Disc p={mid} d={wj * 1.12} />
+      {hand > 0 && <Disc p={b} d={hand} />}
+      {thumb && <Disc p={[b[0] + (fx / fl) * hand * 0.18 + (-fy / fl) * hand * 0.42, b[1] + (fy / fl) * hand * 0.18 + (fx / fl) * hand * 0.42]} d={hand * 0.42} />}
     </group>
   );
 };
+
+/** Soft warm halo behind the character (about 6-7% lift) so the eye lands on the speaker. */
+let GLOW_TEX: THREE.CanvasTexture | null = null;
+function glowTexture(): THREE.CanvasTexture {
+  if (GLOW_TEX) return GLOW_TEX;
+  const c = document.createElement("canvas");
+  c.width = c.height = 256;
+  const g = c.getContext("2d")!;
+  const gr = g.createRadialGradient(128, 128, 8, 128, 128, 126);
+  gr.addColorStop(0, "rgba(255,238,200,1)"); gr.addColorStop(0.45, "rgba(255,230,180,0.55)"); gr.addColorStop(1, "rgba(255,220,160,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+  GLOW_TEX = new THREE.CanvasTexture(c);
+  GLOW_TEX.colorSpace = THREE.SRGBColorSpace;
+  return GLOW_TEX;
+}
+const LIFT = new THREE.Color(1.05, 1.05, 1.05);
 
 export interface CutoutCharacterProps {
   characterId: CharacterId;
@@ -228,25 +266,34 @@ export interface CutoutCharacterProps {
   camPos?: [number, number, number];
   lookAt?: [number, number, number];
   emotion?: EmotionName;
+  prevEmotion?: EmotionName;
+  sinceT?: number; // seconds since `emotion` started (drives the eased transition)
   time?: number; // seconds (continuous, NOT stepped) -> smooth joints
   talking?: boolean;
+  focus?: boolean; // speaker gets the halo
 }
 
-/** Two-bone limb: returns the elbow/knee for root->tip with bone lengths, bending toward `side`. */
-function twoBone(root: V2, tip: V2, l1: number, l2: number, side: 1 | -1): V2 {
+/** Two-bone IK: elbow position for root->tip, choosing the solution whose elbow lies toward `pole`. */
+function solveElbow(root: V2, tip: V2, l1: number, l2: number, pole: V2): { E: V2; W: V2 } {
   let dx = tip[0] - root[0], dy = tip[1] - root[1];
-  let d = Math.hypot(dx, dy); const dMax = (l1 + l2) * 0.999; if (d > dMax) { dx *= dMax / d; dy *= dMax / d; d = dMax; }
+  let d = Math.hypot(dx, dy) || 1; const dMax = (l1 + l2) * 0.998, dMin = Math.abs(l1 - l2) + 4;
+  if (d > dMax) { dx *= dMax / d; dy *= dMax / d; d = dMax; }
+  if (d < dMin) { dx *= dMin / d; dy *= dMin / d; d = dMin; }
   const a = (l1 * l1 - l2 * l2 + d * d) / (2 * d), h = Math.sqrt(Math.max(0, l1 * l1 - a * a));
   const ux = dx / d, uy = dy / d;
-  return [root[0] + ux * a + side * -uy * h, root[1] + uy * a + side * ux * h];
+  const c1: V2 = [root[0] + ux * a - uy * h, root[1] + uy * a + ux * h];
+  const c2: V2 = [root[0] + ux * a + uy * h, root[1] + uy * a - ux * h];
+  const mx = root[0] + dx / 2, my = root[1] + dy / 2;
+  const sc = (c: V2) => (c[0] - mx) * pole[0] + (c[1] - my) * pole[1];
+  return { E: sc(c1) >= sc(c2) ? c1 : c2, W: [root[0] + dx, root[1] + dy] };
 }
 
 /**
- * Rick-style rig: 3 painted layers (skirt/torso/head) + REAL 2-bone ink limbs drawn as brush ribbons.
- * Joints are continuous-time (every frame, never on twos); overlapping action: wrist/forearm lag the shoulder,
- * head lags the torso, breathing scales the chest, weight shifts between legs.
+ * Rick-style rig: 3 painted layers (skirt/torso/head) + REAL 2-bone ink limbs (brush ribbons, visible elbow/knee joints).
+ * Every joint is continuous-time (never on twos). Body language comes from GESTURES (wrist targets + elbow poles), blended
+ * between emotions with a small overshoot; overlapping action: wrist lags shoulder, head lags torso, chest breathes.
  */
-export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", time = 0, talking = false }) => {
+export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", prevEmotion, sinceT = 99, time = 0, talking = false, focus = false }) => {
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
   const finalScale = scale * (spec.heightScale ?? 1.0);
@@ -258,25 +305,33 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
   const headYaw = bodyYaw + (lookAt ? clampA(toward(lookAt) - toward(camPos), 0.35) * 0.4 : 0) + restingTurn(characterId) * 0.25;
 
   const t = time;
+  const gTo = GESTURES[emotion] || GESTURES.neutral;
+  const gFrom = GESTURES[prevEmotion || emotion] || gTo;
+  const w = prevEmotion && prevEmotion !== emotion ? hitEase(sinceT / 0.5) : 1;
+  const g = blendGesture(gFrom, gTo, w);
   const env = talking ? Math.max(0, Math.min(1, 0.45 + 0.4 * Math.sin(t * 3.1 + ph) + 0.2 * Math.sin(t * 7.3 + 1))) : 0;
   const lean = pose.torsoLeanDeg + 1.2 * Math.sin(t * 0.9 + ph) + (talking ? 0.8 * env : 0);
   const breath = 1 + 0.014 * Math.sin((t * 2 * Math.PI) / 3.3 + ph);
   const tilt = pose.headTiltDeg + 1.6 * Math.sin(t * 1.1 + ph * 1.3 - 0.5) + (talking ? 2.4 * Math.sin(t * 6.4 + ph) * env : 0);
 
-  // arms: outward angle from straight-down + forearm bend; forearm / hand lag the upper arm (overlapping action)
-  const aR = -pose.armRightDeg + 2.6 * Math.sin(t * 1.25 + ph) + 17 * env;
-  const aL = pose.armLeftDeg + 2.6 * Math.sin(t * 1.1 + ph + 1) + 3 * env;
-  const fR = -pose.forearmRightDeg + 4 * Math.sin(t * 1.25 + ph - 0.9) + 24 * env;
-  const fL = 0.4 * -pose.forearmRightDeg + 7 + 3 * Math.sin(t * 1.1 + ph + 0.1);
+  // hand targets: pose + idle drift (lagging the shoulder) + speech beats + fidget (wringing)
+  const idle = (k: number, amp: number) => amp * (Math.sin(t * 0.8 + ph + k) + 0.6 * Math.sin(t * 1.9 + ph * 2 + k));
+  const beat = env * (Math.sin(t * 5.1 + ph) * 0.5 + 0.5);
+  const fid = g.fidget * 5;
+  const lift = g.shrug;
   const L1 = 46, L2 = 42;
-  const arm = (side: 1 | -1, a: number, f: number) => {
-    const S: V2 = [140 + side * 42, 206];
-    const th = a * D2R, th2 = (a + f) * D2R;
-    const E: V2 = [S[0] + side * Math.sin(th) * L1, S[1] + Math.cos(th) * L1];
-    const Wr: V2 = [E[0] + side * Math.sin(th2) * L2, E[1] + Math.cos(th2) * L2];
-    return { S, E, Wr };
+  const mkArm = (side: 1 | -1) => {
+    const tgt = side === 1 ? g.R : g.L;
+    const pole = side === 1 ? g.poleR : g.poleL;
+    const S: V2 = [140 + side * 42, 206 - lift];
+    const front = side === 1;
+    const tx = tgt[0] + idle(side, 1.6) + (front ? beat * 9 : beat * 3) + fid * Math.sin(t * 9 + side * 1.7);
+    const ty = tgt[1] + idle(side + 2, 1.4) - (front ? beat * 14 : beat * 5) + fid * 0.8 * Math.cos(t * 8.2 + side) + 0.8 * Math.sin((t * 2 * Math.PI) / 3.3 + ph - 0.7);
+    const tip: V2 = [S[0] + side * tx, S[1] + ty];
+    const sol = solveElbow(S, tip, L1, L2, [side * pole[0], pole[1]]);
+    return { S, E: sol.E, W: sol.W };
   };
-  const armR = arm(1, aR, fR), armL = arm(-1, aL, fL);
+  const armR = mkArm(1), armL = mkArm(-1);
 
   // legs: weight shifts slowly between legs; knees bend, never locked
   const shift = Math.sin(t * 0.55 + ph);
@@ -284,21 +339,21 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
     const bend = 4 + 7 * Math.max(0, side * shift);
     const H: V2 = [140 + side * 17, HIP_Y - 4];
     const F: V2 = [140 + side * (24 + 3 * Math.max(0, -side * shift)), FEET_SVG_Y];
-    const K = twoBone(H, F, 62, 58, side);
-    K[0] += side * bend * 0.6;
-    const toe: V2 = [F[0] + side * 13, F[1] - 1.5];
+    const sol = solveElbow(H, F, 62, 58, [side * 0.35, 1]);
+    const K: V2 = [sol.E[0] + side * bend * 0.6, sol.E[1]];
+    const toe: V2 = [F[0] + side * 14, F[1] - 1.5];
     return { H, K, F, toe };
   };
   const legR = leg(1), legL = leg(-1);
 
   const hipWorldY = (FEET_SVG_Y - HIP_Y) * U;
   const planeCy = PLANE_CENTER_Y - hipWorldY; // plane centre relative to hip
-  const neckRel = wy(NECK_Y); // neck pivot relative to hip
-  const planeMat = { transparent: true, alphaTest: 0.02, toneMapped: false, side: THREE.DoubleSide } as const;
+  const neckRel = wy(NECK_Y) - g.headDown * U; // neck pivot relative to hip (head sinks on a shrug)
+  const planeMat = { transparent: true, alphaTest: 0.02, toneMapped: false, side: THREE.DoubleSide, color: LIFT } as const;
   const plane = (tex: THREE.Texture | null | undefined, y: number, z: number) => tex && (
     <mesh position={[0, y, z]}><planeGeometry args={[PLANE_W, PLANE_H]} /><meshBasicMaterial map={tex} {...planeMat} /></mesh>
   );
-  const Lc = (side: 1 | -1) => (side === 1 ? legR : legL);
+  const hand = 13;
 
   return (
     <group position={position} scale={[finalScale * (flipX ? -1 : 1), finalScale, finalScale]}>
@@ -306,22 +361,27 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
         <circleGeometry args={[0.56, 28]} />
         <meshBasicMaterial color="#1A203A" transparent opacity={0.32} />
       </mesh>
+      {/* focus halo: ~7% for the speaker, ~4% for everyone else */}
+      <mesh position={[0, 1.0, -0.12]}>
+        <planeGeometry args={[2.1, 2.6]} />
+        <meshBasicMaterial map={glowTexture()} transparent opacity={focus || talking ? 0.075 : 0.04} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+      </mesh>
       <group rotation={[0, bodyYaw, 0]}>
-        {/* legs (hang from the hip, so they stay planted while the upper body leans) */}
         {([1, -1] as const).map((sd) => {
-          const l = Lc(sd);
+          const l = sd === 1 ? legR : legL;
           return (
             <group key={`leg${sd}`} position={[0, hipWorldY, 0]}>
-              <Limb a={l.H} mid={l.K} b={l.F} w0={7.4} w1={5} z={0.03} hand={5.2} />
-              <Limb a={l.F} mid={[(l.F[0] + l.toe[0]) / 2, l.F[1] + 2]} b={l.toe} w0={5} w1={4.4} z={0.03} wob={0} />
+              <Limb a={l.H} mid={l.K} b={l.F} w0={7.4} wj={6.4} w1={5} z={0.03} hand={5.6} />
+              <Bone a={l.F} b={l.toe} w0={5} w1={4.4} bow={0.6} />
+              <Disc p={l.toe} d={4.6} />
             </group>
           );
         })}
         <group position={[0, hipWorldY, 0]} rotation={[0, 0, -lean * D2R]} scale={[1, breath, 1]}>
           {plane(textures.lower, planeCy, 0.02)}
-          <Limb a={armL.S} mid={armL.E} b={armL.Wr} w0={7} w1={4.8} z={0.06} hand={11} />
+          <Limb a={armL.S} mid={armL.E} b={armL.W} w0={7.4} wj={6} w1={4.9} z={0.06} hand={hand} thumb />
           {plane(textures.torso, planeCy, 0.1)}
-          <Limb a={armR.S} mid={armR.E} b={armR.Wr} w0={7} w1={4.8} z={0.17} hand={11} />
+          <Limb a={armR.S} mid={armR.E} b={armR.W} w0={7.4} wj={6} w1={4.9} z={0.17} hand={hand} thumb />
           <group position={[0, neckRel, 0.24]} rotation={[0, headYaw - bodyYaw, -tilt * D2R]}>
             {plane(textures.head, planeCy - neckRel, 0)}
           </group>

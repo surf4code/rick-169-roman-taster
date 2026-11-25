@@ -16,6 +16,8 @@ export interface CharacterSvgProps {
   height?: number;
   uid?: string;
   layer?: "all" | "lower" | "armB" | "torso" | "armF" | "head";
+  browLiftL?: number;
+  browLiftR?: number;
   turn?: number; // -1..1 head 3/4 turn (face features slide + compress)
 }
 
@@ -189,7 +191,7 @@ const Sleeve: React.FC<{ side: 1 | -1; outfit: string; shirt: string; accent: st
 };
 
 export const CharacterSvg: React.FC<CharacterSvgProps> = ({
-  characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0", layer = "all", turn = 0,
+  characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0", layer = "all", turn = 0, browLiftL = 0, browLiftR = 0,
 }) => {
   const show = (l: string) => layer === "all" || layer === l;
   if (layer !== "all") { breathY = 0; talkNod = 0; }
@@ -233,6 +235,13 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
       <defs>
         <clipPath id={clipTorsoId}><rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" /></clipPath>
         <clipPath id={clipHeadId}><path d={HG.full} /></clipPath>
+        <linearGradient id={`lg-${characterId}-${uid}`} x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFF6DD" stopOpacity="0.28" /><stop offset="0.45" stopColor="#FFFFFF" stopOpacity="0" /><stop offset="1" stopColor="#1B1030" stopOpacity="0.26" />
+        </linearGradient>
+        <filter id={`grain-${characterId}-${uid}`} x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed={hid % 50} result="n" />
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0 0.1  1.1 0 0 0 -0.46" />
+        </filter>
       </defs>
       <g transform={`translate(140, ${228 + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
         {show("lower") && (<>
@@ -247,6 +256,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         {outfit === "stola" && (
           <g>
             <path d="M -42 28 L -62 108 Q 0 124 62 108 L 42 28 Z" fill={shirt} stroke={INK} strokeWidth="5" strokeLinejoin="round" />
+            <path d="M -42 28 L -62 108 Q 0 124 62 108 L 42 28 Z" fill={`url(#lg-${characterId}-${uid})`} />
             <path d="M -14 42 L -24 112 M 6 42 L 8 116 M 26 42 L 40 110" fill="none" stroke="#000" strokeOpacity="0.2" strokeWidth="3.4" />
             <path d="M -61 98 Q 0 114 61 98 L 62 108 Q 0 124 -62 108 Z" fill={accent} stroke={INK} strokeWidth="3" />
             {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => <path key={i} d={`M ${-52 + i * 14} 106 h 8 v -5 h -4`} fill="none" stroke={shirt} strokeWidth="2.2" />)}
@@ -255,14 +265,31 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         {outfit === "robe" && (
           <g>
             <path d="M -46 24 L -58 104 L -44 98 L -34 108 L -20 100 L -6 110 L 8 100 L 22 108 L 36 98 L 48 106 L 58 104 L 46 24 Z" fill={shirt} stroke={INK} strokeWidth="5" strokeLinejoin="round" />
+            <path d="M -46 24 L -58 104 L -44 98 L -34 108 L -20 100 L -6 110 L 8 100 L 22 108 L 36 98 L 48 106 L 58 104 L 46 24 Z" fill={`url(#lg-${characterId}-${uid})`} />
             <path d="M -20 40 L -26 100 M 4 40 L 4 104 M 26 40 L 34 100" fill="none" stroke="#000" strokeOpacity="0.28" strokeWidth="3.4" />
           </g>
         )}
         {outfit === "toga" && (
           <g>
             <path d="M -44 30 L -56 100 Q 0 116 56 100 L 44 30 Z" fill="#F1EEF6" stroke={INK} strokeWidth="5" strokeLinejoin="round" />
+            <path d="M -44 30 L -56 100 Q 0 116 56 100 L 44 30 Z" fill={`url(#lg-${characterId}-${uid})`} />
             <path d="M -10 44 Q -14 80 -8 108 M 12 44 Q 16 80 10 106 M 30 44 Q 38 76 34 102" fill="none" stroke="#8A7FA8" strokeOpacity="0.55" strokeWidth="3.2" />
             <path d="M -55 96 Q 0 112 55 96" fill="none" stroke={accent} strokeWidth="5" />
+          </g>
+        )}
+        {(outfit === "stola" || outfit === "robe" || outfit === "toga") && (
+          <g>
+            {[0, 1, 2, 3, 4, 5].map((k) => {
+              const x0 = -30 + k * 12 + ((hid >>> (k * 2)) % 5) - 2, x1 = x0 * 1.32 + ((hid >>> (k + 3)) % 7) - 3;
+              return (
+                <g key={`sf${k}`}>
+                  <path d={`M ${x0} 40 Q ${(x0 + x1) / 2 + 3} 76 ${x1} 112`} fill="none" stroke="#1B1030" strokeOpacity="0.17" strokeWidth="3.4" strokeLinecap="round" />
+                  <path d={`M ${x0 + 3.4} 40 Q ${(x0 + x1) / 2 + 6.4} 76 ${x1 + 3.4} 112`} fill="none" stroke="#FFFFFF" strokeOpacity="0.22" strokeWidth="1.8" strokeLinecap="round" />
+                </g>
+              );
+            })}
+            <path d="M -58 108 Q 0 122 58 108" fill="none" stroke="#2B1B20" strokeOpacity="0.5" strokeWidth="1.7" strokeDasharray="5 3.5" />
+            <path d="M -60 112 Q 0 128 60 112" fill="none" stroke="#1B1030" strokeOpacity="0.18" strokeWidth="5" />
           </g>
         )}
         {outfit === "cuirass" && [-36, -18, 0, 18, 36].map((x, i) => (
@@ -347,6 +374,19 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
 
           <ellipse cx="-38" cy="4" rx="34" ry="70" fill="#000000" opacity="0.16" />
           <ellipse cx="38" cy="-4" rx="18" ry="52" fill="#FFF3D4" opacity="0.24" />
+          <rect x="-44" y="-58" width="88" height="118" fill={`url(#lg-${characterId}-${uid})`} />
+          {[0, 1, 2, 3].map((k) => {
+            const x = -27 + k * 18 + ((hid >>> (k * 3)) % 5) - 2, dx = ((hid >>> (k + 5)) % 9) - 4;
+            return (
+              <g key={`f${k}`}>
+                <path d={`M ${x} -34 Q ${x + dx} 8 ${x + dx * 0.4} 58`} fill="none" stroke="#1B1030" strokeOpacity="0.15" strokeWidth="3.2" strokeLinecap="round" />
+                <path d={`M ${x + 3.2} -34 Q ${x + dx + 3.2} 8 ${x + dx * 0.4 + 3.2} 58`} fill="none" stroke="#FFFFFF" strokeOpacity="0.2" strokeWidth="1.8" strokeLinecap="round" />
+              </g>
+            );
+          })}
+          <path d="M -42 51 Q 0 60 42 51" fill="none" stroke="#2B1B20" strokeOpacity="0.5" strokeWidth="1.6" strokeDasharray="4 3" />
+          <path d="M -30 -50 Q -22 -44 -14 -52 M 14 -52 Q 22 -44 30 -50" fill="none" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="2.2" strokeLinecap="round" />
+          <rect x="-44" y="-58" width="88" height="118" filter={`url(#grain-${characterId}-${uid})`} opacity="0.5" />
         </g>
         <path d={brushRing(roundRectPts(-44, -58, 88, 118, 44), 3.2, 5.4, hid % 9)} fill={INK} fillRule="evenodd" />
 
@@ -406,6 +446,10 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
             <>
               <ellipse cx={-T.gap} cy="-7" rx={T.eyeRx} ry={isBlinking ? 1.0 : 7.8 * T.eyeRy * pose.eyeScaleY} fill={INK} />
               <ellipse cx={T.gap} cy="-7" rx={T.eyeRx} ry={isBlinking ? 1.0 : 7.8 * T.eyeRy * pose.eyeScaleY} fill={INK} />
+              {!isBlinking && <><circle cx={-T.gap + 1.7} cy={-9.6} r="1.7" fill="#FFFFFF" opacity="0.92" /><circle cx={T.gap + 1.7} cy={-9.6} r="1.7" fill="#FFFFFF" opacity="0.92" /></>}
+              {[-1, 1].map((sd) => (
+                <path key={`lid${sd}`} d={`M ${sd * T.gap - T.eyeRx - 2.6} -8.5 Q ${sd * T.gap} ${-18 + (1 - pose.eyeScaleY) * 22} ${sd * T.gap + T.eyeRx + 2.6} -8.5`} fill="none" stroke={INK} strokeWidth="2.7" strokeLinecap="round" />
+              ))}
               {isSkeptical && (
                 <>
                   <line x1="-25" y1="-11" x2="-7" y2="-11" stroke={INK} strokeWidth="3.8" />
@@ -421,8 +465,14 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           )}
 
           {/* brows */}
-          <line x1={-T.gap - T.browLen / 2} y1={-23 + T.browY} x2={-T.gap + T.browLen / 2} y2={-23 + T.browY} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browLeftDeg + T.browTilt}, ${-T.gap}, ${-23 + T.browY})`} />
-          <line x1={T.gap - T.browLen / 2} y1={-23 + T.browY} x2={T.gap + T.browLen / 2} y2={-23 + T.browY} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browRightDeg + T.browTilt}, ${T.gap}, ${-23 + T.browY})`} />
+          <line x1={-T.gap - T.browLen / 2} y1={-23 + T.browY - browLiftL} x2={-T.gap + T.browLen / 2} y2={-23 + T.browY - browLiftL} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browLeftDeg + T.browTilt}, ${-T.gap}, ${-23 + T.browY - browLiftL})`} />
+          <line x1={T.gap - T.browLen / 2} y1={-23 + T.browY - browLiftR} x2={T.gap + T.browLen / 2} y2={-23 + T.browY - browLiftR} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browRightDeg + T.browTilt}, ${T.gap}, ${-23 + T.browY - browLiftR})`} />
+
+          {/* nose (per-character shape) */}
+          {pick(23, 4) === 0 && <path d="M 1 -2 Q 7 5 0 9" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="2.8" strokeLinecap="round" />}
+          {pick(23, 4) === 1 && <path d="M -3 6 Q 0 10 4 6" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="2.8" strokeLinecap="round" />}
+          {pick(23, 4) === 2 && <path d="M 2 -5 Q 9 6 0 11" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="2.8" strokeLinecap="round" />}
+          {pick(23, 4) === 3 && <ellipse cx="1" cy="6" rx="3.4" ry="2.6" fill="#E9B7A8" stroke={INK} strokeOpacity="0.8" strokeWidth="2.2" />}
 
           {/* mouth */}
           {isAngry ? (

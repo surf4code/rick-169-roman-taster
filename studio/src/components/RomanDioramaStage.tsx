@@ -5,6 +5,7 @@ import { GradePreset } from "../utils/colorGrade";
 import { buildSet } from "./sets/dressing";
 import { floorTexture, wallTexture } from "./sets/textures";
 import * as P from "./props/RomanProps";
+import { SetDressing } from "./sets/extras";
 
 const MAP: Record<string, React.FC<any>> = {
   Amphora: P.Amphora, Jug: P.Jug, Goblet: P.Goblet, Bowl: P.Bowl, Platter: P.Platter, Table: P.Table, Couch: P.Couch, Stool: P.Stool,
@@ -67,6 +68,8 @@ export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset }> 
           <meshStandardMaterial color="#6E3F22" roughness={0.8} />
         </mesh>
       ))}
+
+      <SetDressing spec={spec} setId={setId} night={spec.night} frame={frame} />
 
       {spec.items.map((it, i) => {
         const C = MAP[it.t];
