@@ -1,99 +1,78 @@
-import React from "react";
-import { RoundedBox, Edges } from "@react-three/drei";
+import React, { useMemo } from "react";
+import * as THREE from "three";
+import { useCurrentFrame } from "remotion";
 import { GradePreset } from "../utils/colorGrade";
-import {
-  House3D,
-  Castle3D,
-  RiverAndBridge3D,
-  TableAndProps3D,
-  FlowersAndTrees3D,
-  DadCar3D,
-  BusWithInterior3D,
-  HorseWithRider3D,
-} from "./UniverseProps3D";
+import { buildSet } from "./sets/dressing";
+import { floorTexture, wallTexture } from "./sets/textures";
+import * as P from "./props/RomanProps";
 
-export const SceneLights: React.FC<{ setId: string; grade: GradePreset; castShadows?: boolean }> = ({
-  setId,
-  grade,
-  castShadows = false,
-}) => {
-  const isNight = setId.includes("night");
-  return (
-    <>
-      <ambientLight intensity={grade.ambientIntensity} />
-      <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
-      <directionalLight
-        position={[4.5, 7.0, 4.2]}
-        intensity={grade.keyLightIntensity}
-        color={grade.keyLightColor}
-        castShadow={castShadows}
-        shadow-mapSize-width={1024}
-        shadow-mapSize-height={1024}
-      />
-      <directionalLight position={[-4.5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={grade.rimLightColor} />
-      {isNight && <pointLight position={[0, 2.8, 0.5]} intensity={3.2} distance={10} color="#FFAE52" />}
-    </>
-  );
+const MAP: Record<string, React.FC<any>> = {
+  Amphora: P.Amphora, Jug: P.Jug, Goblet: P.Goblet, Bowl: P.Bowl, Platter: P.Platter, Table: P.Table, Couch: P.Couch, Stool: P.Stool,
+  Crate: P.Crate, Barrel: P.Barrel, Sack: P.Sack, Basket: P.Basket, Rug: P.Rug, Column: P.Column, Arch: P.Arch, Door: P.Door,
+  Window: P.Window, Banner: P.Banner, Bust: P.Bust, Torch: P.Torch, Brazier: P.Brazier, OilLamp: P.OilLamp, HangingLamp: P.HangingLamp,
+  Plant: P.Plant, Shelf: P.Shelf, Cauldron: P.Cauldron, Oven: P.Oven, Hanging: P.Hanging, Bed: P.Bed, Laundry: P.Laundry,
+  Scroll: P.Scroll, Loaf: P.Loaf, Chandelier: P.Chandelier, Cushion: P.Cushion,
 };
 
+/** Number of dressed props in a set (used by the density QA gate). */
+export const setObjectCount = (setId: string) => buildSet(setId).items.length;
+
 export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset }> = ({ setId, grade }) => {
-  const isNight = setId.includes("night");
-  const floorColor = isNight ? "#9C7B5B" : "#DFC9A6";
-  const wallColor = isNight ? "#B88C64" : "#F3E6CE";
-  const pillarColor = isNight ? "#C8B39A" : "#FAF5EB";
+  const frame = useCurrentFrame();
+  const spec = useMemo(() => buildSet(setId), [setId]);
+  const wallTex = useMemo(() => wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night), [spec]);
+  const floorTex = useMemo(() => floorTexture(spec.floor, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]), [spec]);
+  const sideTex = useMemo(() => wallTexture(spec.wall, Math.max(2, Math.round(spec.floorD / 3)), spec.night), [spec]);
+  const isCorridor = setId.includes("corridor");
+  const wallMat = <meshStandardMaterial map={wallTex} roughness={0.85} />;
 
   return (
     <group>
-      <color attach="background" args={[grade.bgColor]} />
-      <SceneLights setId={setId} grade={grade} castShadows />
+      <color attach="background" args={[spec.night ? "#6C86C9" : spec.sky]} />
+      <ambientLight intensity={grade.ambientIntensity} />
+      <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
+      <directionalLight position={[4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity} color={grade.keyLightColor} castShadow
+        shadow-mapSize-width={1024} shadow-mapSize-height={1024}
+        shadow-camera-left={-9} shadow-camera-right={9} shadow-camera-top={9} shadow-camera-bottom={-9} shadow-camera-near={0.5} shadow-camera-far={30} shadow-bias={-0.0004} />
+      <directionalLight position={[-5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={"#9FB0F0"} />
+      {spec.torchLights.map((p, i) => <pointLight key={i} position={p} intensity={spec.night ? 5 : 3} distance={9} decay={1.6} color="#FFB45E" />)}
 
-      {/* Ground / Floor */}
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-        <planeGeometry args={[26, 20]} />
-        <meshStandardMaterial color={floorColor} roughness={0.82} />
+      {/* floor */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, spec.floorZ]} receiveShadow>
+        <planeGeometry args={[spec.halfW * 2 + 6, spec.floorD]} />
+        <meshStandardMaterial map={floorTex} roughness={0.8} />
       </mesh>
-
-      {/* Back Architectural Wall */}
-      <mesh position={[0, 3.6, -4.4]} receiveShadow>
-        <boxGeometry args={[22, 7.5, 0.3]} />
-        <meshStandardMaterial color={wallColor} roughness={0.78} />
-        <Edges threshold={18} color="#161618" />
+      {/* back wall */}
+      <mesh position={[0, spec.wallH / 2, spec.backZ - 0.15]} receiveShadow>
+        <boxGeometry args={[spec.halfW * 2 + 6, spec.wallH, 0.3]} />
+        {wallMat}
       </mesh>
-
-      {/* Ink-Outlined Columns */}
-      {[-5.2, -2.2, 2.2, 5.2].map((x, idx) => (
-        <mesh key={idx} position={[x, 2.4, -3.5]} castShadow receiveShadow>
-          <cylinderGeometry args={[0.26, 0.3, 4.8, 16]} />
-          <meshStandardMaterial color={pillarColor} roughness={0.65} />
-          <Edges threshold={18} color="#161618" />
+      {/* side walls */}
+      {[-1, 1].map((sx) => (
+        <mesh key={sx} position={[sx * (spec.halfW + 0.15), spec.wallH / 2, spec.floorZ]} receiveShadow>
+          <boxGeometry args={[0.3, spec.wallH, spec.floorD]} />
+          <meshStandardMaterial map={sideTex} roughness={0.85} />
+        </mesh>
+      ))}
+      {/* ceiling beams for interiors so low-angle shots do not open onto void */}
+      {(isCorridor || spec.wall === "plaster" || spec.wall === "brick" || spec.wall === "stone") && (
+        <mesh position={[0, spec.wallH, spec.floorZ]} rotation={[Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[spec.halfW * 2 + 6, spec.floorD]} />
+          <meshStandardMaterial color={isCorridor ? "#8A4630" : "#7A4A2E"} roughness={0.9} side={THREE.DoubleSide} />
+        </mesh>
+      )}
+      {!isCorridor && Array.from({ length: 5 }, (_, i) => (
+        <mesh key={i} position={[0, spec.wallH - 0.35, spec.backZ + 1.1 + i * 2.4]} castShadow>
+          <boxGeometry args={[spec.halfW * 2, 0.3, 0.35]} />
+          <meshStandardMaterial color="#6E3F22" roughness={0.8} />
         </mesh>
       ))}
 
-      {/* Rich World Props so sets feel alive & layered */}
-      <TableAndProps3D woodColor="#9C5A2B" />
-      <group position={[-3.4, 0, -2.2]} scale={[0.75, 0.75, 0.75]}>
-        <House3D wallColor="#F2CC8F" roofColor="#E07A5F" />
-      </group>
-      <group position={[3.6, 0, -2.6]} scale={[0.65, 0.65, 0.65]}>
-        <Castle3D stoneColor="#CBD5E1" accentColor="#D97706" />
-      </group>
-      <group position={[0, 0, 2.5]} scale={[0.68, 0.68, 0.68]}>
-        <RiverAndBridge3D waterColor="#2B8CBE" />
-      </group>
-      {[-2.4, 2.4].map((fx, i) => (
-        <group key={i} position={[fx, 0, -1.6]} scale={[0.85, 0.85, 0.85]}>
-          <FlowersAndTrees3D petalColor={i === 0 ? "#F43F5E" : "#FBBF24"} />
-        </group>
-      ))}
-      <group position={[-4.5, 0, 0.8]} rotation={[0, 0.35, 0]} scale={[0.62, 0.62, 0.62]}>
-        <DadCar3D color="#D93829" />
-      </group>
-      <group position={[4.5, 0, 1.0]} rotation={[0, -0.35, 0]} scale={[0.52, 0.52, 0.52]}>
-        <BusWithInterior3D color="#EAB308" />
-      </group>
-      <group position={[2.0, 0, 1.3]} rotation={[0, -0.4, 0]} scale={[0.65, 0.65, 0.65]}>
-        <HorseWithRider3D horseColor="#7C4A27" riderColor="#7C3AED" hasRider />
-      </group>
+      {spec.items.map((it, i) => {
+        const C = MAP[it.t];
+        if (!C) return null;
+        return <C key={i} position={it.p} rotation={it.r} scale={it.s} color={it.c} frame={frame} night={spec.night} {...(it.o || {})} />;
+      })}
     </group>
   );
 };

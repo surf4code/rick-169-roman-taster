@@ -1,478 +1,1223 @@
 {
-  "meta": {
-    "title": "Why It Sucks to Be a Royal Food Taster (in Ancient Rome) - Style Test",
-    "fps": 30,
-    "width": 1920,
-    "height": 1080,
-    "duration_sec": 60.0,
-    "total_frames": 1800,
-    "clock": "voice",
-    "loop": false
-  },
-  "terms": [
-    "VERNA",
-    "PRAEGUSTATOR",
-    "PALATINE HILL"
-  ],
-  "shots": [
+ "meta": {
+  "title": "Why It Sucks to Be a Royal Food Taster (in Ancient Rome) - Style Test",
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "duration_sec": 88.3,
+  "total_frames": 2649,
+  "clock": "voice",
+  "loop": false
+ },
+ "terms": [
+  "PRAEGUSTATOR",
+  "VERNA",
+  "ANCIENT ROME"
+ ],
+ "shots": [
+  {
+   "id": "S01",
+   "narration": "You're born in Rome, in the year 31, and you already have an owner.",
+   "set": "palace_quarters_day",
+   "camera": "slow_push",
+   "characters": [
     {
-      "id": "B01_S01",
-      "start": 0.0,
-      "end": 3.8,
-      "type": "wide_establish",
-      "set": "palace_quarters_day",
-      "grade": "day",
-      "camera": "slow_push",
-      "stamp": "ROME - AD 31",
-      "characters": [
-        {
-          "id": "mother",
-          "pos": [
-            -0.9,
-            0,
-            0.1
-          ],
-          "scale": 0.96,
-          "emotion": "sad_slump"
-        },
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            0.8,
-            0,
-            0.3
-          ],
-          "scale": 0.65,
-          "emotion": "curious"
-        }
+     "id": "mother",
+     "pos": [
+      -0.9,
+      0,
+      0.0
+     ],
+     "emotion": [
+      [
+       0,
+       "nervous_sweat"
       ],
-      "frontProps": [
-        {
-          "kind": "amphora",
-          "pos": [
-            2.0,
-            0,
-            1.2
-          ],
-          "scale": 1.1,
-          "rotY": 0.4
-        }
-      ],
-      "narration": "You're born in Rome, in the year 31, and you already have an owner."
+      [
+       2.6,
+       "sad_slump"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
     },
     {
-      "id": "B01_S02",
-      "start": 3.8,
-      "end": 7.2,
-      "type": "closeup_punch",
-      "set": "palace_quarters_day",
-      "grade": "day",
-      "camera": "punch_in",
-      "characters": [
-        {
-          "id": "emperor",
-          "pos": [
-            0.0,
-            0,
-            -0.2
-          ],
-          "scale": 1.12,
-          "emotion": "skeptical"
-        }
-      ],
-      "floatingTag": {
-        "target": "emperor",
-        "text": "THE EMPEROR"
-      },
-      "narration": "It isn't your mother. It isn't your father. It's the emperor."
-    },
-    {
-      "id": "B01_S03",
-      "start": 7.2,
-      "end": 11.0,
-      "type": "two_shot",
-      "set": "palace_quarters_day",
-      "grade": "day",
-      "camera": "orbit_gentle",
-      "characters": [
-        {
-          "id": "mother",
-          "pos": [
-            -1.1,
-            0,
-            0.1
-          ],
-          "scale": 0.96,
-          "emotion": "nervous_sweat"
-        },
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            1.0,
-            0,
-            0.2
-          ],
-          "scale": 0.65,
-          "emotion": "neutral"
-        }
-      ],
-      "floatingTag": {
-        "target": "mother",
-        "text": "IMPERIAL SERVANT"
-      },
-      "narration": "Your mother is enslaved in the imperial household, which makes you one too\u2014before you can even hold up your head."
-    },
-    {
-      "id": "B01_S04",
-      "start": 11.0,
-      "end": 14.8,
-      "type": "infographic_card",
-      "set": "infographic_parchment",
-      "grade": "day",
-      "camera": "static_punch",
-      "infographic": {
-        "title": "ROMAN HOUSEHOLD LAW",
-        "stat": "VERNA",
-        "sub": "A child born enslaved inside the master's own house (familia Caesaris).",
-        "items": [
-          "BORN ON SITE",
-          "TRAINED EARLY",
-          "TRUSTED MORE",
-          "OWNED FOR LIFE"
-        ]
-      },
-      "narration": "Romans have a specific word for you: verna. A house-born slave."
-    },
-    {
-      "id": "B01_S05",
-      "start": 14.8,
-      "end": 18.2,
-      "type": "akira_cutaway",
-      "set": "akira_sage",
-      "grade": "day",
-      "camera": "static_punch",
-      "akiraExpression": "smirk",
-      "bubble": {
-        "speaker": "akira",
-        "text": "LOYALTY BY BIRTH CERTIFICATE."
-      },
-      "narration": "Which sounds almost cozy, until you realize it just means the palace gets first pick of your life."
-    },
-    {
-      "id": "B01_S06",
-      "start": 18.2,
-      "end": 22.0,
-      "type": "fly_through_transition",
-      "set": "palace_corridor_day",
-      "grade": "day",
-      "camera": "fly_through",
-      "stamp": "19 YEARS OLD - AD 50",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            -0.3,
-            0,
-            0.1
-          ],
-          "scale": 0.96,
-          "emotion": "curious"
-        },
-        {
-          "id": "head_chef",
-          "pos": [
-            1.3,
-            0,
-            -0.2
-          ],
-          "scale": 1.02,
-          "emotion": "confident_point"
-        }
-      ],
-      "floatingTag": {
-        "target": "head_chef",
-        "text": "PROCURATOR"
-      },
-      "narration": "Years pass as you turn nineteen. The head steward checks your hands, your tongue, and your record."
-    },
-    {
-      "id": "B01_S07",
-      "start": 22.0,
-      "end": 25.6,
-      "type": "over_shoulder",
-      "set": "palace_corridor_day",
-      "grade": "day",
-      "camera": "ots_rack",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            -1.0,
-            0,
-            0.4
-          ],
-          "scale": 0.96,
-          "emotion": "shocked"
-        },
-        {
-          "id": "head_chef",
-          "pos": [
-            1.1,
-            0,
-            -0.4
-          ],
-          "scale": 1.02,
-          "emotion": "skeptical"
-        }
-      ],
-      "bubble": {
-        "speaker": "head_chef",
-        "text": "YOU EAT BEFORE CAESAR."
-      },
-      "narration": "Nobody asks what you think. You are promoted to praegustator\u2014the emperor's personal food taster."
-    },
-    {
-      "id": "B01_S08",
-      "start": 25.6,
-      "end": 29.2,
-      "type": "wide_establish",
-      "set": "banquet_hall_day",
-      "grade": "day",
-      "camera": "slow_push",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            0.0,
-            0,
-            0.3
-          ],
-          "scale": 0.96,
-          "emotion": "nervous_sweat"
-        },
-        {
-          "id": "palace_guard",
-          "pos": [
-            -2.0,
-            0,
-            -0.5
-          ],
-          "scale": 1.08,
-          "emotion": "neutral"
-        }
-      ],
-      "floatingTag": {
-        "target": "taster_protagonist",
-        "text": "PRAEGUSTATOR"
-      },
-      "narration": "On paper, it's an elite post on the Palatine Hill: warm clothes, real silver, and better food than half of Rome."
-    },
-    {
-      "id": "B01_S09",
-      "start": 29.2,
-      "end": 32.8,
-      "type": "top_down_overview",
-      "set": "banquet_hall_day",
-      "grade": "day",
-      "camera": "top_down_drift",
-      "characters": [
-        {
-          "id": "emperor",
-          "pos": [
-            0.0,
-            0,
-            -1.4
-          ],
-          "scale": 1.12,
-          "emotion": "neutral"
-        },
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            0.0,
-            0,
-            0.7
-          ],
-          "scale": 0.96,
-          "emotion": "nervous_sweat"
-        }
-      ],
-      "narration": "In practice, every dinner is a slow-motion coin flip with your own stomach."
-    },
-    {
-      "id": "B01_S10",
-      "start": 32.8,
-      "end": 36.6,
-      "type": "macro_prop_insert",
-      "set": "macro_goblet",
-      "grade": "day",
-      "camera": "macro_push",
-      "prop": "golden_goblet",
-      "narration": "First comes the spiced wine cup. Then the steaming platter of wild mushrooms\u2014the emperor's favorite dish."
-    },
-    {
-      "id": "B01_S11",
-      "start": 36.6,
-      "end": 40.2,
-      "type": "low_angle_power",
-      "set": "banquet_hall_day",
-      "grade": "day",
-      "camera": "low_angle_tilt",
-      "characters": [
-        {
-          "id": "emperor",
-          "pos": [
-            0.0,
-            0,
-            -0.3
-          ],
-          "scale": 1.12,
-          "emotion": "skeptical"
-        }
-      ],
-      "bubble": {
-        "speaker": "emperor",
-        "text": "WELL?"
-      },
-      "narration": "Claudius watches from the couch. Twenty senators pretend to talk while staring at your throat."
-    },
-    {
-      "id": "B01_S12",
-      "start": 40.2,
-      "end": 44.0,
-      "type": "impact_slowmo",
-      "set": "macro_goblet",
-      "grade": "day",
-      "camera": "slowmo_impact",
-      "prop": "golden_goblet",
-      "narration": "You lift the cup. You swallow. You count five silent heartbeats."
-    },
-    {
-      "id": "B01_S13",
-      "start": 44.0,
-      "end": 47.6,
-      "type": "whip_pan_cut",
-      "set": "banquet_hall_day",
-      "grade": "day",
-      "camera": "whip_right",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            -0.8,
-            0,
-            0.2
-          ],
-          "scale": 0.96,
-          "emotion": "happy_relief"
-        },
-        {
-          "id": "emperor",
-          "pos": [
-            1.1,
-            0,
-            -0.2
-          ],
-          "scale": 1.12,
-          "emotion": "happy_relief"
-        }
-      ],
-      "bubble": {
-        "speaker": "emperor",
-        "text": "ACCEPTABLE."
-      },
-      "narration": "You stay upright. You nod once. Only then does the emperor touch his spoon."
-    },
-    {
-      "id": "B01_S14",
-      "start": 47.6,
-      "end": 51.4,
-      "type": "two_shot",
-      "set": "palace_kitchen_night",
-      "grade": "night_torch",
-      "camera": "orbit_gentle",
-      "stamp": "THAT SAME NIGHT",
-      "characters": [
-        {
-          "id": "palace_guard",
-          "pos": [
-            -1.2,
-            0,
-            -0.1
-          ],
-          "scale": 1.08,
-          "emotion": "skeptical"
-        },
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            1.0,
-            0,
-            0.2
-          ],
-          "scale": 0.96,
-          "emotion": "thinking_chin"
-        }
-      ],
-      "floatingTag": {
-        "target": "palace_guard",
-        "text": "PRAETORIAN"
-      },
-      "narration": "That night, under warm kitchen lamps, you finally understand the real rule of the palace."
-    },
-    {
-      "id": "B01_S15",
-      "start": 51.4,
-      "end": 55.6,
-      "type": "closeup_punch",
-      "set": "palace_kitchen_night",
-      "grade": "night_torch",
-      "camera": "punch_in",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            0.0,
-            0,
-            0.2
-          ],
-          "scale": 0.96,
-          "emotion": "nervous_sweat"
-        }
-      ],
-      "narration": "If a poison works fast, you die before the emperor takes a bite. If it works slow, you both die\u2014and your family gets blamed."
-    },
-    {
-      "id": "B01_S16",
-      "start": 55.6,
-      "end": 60.0,
-      "type": "wide_establish",
-      "set": "banquet_hall_day",
-      "grade": "day",
-      "camera": "slow_push",
-      "characters": [
-        {
-          "id": "taster_protagonist",
-          "pos": [
-            -1.1,
-            0,
-            0.3
-          ],
-          "scale": 0.96,
-          "emotion": "sad_slump"
-        },
-        {
-          "id": "emperor",
-          "pos": [
-            1.1,
-            0,
-            -0.4
-          ],
-          "scale": 1.12,
-          "emotion": "confident_point"
-        }
-      ],
-      "narration": "And what you don't realize yet is that the people who want the emperor dead don't hate you. They want to hire you."
+     "id": "taster_protagonist",
+     "pos": [
+      0.5,
+      0,
+      0.3
+     ],
+     "emotion": "happy_relief",
+     "scale": 0.42,
+     "flipX": false
     }
-  ]
+   ],
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      -3.2,
+      0,
+      -1.2
+     ],
+     "emotion": "neutral",
+     "scale": 0.8,
+     "flipX": false
+    },
+    {
+     "id": "servant_b",
+     "pos": [
+      3.3,
+      0,
+      -1.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.8,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "stamp": "31 AD - ROME",
+   "tags": [
+    {
+     "who": 0,
+     "text": "SLAVE (PALACE STAFF)",
+     "color": "#059669",
+     "at": 1.6
+    }
+   ],
+   "start": 0.0,
+   "end": 5.4
+  },
+  {
+   "id": "S02",
+   "narration": "It isn't your mother. It isn't your father. It's the emperor.",
+   "set": "banquet_hall_day",
+   "camera": "low_angle_tilt",
+   "characters": [
+    {
+     "id": "claudius",
+     "pos": [
+      0.3,
+      0,
+      -0.5
+     ],
+     "emotion": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       2.0,
+       "confident_point"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -2.6,
+      0,
+      -1.2
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "palace_guard",
+     "pos": [
+      2.8,
+      0,
+      -1.2
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": true
+    },
+    {
+     "id": "servant_b",
+     "pos": [
+      -1.4,
+      0,
+      -1.8
+     ],
+     "emotion": "neutral",
+     "scale": 0.8,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "YOUR OWNER: THE EMPEROR",
+     "color": "#7E22CE",
+     "at": 2.0
+    }
+   ],
+   "start": 5.4,
+   "end": 9.6
+  },
+  {
+   "id": "S03",
+   "narration": "Your mother is a slave in the imperial household, which makes you one too.",
+   "set": "palace_quarters_day",
+   "camera": "orbit",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      -0.8,
+      0,
+      0.0
+     ],
+     "emotion": "sad_slump",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.7,
+      0,
+      0.3
+     ],
+     "emotion": [
+      [
+       0,
+       "curious"
+      ],
+      [
+       2.8,
+       "shocked"
+      ]
+     ],
+     "scale": 0.42,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      3.4,
+      0,
+      -1.4
+     ],
+     "emotion": "neutral",
+     "scale": 0.8,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 1,
+     "text": "ALSO A SLAVE",
+     "color": "#2563EB",
+     "at": 2.8
+    }
+   ],
+   "start": 9.6,
+   "end": 15.0
+  },
+  {
+   "id": "S04a",
+   "narration": "The Romans have a word for a baby like you: verna.",
+   "set": "palace_quarters_day",
+   "camera": "punch_in",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.2,
+      0,
+      0.2
+     ],
+     "emotion": "shocked",
+     "scale": 0.55,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "bubble": {
+    "who": 0,
+    "text": "WAAAH!",
+    "at": 0.5
+   },
+   "start": 15.0,
+   "end": 18.2
+  },
+  {
+   "id": "S04b",
+   "narration": "A slave born in the house. Like the furniture, but louder.",
+   "set": "infographic_parchment",
+   "camera": "static",
+   "characters": [],
+   "crowd": [],
+   "grade": "day",
+   "type": "infographic_card",
+   "infographic": {
+    "title": "ROMAN WORD OF THE DAY",
+    "stat": "VERNA",
+    "sub": "a slave born in the house.",
+    "items": [
+     "BORN IN THE HOUSE",
+     "OWNED FROM DAY ONE",
+     "NO SAY IN ANYTHING",
+     "LIKE FURNITURE, BUT LOUDER"
+    ]
+   },
+   "start": 18.2,
+   "end": 22.8
+  },
+  {
+   "id": "S05",
+   "narration": "Nobody asks what you think. You're three days old.",
+   "set": "palace_quarters_day",
+   "camera": "dutch_punch",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.0,
+      0,
+      0.3
+     ],
+     "emotion": "neutral",
+     "scale": 0.55,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "bubble": {
+    "who": 0,
+    "text": "...",
+    "at": 0.8
+   },
+   "start": 22.8,
+   "end": 26.3
+  },
+  {
+   "id": "S06a",
+   "narration": "The palace is enormous. Cooks, doorkeepers, accountants,",
+   "set": "palace_corridor_day",
+   "camera": "corridor_dolly",
+   "characters": [
+    {
+     "id": "cook",
+     "pos": [
+      -1.0,
+      0,
+      0.2
+     ],
+     "emotion": "talking_animated",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "scribe",
+     "pos": [
+      1.1,
+      0,
+      -0.4
+     ],
+     "emotion": "focused_reading",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -2.3,
+      0,
+      -3.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "servant_a",
+     "pos": [
+      2.3,
+      0,
+      -3.5
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "servant_b",
+     "pos": [
+      0.0,
+      0,
+      -5.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "COOK",
+     "color": "#EA580C",
+     "at": 0.6
+    },
+    {
+     "who": 1,
+     "text": "ACCOUNTANT",
+     "color": "#0E7490",
+     "at": 1.4
+    }
+   ],
+   "start": 26.3,
+   "end": 29.9
+  },
+  {
+   "id": "S06b",
+   "narration": "and people whose only job is the emperor's clothes.",
+   "set": "banquet_hall_day",
+   "camera": "whip_right",
+   "characters": [
+    {
+     "id": "servant_b",
+     "pos": [
+      -1.1,
+      0,
+      0.0
+     ],
+     "emotion": "nervous_sweat",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "servant_a",
+     "pos": [
+      0.9,
+      0,
+      0.0
+     ],
+     "emotion": "shrug_question",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      3.0,
+      0,
+      -1.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "EMPEROR'S WARDROBE",
+     "color": "#BE123C",
+     "at": 1.0
+    }
+   ],
+   "start": 29.9,
+   "end": 33.1
+  },
+  {
+   "id": "S06c",
+   "narration": "Everyone has a role. Everyone is replaceable.",
+   "set": "palace_kitchen_day",
+   "camera": "slow_push",
+   "characters": [
+    {
+     "id": "cook",
+     "pos": [
+      -1.4,
+      0,
+      0.0
+     ],
+     "emotion": "angry_glare",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "servant_a",
+     "pos": [
+      0.1,
+      0,
+      0.3
+     ],
+     "emotion": "sad_slump",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "servant_b",
+     "pos": [
+      1.5,
+      0,
+      0.0
+     ],
+     "emotion": "shrug_question",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "scribe",
+     "pos": [
+      -3.4,
+      0,
+      -0.8
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "palace_guard",
+     "pos": [
+      3.3,
+      0,
+      -0.8
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 2,
+     "text": "REPLACEABLE",
+     "color": "#64748B",
+     "at": 1.9
+    }
+   ],
+   "start": 33.1,
+   "end": 36.5
+  },
+  {
+   "id": "S07a",
+   "narration": "You grow up in the corridors, learning the rules before you learn to read.",
+   "set": "palace_corridor_day",
+   "camera": "fly_through",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.0,
+      0,
+      0.2
+     ],
+     "emotion": "curious",
+     "scale": 0.7,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -2.2,
+      0,
+      -3.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "servant_b",
+     "pos": [
+      2.2,
+      0,
+      -4.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "start": 36.5,
+   "end": 40.7
+  },
+  {
+   "id": "S07b",
+   "narration": "Walk fast. Look down.",
+   "set": "palace_corridor_day",
+   "camera": "punch_in",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.0,
+      0,
+      0.2
+     ],
+     "emotion": "nervous_sweat",
+     "scale": 0.7,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -1.9,
+      0,
+      -1.8
+     ],
+     "emotion": "angry_glare",
+     "scale": 0.95,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "bubble": {
+    "who": 0,
+    "text": "WALK FAST. LOOK DOWN.",
+    "at": 0.3
+   },
+   "start": 40.7,
+   "end": 43.3
+  },
+  {
+   "id": "S07c",
+   "narration": "Never touch the food.",
+   "set": "palace_kitchen_day",
+   "camera": "dutch_punch",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      -0.6,
+      0,
+      0.3
+     ],
+     "emotion": [
+      [
+       0,
+       "surprised_jump"
+      ],
+      [
+       0.8,
+       "nervous_sweat"
+      ]
+     ],
+     "scale": 0.7,
+     "flipX": false
+    },
+    {
+     "id": "cook",
+     "pos": [
+      1.0,
+      0,
+      0.0
+     ],
+     "emotion": "angry_glare",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "bubble": {
+    "who": 1,
+    "text": "NEVER TOUCH THE FOOD!",
+    "at": 0.4
+   },
+   "start": 43.3,
+   "end": 45.9
+  },
+  {
+   "id": "S08",
+   "narration": "That last rule matters. Because in this house, food is not just food.",
+   "set": "palace_kitchen_day",
+   "camera": "macro_push",
+   "characters": [],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "hero": [
+    {
+     "t": "Platter",
+     "p": [
+      -0.15,
+      0.87,
+      -1.65
+     ],
+     "s": 1.15,
+     "o": {
+      "kind": "mushroom"
+     }
+    },
+    {
+     "t": "Goblet",
+     "p": [
+      0.45,
+      0.87,
+      -1.5
+     ],
+     "s": 1.3
+    }
+   ],
+   "start": 45.9,
+   "end": 50.7
+  },
+  {
+   "id": "S09a",
+   "narration": "The thing is, powerful Romans have a habit of dying at dinner.",
+   "set": "banquet_hall_day",
+   "camera": "top_down_drift",
+   "characters": [
+    {
+     "id": "claudius",
+     "pos": [
+      0.0,
+      0,
+      -0.9
+     ],
+     "emotion": "happy_relief",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "nero",
+     "pos": [
+      2.0,
+      0,
+      -1.2
+     ],
+     "emotion": "happy_relief",
+     "scale": 0.9,
+     "flipX": false
+    },
+    {
+     "id": "agrippina",
+     "pos": [
+      -2.0,
+      0,
+      -1.4
+     ],
+     "emotion": "skeptical",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "EMPEROR CLAUDIUS",
+     "color": "#7E22CE",
+     "at": 1.0
+    }
+   ],
+   "start": 50.7,
+   "end": 54.3
+  },
+  {
+   "id": "S09b",
+   "narration": "A cup of wine, a plate of mushrooms,",
+   "set": "banquet_hall_day",
+   "camera": "slowmo_impact",
+   "characters": [],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "hero": [
+    {
+     "t": "Goblet",
+     "p": [
+      0.0,
+      0.87,
+      -1.5
+     ],
+     "s": 1.5,
+     "anim": "tip"
+    },
+    {
+     "t": "Platter",
+     "p": [
+      -0.5,
+      0.87,
+      -1.7
+     ],
+     "s": 1.0,
+     "o": {
+      "kind": "mushroom"
+     }
+    }
+   ],
+   "start": 54.3,
+   "end": 57.7
+  },
+  {
+   "id": "S09c",
+   "narration": "and the empire changes hands before dessert.",
+   "set": "banquet_hall_day",
+   "camera": "whip_right",
+   "characters": [
+    {
+     "id": "claudius",
+     "pos": [
+      -0.6,
+      0,
+      -0.8
+     ],
+     "emotion": [
+      [
+       0,
+       "happy_relief"
+      ],
+      [
+       1.2,
+       "shocked"
+      ],
+      [
+       2.3,
+       "sad_slump"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "agrippina",
+     "pos": [
+      2.4,
+      0,
+      -1.6
+     ],
+     "emotion": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       1.6,
+       "happy_relief"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "nero",
+     "pos": [
+      3.4,
+      0,
+      -2.0
+     ],
+     "emotion": "happy_relief",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "NEXT ON THE MENU",
+     "color": "#BE123C",
+     "at": 1.6
+    }
+   ],
+   "start": 57.7,
+   "end": 61.3
+  },
+  {
+   "id": "S10",
+   "narration": "So the palace has a solution: someone who eats first.",
+   "set": "palace_kitchen_day",
+   "camera": "punch_in",
+   "characters": [
+    {
+     "id": "halotus",
+     "pos": [
+      -0.2,
+      0,
+      0.1
+     ],
+     "emotion": [
+      [
+       0,
+       "thinking_chin"
+      ],
+      [
+       1.8,
+       "nervous_sweat"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "cook",
+     "pos": [
+      1.8,
+      0,
+      -0.2
+     ],
+     "emotion": "nervous_sweat",
+     "scale": 0.95,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "FIRST TO EAT",
+     "color": "#D4A017",
+     "at": 1.2
+    }
+   ],
+   "start": 61.3,
+   "end": 65.1
+  },
+  {
+   "id": "S11a",
+   "narration": "Years pass, and you turn nineteen.",
+   "set": "palace_quarters_day",
+   "camera": "slow_push",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.4,
+      0,
+      0.2
+     ],
+     "emotion": "neutral",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      -3.2,
+      0,
+      -1.4
+     ],
+     "emotion": "neutral",
+     "scale": 0.8,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "stamp": "50 AD - AGE 19",
+   "start": 65.1,
+   "end": 68.1
+  },
+  {
+   "id": "S11b",
+   "narration": "One morning, a tired freedman studies you for a long time, then asks one question.",
+   "set": "palace_corridor_day",
+   "camera": "orbit",
+   "characters": [
+    {
+     "id": "halotus",
+     "pos": [
+      -0.9,
+      0,
+      0.0
+     ],
+     "emotion": "skeptical",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.9,
+      0,
+      0.0
+     ],
+     "emotion": "nervous_sweat",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -2.3,
+      0,
+      -3.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.9,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "HALOTUS - SENIOR TASTER",
+     "color": "#D4A017",
+     "at": 1.2
+    }
+   ],
+   "start": 68.1,
+   "end": 72.7
+  },
+  {
+   "id": "S12",
+   "narration": "Do you have a strong stomach?",
+   "set": "palace_corridor_day",
+   "camera": "punch_in",
+   "characters": [
+    {
+     "id": "halotus",
+     "pos": [
+      0.0,
+      0,
+      0.2
+     ],
+     "emotion": "skeptical",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "bubble": {
+    "who": 0,
+    "text": "DO YOU HAVE A STRONG STOMACH?",
+    "at": 0.2
+   },
+   "start": 72.7,
+   "end": 75.3
+  },
+  {
+   "id": "S13",
+   "narration": "You nod.",
+   "set": "palace_corridor_day",
+   "camera": "dutch_punch",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.0,
+      0,
+      0.2
+     ],
+     "emotion": [
+      [
+       0,
+       "nervous_sweat"
+      ],
+      [
+       1.0,
+       "sad_slump"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [],
+   "grade": "day",
+   "type": "shot",
+   "start": 75.3,
+   "end": 77.3
+  },
+  {
+   "id": "S14",
+   "narration": "Wrong answer.",
+   "set": "akira_sage",
+   "camera": "static",
+   "type": "akira_cutaway",
+   "akiraExpression": "deadpan",
+   "bubble": {
+    "text": "WRONG ANSWER."
+   },
+   "characters": [],
+   "crowd": [],
+   "grade": "day",
+   "start": 77.3,
+   "end": 79.7
+  },
+  {
+   "id": "S15",
+   "narration": "Congratulations. You're now a praegustator.",
+   "set": "palace_kitchen_day",
+   "camera": "crane_down",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      0.0,
+      0,
+      0.2
+     ],
+     "emotion": [
+      [
+       0,
+       "happy_relief"
+      ],
+      [
+       1.5,
+       "shocked"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "halotus",
+     "pos": [
+      -2.0,
+      0,
+      -0.2
+     ],
+     "emotion": "confident_point",
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "cook",
+     "pos": [
+      2.3,
+      0,
+      -0.6
+     ],
+     "emotion": "shrug_question",
+     "scale": 0.95,
+     "flipX": false
+    }
+   ],
+   "grade": "day",
+   "type": "shot",
+   "tags": [
+    {
+     "who": 0,
+     "text": "PRAEGUSTATOR",
+     "color": "#2563EB",
+     "at": 1.0
+    }
+   ],
+   "start": 79.7,
+   "end": 83.1
+  },
+  {
+   "id": "S16",
+   "narration": "And your job is to die, so the emperor doesn't have to.",
+   "set": "palace_kitchen_night",
+   "camera": "slow_push",
+   "characters": [
+    {
+     "id": "taster_protagonist",
+     "pos": [
+      -0.4,
+      0,
+      0.3
+     ],
+     "emotion": [
+      [
+       0,
+       "sad_slump"
+      ],
+      [
+       3.0,
+       "nervous_sweat"
+      ]
+     ],
+     "scale": 1.0,
+     "flipX": false
+    }
+   ],
+   "crowd": [
+    {
+     "id": "claudius",
+     "pos": [
+      2.6,
+      0,
+      -1.3
+     ],
+     "emotion": "happy_relief",
+     "scale": 1.0,
+     "flipX": false
+    },
+    {
+     "id": "halotus",
+     "pos": [
+      -2.6,
+      0,
+      -1.0
+     ],
+     "emotion": "neutral",
+     "scale": 0.95,
+     "flipX": false
+    }
+   ],
+   "grade": "night_torch",
+   "type": "shot",
+   "hero": [
+    {
+     "t": "Goblet",
+     "p": [
+      0.9,
+      0.87,
+      -1.4
+     ],
+     "s": 1.6
+    }
+   ],
+   "start": 83.1,
+   "end": 88.3
+  }
+ ]
 }

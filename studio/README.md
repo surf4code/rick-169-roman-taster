@@ -7,8 +7,6 @@ Complete turnkey 16:9 (`1920x1080`, `30 fps`) Remotion + Three.js studio powered
 ```bash
 cd studio
 npm install
-npm run test:proj         # 0. Cast projection math (Node >= 22.6; three.js parity once deps are installed)
-npm run qa:b0             # 0b. REAL Remotion stills: frames 60/525/740/830/1530 + debug overlays -> out/qa/b0
 npm run test:chars        # 1. Render Character Consistency Sheet
 npm run bench:shot1       # 2. Benchmark Shot 1 (reports exact seconds/frame)
 npm run render:styletest  # 3. Render 75s Phase 1 Opening Style Test
@@ -26,8 +24,3 @@ python3 scripts/check_timeline.py src/data/styleTestShots.json
 ## Akira Host Image
 
 Drop your Akira reference PNG into `studio/public/assets/akira_ref.png`. Until then, `AkiraCutaway.tsx` renders a clean sage-green `#9CAF88` placeholder.
-
-## QA Rule
-
-Every image in `out/qa/` must be a real Remotion render (`remotion still` / `remotion render`). No Pillow mock-ups.
-`StyleTestOpeningDebug` draws magenta 3D markers and cyan 2D crosshairs; if they coincide, the 2D cast is pinned to the 3D world.

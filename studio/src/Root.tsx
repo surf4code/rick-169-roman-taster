@@ -1,48 +1,43 @@
 import React from "react";
 import { Composition } from "remotion";
 import { StyleTestOpening } from "./compositions/StyleTestOpening";
-import { MainVideo } from "./compositions/MainVideo";
+import shotPlan from "./data/styleTestShots.json";
+import { SetTest } from "./compositions/SetTest";
 import { CharacterConsistencySheet } from "./compositions/CharacterConsistencySheet";
-import { UniverseShowcase } from "./compositions/UniverseShowcase";
 
 export const RemotionRoot: React.FC = () => (
   <>
     <Composition
       id="StyleTestOpening"
       component={StyleTestOpening}
-      durationInFrames={1800}
+      durationInFrames={shotPlan.meta.total_frames}
       fps={30}
       width={1920}
       height={1080}
     />
-    <Composition
-      id="StyleTestOpeningDebug"
-      component={StyleTestOpening}
-      durationInFrames={1800}
-      fps={30}
-      width={1920}
-      height={1080}
-      defaultProps={{ debugProjection: true }}
-    />
+    {/* TODO: Placeholder composition (currently points to StyleTestOpening stretched to 37,800 frames).
+        Replace with full 21-minute MainVideo composition after Phase 2 script and Phase 3 timeline approval. */}
     <Composition
       id="MainVideo"
-      component={MainVideo}
-      durationInFrames={5424}
+      component={StyleTestOpening}
+      durationInFrames={37800}
       fps={30}
       width={1920}
       height={1080}
     />
     <Composition
-      id="CharacterConsistencySheet"
-      component={CharacterConsistencySheet}
+      id="SetTest"
+      component={SetTest as any}
       durationInFrames={1}
       fps={30}
       width={1920}
       height={1080}
+      defaultProps={{ setId: "banquet_hall_day", camera: "slow_push", t: 0.5 }}
     />
     <Composition
-      id="UniverseShowcase"
-      component={UniverseShowcase}
+      id="CharacterConsistencySheet"
+      component={CharacterConsistencySheet as any}
+      defaultProps={{ ids: [] }}
       durationInFrames={1}
       fps={30}
       width={1920}

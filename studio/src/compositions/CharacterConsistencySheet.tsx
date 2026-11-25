@@ -4,73 +4,45 @@ import charactersData from "../data/characters.json";
 import { CharacterId, CharacterSvg } from "../components/CharacterSvg";
 import { EmotionName } from "../utils/emotions";
 
-const TEST_EXPRESSIONS: EmotionName[] = [
-  "neutral",
-  "happy_relief",
-  "shocked",
-  "skeptical",
-  "nervous_sweat",
-  "angry_glare",
-];
+const TEST_EXPRESSIONS: EmotionName[] = ["neutral", "happy_relief", "shocked", "skeptical", "sad_slump", "nervous_sweat"];
 
-export const CharacterConsistencySheet: React.FC = () => {
-  const entries = Object.entries(charactersData.cast).filter(([, spec]: [string, any]) => !spec.isHost);
-
+/** Live consistency sheet: every character, same rig, same 5 expressions, rendered from characters.json. */
+export const CharacterConsistencySheet: React.FC<{ ids?: string[] }> = ({ ids }) => {
+  const entries = Object.entries(charactersData.cast).filter(([id, spec]: [string, any]) => (ids && ids.length ? ids.includes(id) : !spec.isHost));
+  if (ids && ids.length) {
+    return (
+      <AbsoluteFill style={{ backgroundColor: "#F8F2E4", padding: 20, flexDirection: "row", flexWrap: "wrap", gap: 12, alignContent: "flex-start" }}>
+        {entries.map(([id, spec]: [string, any]) => (
+          <div key={id} style={{ width: 300, textAlign: "center", fontFamily: "sans-serif", fontWeight: 900 }}>
+            <CharacterSvg characterId={id as CharacterId} emotion="neutral" width={290} height={414} uid={`${id}-big`} />
+            <div>{spec.displayName}</div>
+          </div>
+        ))}
+      </AbsoluteFill>
+    );
+  }
   return (
-    <AbsoluteFill style={{ backgroundColor: "#F8F2E4", padding: 28, fontFamily: "sans-serif" }}>
-      <div
-        style={{
-          fontSize: 26,
-          fontWeight: 900,
-          color: "#FFF6E0",
-          backgroundColor: "#181E2C",
-          padding: "14px 24px",
-          borderRadius: 12,
-          marginBottom: 14,
-        }}
-      >
-        RICK-169 CHARACTER CONSISTENCY SHEET (LIVE RIG: CharacterSvg + src/data/characters.json)
+    <AbsoluteFill style={{ backgroundColor: "#F8F2E4", padding: 20, fontFamily: "sans-serif" }}>
+      <div style={{ fontSize: 24, fontWeight: 900, color: "#FFF6E0", backgroundColor: "#181E2C", padding: "10px 20px", borderRadius: 10, marginBottom: 12 }}>
+        RICK-169 CHARACTER CONSISTENCY SHEET (LIVE RIG: CharacterSvg + src/data/characters.json) - {entries.length} characters
       </div>
-      <div style={{ display: "grid", gridTemplateRows: `repeat(${entries.length}, 1fr)`, gap: 10, flex: 1 }}>
-        {entries.map(([id, spec]: [string, any], rowIdx) => (
-          <div
-            key={id}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "240px repeat(6, 1fr)",
-              gap: 10,
-              alignItems: "center",
-              backgroundColor: rowIdx % 2 === 1 ? "#F0E8D6" : "transparent",
-              borderRadius: 10,
-              padding: "4px 12px",
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: spec.roleTagColor,
-                color: "#FFFFFF",
-                borderRadius: 12,
-                border: "3px solid #141414",
-                padding: "12px 16px",
-              }}
-            >
-              <div style={{ fontWeight: 900, fontSize: 19 }}>{spec.displayName}</div>
-              <div style={{ fontSize: 13, opacity: 0.9 }}>{spec.roleLabel || id}</div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+        {entries.map(([id, spec]: [string, any]) => (
+          <div key={id} style={{ backgroundColor: "#FFFBF0", border: "3px solid #141414", borderRadius: 14, padding: "8px 10px" }}>
+            <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 2 }}>
+              <div style={{ backgroundColor: spec.roleTagColor, color: "#FFF", borderRadius: 8, border: "2px solid #141414", padding: "4px 10px", fontWeight: 900, fontSize: 16 }}>{spec.displayName}</div>
+              <div style={{ fontSize: 12, color: "#475569" }}>{spec.roleLabel} · {spec.outfit} · {spec.hairStyle} · h{spec.heightScale}</div>
             </div>
-            {TEST_EXPRESSIONS.map((exp) => (
-              <div key={exp} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <CharacterSvg
-                  characterId={id as CharacterId}
-                  emotion={exp}
-                  width={108}
-                  height={154}
-                  uid={`${id}-${exp}`}
-                />
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#242A38", marginTop: -6 }}>
-                  {exp.replace("_", " ")}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", height: 125 }}>
+              {TEST_EXPRESSIONS.map((exp) => (
+                <div key={exp} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <div style={{ transform: `scale(${spec.heightScale ?? 1})`, transformOrigin: "50% 100%" }}>
+                    <CharacterSvg characterId={id as CharacterId} emotion={exp} width={80} height={114} uid={`${id}-${exp}`} />
+                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: "#242A38", marginTop: -4 }}>{exp.replace("_", " ")}</div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         ))}
       </div>

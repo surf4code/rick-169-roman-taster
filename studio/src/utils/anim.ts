@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 export const smooth = (t: number) => {
@@ -48,6 +50,21 @@ export function kfVec3(
     }
   }
   return keys[keys.length - 1][1];
+}
+
+export function cam169(fov = 38): THREE.PerspectiveCamera {
+  return new THREE.PerspectiveCamera(fov, 1920 / 1080, 0.05, 300);
+}
+
+export function place(
+  c: THREE.PerspectiveCamera,
+  pos: [number, number, number],
+  look: [number, number, number],
+  roll = 0
+): void {
+  c.position.set(pos[0], pos[1], pos[2]);
+  c.up.set(Math.sin(roll), Math.cos(roll), 0);
+  c.lookAt(look[0], look[1], look[2]);
 }
 
 export function shake(t: number, amp = 1, seed = 0): [number, number, number] {

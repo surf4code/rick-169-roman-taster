@@ -16,8 +16,6 @@ export interface GradePreset {
   bloomThreshold: number;
   bloomIntensity: number;
   bgColor: string;
-  /** feColorMatrix values that tint the 2D cast to the scene light. */
-  castTint: string;
 }
 
 export const RICK_WARM_BRIGHT_DAY: GradePreset = {
@@ -38,7 +36,6 @@ export const RICK_WARM_BRIGHT_DAY: GradePreset = {
   bloomThreshold: 0.90,
   bloomIntensity: 0.45,
   bgColor: "#E8DFC8",
-  castTint: "1.03 0 0 0 0.01  0 0.99 0 0 0  0 0 0.93 0 0  0 0 0 1 0",
 };
 
 export const RICK_WARM_TORCH_NIGHT: GradePreset = {
@@ -59,5 +56,4 @@ export const RICK_WARM_TORCH_NIGHT: GradePreset = {
   bloomThreshold: 0.86,
   bloomIntensity: 0.58,
   bgColor: "#485175",
-  castTint: "1.05 0 0 0 0.02  0 0.90 0 0 0  0 0 0.78 0 0.02  0 0 0 1 0",
 };

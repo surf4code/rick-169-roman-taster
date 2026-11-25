@@ -1,0 +1,9614 @@
+[
+ {
+  "id": "B01_S01",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "You're born in Rome, in the year 31, and you already have an owner.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      3.6,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     -2.4,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "MOTHER",
+    "color": "#059669",
+    "at": 0.6
+   }
+  ],
+  "stamp": "AD 31 - DAY 1",
+  "notes": "Crane down onto mother cradling a swaddled baby (baby implied in her arms). Joy flips to dread on 'owner'."
+ },
+ {
+  "id": "B01_S02",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "It isn't your mother. It isn't your father. It's the emperor.",
+  "characters": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "angry_glare"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "PRAETORIAN",
+    "color": "#DC2626",
+    "at": 0.6
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "PROPERTY OF THE EMPEROR",
+   "at": 2.6
+  },
+  "notes": "Whip from the quarters to an EMPTY imperial couch guarded by a praetorian. Emperor in AD 31 is not Claudius, so no emperor is shown."
+ },
+ {
+  "id": "B01_S03",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "Your mother is a slave in the imperial household, which makes you one too.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Slow push on mother holding the baby; other enslaved staff in background, heads down."
+ },
+ {
+  "id": "B01_S04",
+  "type": "infographic_card",
+  "camera": "top_down_drift",
+  "narration": "The Romans have a word for a baby like you: verna. A slave born in the house.",
+  "infographic": {
+   "title": "VERNA",
+   "stat": "VERNA",
+   "sub": "born a slave, in the house",
+   "items": [
+    "Born in the household",
+    "Owned from day one",
+    "Never asked",
+    "Treated as property"
+   ]
+  },
+  "notes": "Script cue: INFOGRAPHIC CARD 'VERNA = born a slave, in the house'."
+ },
+ {
+  "id": "B01_S05",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "In the eyes of the law, you're property, the same as the furniture.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "ACCOUNTANT",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "bubble": {
+   "who": 1,
+   "text": "ITEM: ONE BABY",
+   "at": 1.6
+  },
+  "notes": "Emotional turn. Accountant lists the baby in the same ledger as a stool and a lamp."
+ },
+ {
+  "id": "B01_S06",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "Nobody asks what you think. You're three days old.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   }
+  ],
+  "notes": "Deadpan beat. Orbit around mother and the tiny bundle."
+ },
+ {
+  "id": "B01_S07",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "narration": "The palace is enormous. Cooks, doorkeepers, accountants, and people whose only job is the emperor's clothes.",
+  "characters": [
+   {
+    "id": "cook",
+    "pos": [
+     -2.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "COOK",
+    "color": "#EA580C",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "DOORKEEPER",
+    "color": "#475569",
+    "at": 0.6
+   },
+   {
+    "who": 3,
+    "text": "WARDROBE MAID",
+    "color": "#64748B",
+    "at": 0.6
+   }
+  ],
+  "notes": "FLOATING TAGS over workers. Scribe already tagged ACCOUNTANT; maid carries a folded toga."
+ },
+ {
+  "id": "B01_S08",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "narration": "Everyone has a role. Everyone is replaceable.",
+  "characters": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "SERVANT",
+    "color": "#64748B",
+    "at": 0.6
+   }
+  ],
+  "notes": "Slow-mo: one servant is waved out of line, an identical one steps into the same slot."
+ },
+ {
+  "id": "B01_S09",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "narration": "You grow up in the corridors, learning the rules before you learn to read.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Child version of YOU (scale 0.7) trotting down a corridor past adults."
+ },
+ {
+  "id": "B01_S10",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "Walk fast. Look down. Never touch the food.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "mother",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "bubble": {
+   "who": 1,
+   "text": "NEVER TOUCH THE FOOD",
+   "at": 1.8
+  },
+  "notes": "Mother counts the rules on her fingers; child shrinks with each one."
+ },
+ {
+  "id": "B01_S11",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "That last rule matters. Because in this house, food is not just food.",
+  "characters": [],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.4,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": "MACRO INSERT: plate of mushrooms on a polished table, warm light."
+ },
+ {
+  "id": "B01_S12",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "The thing is, powerful Romans have a habit of dying at dinner.",
+  "characters": [],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0,
+     0,
+     -3.6
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.3,
+   "anim": "tip"
+  },
+  "notes": "Goblet tips over on an empty dining couch; staff in background freeze. No victim shown."
+ },
+ {
+  "id": "B01_S13",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "A cup of wine, a plate of mushrooms, and the empire changes hands before dessert.",
+  "characters": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shocked"
+   }
+  ],
+  "notes": "Whip across staff staring at the empty couch, then at each other."
+ },
+ {
+  "id": "B01_S14",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "So the palace has a solution: someone who eats first.",
+  "characters": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    -0.8,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "TASTER",
+    "color": "#1D4ED8",
+    "at": 0.6
+   }
+  ],
+  "notes": "A taster takes a bite while a guard watches him like a hawk."
+ },
+ {
+  "id": "B01_S15",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "Years pass, and you turn nineteen. One morning, a tired freedman studies you for a long time, then asks one question.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "FREEDMAN",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "stamp": "AD 50 - AGE 19",
+  "notes": "Adult YOU now. Scribe rig plays the tired freedman (role change tag). Long, awkward stare."
+ },
+ {
+  "id": "B01_S16",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "\"Do you have a strong stomach?\" You nod.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      2.2,
+      "confident_point"
+     ]
+    ]
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "bubble": {
+   "who": 1,
+   "text": "STRONG STOMACH?",
+   "at": 0.3
+  },
+  "notes": "Emotional turn: YOU nod eagerly. Bad idea."
+ },
+ {
+  "id": "B01_S17",
+  "type": "akira_cutaway",
+  "camera": "slow_push",
+  "narration": "Wrong answer.",
+  "akiraExpression": "deadpan",
+  "bubble": {
+   "text": "Wrong answer."
+  },
+  "notes": "Script AKIRA cutaway (deadpan). Only 2 words: hold ~1.6 s."
+ },
+ {
+  "id": "B01_S18",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "Congratulations. You're now a praegustator. And your job is to take the risk, so the emperor doesn't have to.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      2.8,
+      "nervous_sweat"
+     ]
+    ]
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    -1.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "PRAEGUSTATOR",
+    "color": "#2563EB",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "EMPEROR",
+    "color": "#7C3AED",
+    "at": 0.6
+   }
+  ],
+  "notes": "Role change tag PRAEGUSTATOR. AD 50: emperor is Claudius, relaxed because someone else drinks first."
+ },
+ {
+  "id": "B01_S19",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "Of course, that's the short version. The long version starts with a jug of water.",
+  "characters": [],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO on the plain clay cold-water jug (motif 1)."
+ },
+ {
+  "id": "B01_S20",
+  "set": "palace_kitchen_night",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "narration": "And for one person, at one dinner, it ends with a jug of water too.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -0.6,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.3
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Torchlit flash-forward. Ominous tilt; nobody else shown. Do not reveal who."
+ },
+ {
+  "id": "B02_S01",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "But let's back up. Before you ever eat for the emperor, you carry his water.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.9,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.3
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Rewind whip back to childhood. Child YOU struggles beside a huge jug."
+ },
+ {
+  "id": "B02_S02",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "Here's something about Roman dinners. Nobody serious drinks wine straight. It gets mixed with water.",
+  "characters": [
+   {
+    "id": "servant_b",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Amphora",
+   "pos": [
+    0,
+    0.9,
+    -1.2
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "WARDROBE MAID",
+    "color": "#64748B",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "SERVANT",
+    "color": "#64748B",
+    "at": 0.6
+   }
+  ],
+  "notes": "Servant mixes wine and water; second servant raises an eyebrow at anyone drinking it neat."
+ },
+ {
+  "id": "B02_S03",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "Hot drinks get cooled down with water too.",
+  "characters": [
+   {
+    "id": "cook",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.0,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "COOK",
+    "color": "#EA580C",
+    "at": 0.6
+   }
+  ],
+  "notes": "Cook blows on a steaming bowl, unimpressed."
+ },
+ {
+  "id": "B02_S04",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "So at every meal, somewhere in the palace, somebody has to carry the cold water. That somebody is you.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      5.6,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "confident_point"
+   }
+  ],
+  "notes": "Emotional turn on 'you': background staff all point at the child."
+ },
+ {
+  "id": "B02_S05",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "It's a clay jug almost half your size.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0,
+    0.9,
+    -0.6
+   ],
+   "scale": 1.5
+  },
+  "notes": "MACRO INSERT: cold-water jug, beaded with water; child beside it for scale."
+ },
+ {
+  "id": "B02_S06",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "narration": "You carry it from the kitchen, down the corridor, past the guards, and you set it down exactly where you're told.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     2.2,
+     0,
+     -3.2
+    ],
+    "scale": 0.7,
+    "emotion": "angry_glare"
+   }
+  ],
+  "notes": "Dolly alongside the child hugging the jug past two guards."
+ },
+ {
+  "id": "B02_S07",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "Not near the food. Never near the food. In winter it numbs your fingers.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      3.2,
+      "sad_slump"
+     ]
+    ]
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "angry_glare"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -1,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 1,
+    "text": "PRAETORIAN",
+    "color": "#DC2626",
+    "at": 0.6
+   }
+  ],
+  "notes": "Child sets the jug far from the platters; guard watches. Breath fog / shiver on winter line."
+ },
+ {
+  "id": "B02_S08",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "In summer it sweats more than you do. Remember this jug.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.3
+  },
+  "notes": "Both the jug and the child drip. Push in on the jug on 'Remember this jug'."
+ },
+ {
+  "id": "B02_S09",
+  "set": "palace_kitchen_night",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "narration": "It's coming back, years from now, on the worst night of your life.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -0.6,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.3
+  },
+  "notes": "Torchlit flash-forward, adult YOU in shadow. Same framing as B01_S20."
+ },
+ {
+  "id": "B02_S10",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "Your mother works in the wardrobe. She folds, mends and carries the emperor's clothes.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     2.4,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "focused_reading"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "MOTHER",
+    "color": "#059669",
+    "at": 0.6
+   }
+  ],
+  "notes": "Close on mother's hands mending a purple-trimmed toga."
+ },
+ {
+  "id": "B02_S11",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "And she teaches you the three lessons that keep a palace slave out of trouble.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Mother kneels to child's level."
+ },
+ {
+  "id": "B02_S12",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "Be useful. Be quiet. Be somewhere else when things go wrong.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "confident_point"
+     ],
+     [
+      2.4,
+      "skeptical"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "USEFUL. QUIET. ELSEWHERE.",
+   "at": 0.3
+  },
+  "notes": "Three fingers, one per lesson."
+ },
+ {
+  "id": "B02_S13",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "narration": "She also teaches you to read a room before you walk into it.",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Both peek around a doorway before entering."
+ },
+ {
+  "id": "B02_S14",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Who's angry. Who's tired. Who's about to need something you'd better already be holding.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.4,
+     0,
+     -2.4
+    ],
+    "scale": 0.7,
+    "emotion": "angry_glare"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     2.4,
+     0,
+     -2.4
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     0.4,
+     0,
+     -3.6
+    ],
+    "scale": 0.7,
+    "emotion": "shrug_question"
+   }
+  ],
+  "notes": "Whip across three faces (angry guard, tired accountant, needy maid) back to child holding a jug."
+ },
+ {
+  "id": "B02_S15",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "narration": "The palace is a small city, and everyone in it has a slot.",
+  "characters": [
+   {
+    "id": "cook",
+    "pos": [
+     -2.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "mother",
+    "pos": [
+     2.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "DOORKEEPER",
+    "color": "#475569",
+    "at": 0.6
+   },
+   {
+    "who": 2,
+    "text": "ACCOUNTANT",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "notes": "Fly through a busy corridor; each worker in their own slot."
+ },
+ {
+  "id": "B02_S16",
+  "type": "infographic_card",
+  "camera": "slow_push",
+  "narration": "Cooks feed it. Doorkeepers guard it. Accountants count it. Your mother dresses it.",
+  "infographic": {
+   "title": "WHO RUNS THE PALACE",
+   "stat": "1 small city",
+   "sub": "everyone has a slot",
+   "items": [
+    "Cooks",
+    "Doorkeepers",
+    "Accountants",
+    "Wardrobe"
+   ]
+  },
+  "notes": "Script cue: INFOGRAPHIC CARD 'WHO RUNS THE PALACE'. Reveal items one per sentence."
+ },
+ {
+  "id": "B02_S17",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "And you carry its water, which puts you at the bottom of a very tall ladder.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.5
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "cook",
+    "pos": [
+     -2.6,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     -0.9,
+     0,
+     -3.6
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     0.9,
+     0,
+     -3.6
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     2.6,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "angry_glare"
+   }
+  ],
+  "notes": "Low angle from child's height; adults loom behind like rungs of a ladder."
+ },
+ {
+  "id": "B02_S18",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "So where does that leave you? Right where the law put you on day three.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "shrug_question"
+     ],
+     [
+      2.6,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "notes": "Callback to the furniture ledger."
+ },
+ {
+  "id": "B02_S19",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "Property. Property gets fed, housed and moved around.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "notes": "Accountant ticks the child off a list and points him elsewhere."
+ },
+ {
+  "id": "B02_S20",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "Property does not get asked whether it would like a different job. Hold that thought.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "sad_slump"
+     ],
+     [
+      4.4,
+      "skeptical"
+     ]
+    ]
+   }
+  ],
+  "notes": "Deadpan 'Hold that thought': child looks at camera."
+ },
+ {
+  "id": "B02_S21",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "The kitchen is where you learn the big rule properly. Once, you reach for a crust of bread on a tray.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    -0.4,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "bread"
+   }
+  },
+  "notes": "Cook's back is turned; child's hand drifts toward the bread."
+ },
+ {
+  "id": "B02_S22",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Just a reach. The cook spots you from across the room.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      1.4,
+      "shocked"
+     ]
+    ]
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "angry_glare"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    -0.4,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "bread"
+   }
+  },
+  "notes": "Emotional turn: whip to the cook's glare."
+ },
+ {
+  "id": "B02_S23",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "narration": "You don't reach again. Because in this house, a hand near the food is a question.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.7,
+    "emotion": [
+     [
+      0,
+      "surprised_jump"
+     ],
+     [
+      2,
+      "embarrassed_blush"
+     ]
+    ]
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "angry_glare"
+   }
+  ],
+  "bubble": {
+   "who": 1,
+   "text": "NEVER TOUCH THE FOOD!",
+   "at": 0.2
+  },
+  "notes": "Script cue BUBBLE, COOK. Child yanks hand back in slow motion."
+ },
+ {
+  "id": "B02_S24",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "Whose hand? Why? And what did it leave behind?",
+  "characters": [],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.4,
+   "o": {
+    "kind": "bread"
+   }
+  },
+  "notes": "MACRO on the bread tray: suspicion, nothing visibly wrong."
+ },
+ {
+  "id": "B02_S25",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "By the time you're a teenager, the emperor is Claudius.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "curious"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "CLAUDIUS",
+    "color": "#7C3AED",
+    "at": 0.6
+   }
+  ],
+  "notes": "Teen YOU (scale 0.8). First proper look at Claudius."
+ },
+ {
+  "id": "B02_S26",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "He's older, and he's kind to you in a way nobody else up there is.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "embarrassed_blush"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     2.6,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "angry_glare"
+   }
+  ],
+  "notes": "Claudius gives the teen a nod; guard in background does not."
+ },
+ {
+  "id": "B02_S27",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "He has one great weakness at the table. Mushrooms. You'll want to remember that too.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      2.8,
+      "happy_relief"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": "Punch in on 'Mushrooms'. Claudius delighted; teen uneasy."
+ },
+ {
+  "id": "B02_S28",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "And you notice one more thing. Before anything reaches the emperor's lips, someone else takes a bite first.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.8,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "curious"
+   },
+   {
+    "id": "taster_felix",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "tags": [
+   {
+    "who": 1,
+    "text": "TASTER",
+    "color": "#1D4ED8",
+    "at": 0.6
+   }
+  ],
+  "notes": "A taster bites first; Claudius waits. Plants the job."
+ },
+ {
+  "id": "B03_S01",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Which brings us back to nineteen, and that question about your stomach.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "FREEDMAN",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "stamp": "AD 50 - AGE 19",
+  "notes": "Script cue STAMP. Back to the freedman's question."
+ },
+ {
+  "id": "B03_S02",
+  "type": "infographic_card",
+  "camera": "top_down_drift",
+  "narration": "The word is praegustator. It means \"fore-taster\": the person who tastes the food and drink before it reaches the master's table.",
+  "infographic": {
+   "title": "PRAEGUSTATOR",
+   "stat": "= fore-taster",
+   "sub": "tastes before the master does",
+   "items": [
+    "Food",
+    "Drink",
+    "Every dish",
+    "Before the master"
+   ]
+  },
+  "notes": "Script cue: INFOGRAPHIC CARD 'PRAEGUSTATOR = fore-taster'."
+ },
+ {
+  "id": "B03_S03",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "Prae, before. Gustare, to taste. The Romans named the job exactly what it is.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      2.6,
+      "skeptical"
+     ]
+    ]
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "PRAEGUSTATOR",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "PRAE + GUSTARE",
+   "at": 0.2
+  },
+  "notes": "Latin split over YOU's head."
+ },
+ {
+  "id": "B03_S04",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "It might be the most honest thing in the building. So who does a job like this?",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Deadpan."
+ },
+ {
+  "id": "B03_S05",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Slaves, and freedmen. People with options do not apply.",
+  "characters": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "taster_primus",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "SLAVE",
+    "color": "#1D4ED8",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "FREEDMAN",
+    "color": "#1D4ED8",
+    "at": 0.6
+   },
+   {
+    "who": 2,
+    "text": "SLAVE",
+    "color": "#1D4ED8",
+    "at": 0.6
+   }
+  ],
+  "notes": "Line-up of tasters. Nobody here volunteered."
+ },
+ {
+  "id": "B03_S06",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "And unlike the cooks or the accountants, you can't be quietly good at this job.",
+  "characters": [
+   {
+    "id": "cook",
+    "pos": [
+     -2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "COOK",
+    "color": "#EA580C",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "ACCOUNTANT",
+    "color": "#0F766E",
+    "at": 0.6
+   },
+   {
+    "who": 2,
+    "text": "PRAEGUSTATOR",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Cook and accountant quietly competent; YOU sweating."
+ },
+ {
+  "id": "B03_S07",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "narration": "Either nothing happens to you, or everybody finds out.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      2,
+      "shocked"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0,
+     0,
+     -3.6
+    ],
+    "scale": 0.7,
+    "emotion": "surprised_jump"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "YOU",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Everyone in the hall turns to stare at YOU at once. Implied only."
+ },
+ {
+  "id": "B03_S08",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "There are two rules, and they're simple. You taste everything. And you're not allowed to refuse.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "FREEDMAN",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "bubble": {
+   "who": 1,
+   "text": "TASTE ALL. NEVER REFUSE.",
+   "at": 0.4
+  },
+  "notes": "Freedman lays down the two rules."
+ },
+ {
+  "id": "B03_S09",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "dutch_punch",
+  "narration": "Remember when nobody asked whether you'd like a different job? This is the different job.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "skeptical"
+     ],
+     [
+      3.8,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "notes": "Callback to Beat 2."
+ },
+ {
+  "id": "B03_S10",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "Your training starts in the tasters' room. It's small and warm, and it smells like every meal of the day at once.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      4.5,
+      "skeptical"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO INSERT: steaming bowl in the tasters' room, then reveal YOU sniffing."
+ },
+ {
+  "id": "B03_S11",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "narration": "There's a bench, a shelf of cups, and a door that opens straight towards the dining room. Short commute. Very short.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Fly past bench and shelf, through the door: the dining room is right there."
+ },
+ {
+  "id": "B03_S12",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "On the shelf, every cup has been used by someone before you.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.4,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO: worn cups on the shelf."
+ },
+ {
+  "id": "B03_S13",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "You try not to wonder where all those someones went. You fail.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      3.4,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "notes": "Emotional turn on 'You fail'."
+ },
+ {
+  "id": "B03_S14",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "The man who tests you is Halotus, Claudius's taster. A eunuch.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "HALOTUS",
+    "color": "#CA8A04",
+    "at": 0.6
+   }
+  ],
+  "notes": "Halotus intro, low angle."
+ },
+ {
+  "id": "B03_S15",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "Calm, quiet, impossible to read. He looks at a plate the way other people look at the weather.",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fruit"
+   }
+  },
+  "notes": "Halotus studies a fruit plate."
+ },
+ {
+  "id": "B03_S16",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "He hands you a piece of bread. You chew. You swallow.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "bread"
+   }
+  },
+  "notes": "MACRO INSERT: Halotus' hand passes the bread; YOU's first test bite."
+ },
+ {
+  "id": "B03_S17",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "And then you do the actual job. You wait.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": "Hold on YOU, frozen."
+ },
+ {
+  "id": "B03_S18",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "Halotus watches you. You watch the wall. Somewhere, an oil lamp hisses.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Long silence from above."
+ },
+ {
+  "id": "B03_S19",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "narration": "A minute feels like an afternoon. Nothing happens.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      2.2,
+      "happy_relief"
+     ]
+    ]
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Relief on 'Nothing happens'."
+ },
+ {
+  "id": "B03_S20",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "That's it. That's the test. In this profession, nothing happening is a perfect score.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "notes": "Deadpan."
+ },
+ {
+  "id": "B03_S21",
+  "type": "akira_cutaway",
+  "camera": "punch_in",
+  "narration": "Wait. That was the entire training?",
+  "akiraExpression": "wide-eyed",
+  "bubble": {
+   "text": "Wait. That was the entire training?"
+  },
+  "notes": "Script AKIRA cutaway (wide-eyed)."
+ },
+ {
+  "id": "B03_S22",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Halotus nods once, and moves on to the next plate. No speech. No welcome.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    1,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fish"
+   }
+  },
+  "notes": "Halotus already busy."
+ },
+ {
+  "id": "B03_S23",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "Just more food, and more waiting.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.4,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO on the next bowl."
+ },
+ {
+  "id": "B03_S24",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "You've just learned the most important skill of your career: standing perfectly still while you find out whether you're going to live.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": "Push in on a perfectly still, sweating YOU."
+ },
+ {
+  "id": "B03_S25",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "narration": "There's one more thing you learn that first week, and nobody has to tell you.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -3
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Walking alone."
+ },
+ {
+  "id": "B03_S26",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "People in this job don't get statues. They don't get speeches.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "YOU look up at an empty plinth."
+ },
+ {
+  "id": "B03_S27",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "If they're lucky, they get a line carved on a stone. Almost nobody remembers them.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "MACRO INSERT: chisel on a blank stone, pull back to YOU. Do NOT show the Zosimus stone yet (Beat 10 payoff)."
+ },
+ {
+  "id": "B03_S28",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "Almost. We'll come back to that at the very end.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "sad_slump"
+     ],
+     [
+      0.8,
+      "curious"
+     ]
+    ]
+   }
+  ],
+  "notes": "Turn on 'Almost'. Plant for the epilogue."
+ },
+ {
+  "id": "B04_S01",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "Then it's routine. Taste. Wait. Watch. Repeat.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      1.3,
+      "nervous_sweat"
+     ],
+     [
+      1.9,
+      "skeptical"
+     ],
+     [
+      2.4,
+      "focused_reading"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "PRAEGUSTATOR",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "MONTAGE cue (bowl, platter, goblet, bowl) starts here. One expression beat per word: taste, wait, watch, repeat."
+ },
+ {
+  "id": "B04_S02",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "Bread in the morning. Fish at midday. Sauces, fruit, wine.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.2,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fish"
+   }
+  },
+  "tags": [
+   {
+    "who": 1,
+    "text": "COOK",
+    "color": "#EA580C",
+    "at": 0.6
+   }
+  ],
+  "notes": "MONTAGE continues (platter). Cook announces each course while YOU taste. Whip between courses."
+ },
+ {
+  "id": "B04_S03",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "You taste in small bites, you wait, you watch the faces at the table,",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    -1.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 1,
+    "text": "CLAUDIUS",
+    "color": "#7C3AED",
+    "at": 0.6
+   },
+   {
+    "who": 2,
+    "text": "PRAETORIAN",
+    "color": "#DC2626",
+    "at": 0.6
+   }
+  ],
+  "notes": "MONTAGE (goblet). Orbit the table. YOU study faces: Claudius content, guard suspicious."
+ },
+ {
+  "id": "B04_S04",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "and you try not to look like you're watching your own stomach.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      2.4,
+      "embarrassed_blush"
+     ]
+    ]
+   }
+  ],
+  "notes": "Continues the sentence from S03. YOU glance down at your stomach, then realise someone noticed."
+ },
+ {
+  "id": "B04_S05",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "Some days you taste for the emperor. Some days for his guests.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     2.4,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     -2.6,
+     0,
+     -3.0
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    -1.6,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "MONTAGE ends on the second bowl. The guests are servant rigs with no tags, enjoying the food in the background."
+ },
+ {
+  "id": "B04_S06",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "Every plate gets the same treatment, because poison doesn't check the seating plan.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fruit"
+   }
+  },
+  "notes": "Top-down drift over the seating: the same small bite at every place, high or low status."
+ },
+ {
+  "id": "B04_S07",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "You learn the face Halotus makes when a dish is fine.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.8,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fish"
+   }
+  },
+  "tags": [
+   {
+    "who": 1,
+    "text": "HALOTUS",
+    "color": "#CA8A04",
+    "at": 0.6
+   }
+  ],
+  "notes": "Halotus's one unreadable face. Keep his emotion identical in S08 for the joke."
+ },
+ {
+  "id": "B04_S08",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "It's the same face he makes when it isn't. That's not reassuring.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      2.8,
+      "nervous_sweat"
+     ]
+    ]
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Same face as S07 on purpose. Emotional turn for YOU on 'not reassuring'."
+ },
+ {
+  "id": "B04_S09",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "The cold-water jug is always there, at the edge of every table you work.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -0.4,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO INSERT cue: the cold-water jug at the edge of the table (motif 2). YOU are soft in the background."
+ },
+ {
+  "id": "B04_S10",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "narration": "Same clay. Same shape. You carried it for years. Now you barely see it.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -1.4,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.2
+  },
+  "notes": "Dolly with YOU as you walk past the jug without a glance."
+ },
+ {
+  "id": "B04_S11",
+  "set": "palace_kitchen_night",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "narration": "That's going to turn out to be a mistake.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    -0.6,
+    0.9,
+    -1.0
+   ],
+   "scale": 1.3
+  },
+  "notes": "Torch-lit flash-forward with the same framing as B01_S20 and B02_S09. Warm torchlight, never dark blue. Do not reveal who or what."
+ },
+ {
+  "id": "B04_S12",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "Here's the uncomfortable part. The ancient sources barely say how tasters were supposed to detect poison.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     0.8,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      3.6,
+      "shrug_question"
+     ]
+    ]
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "ACCOUNTANT",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "notes": "The accountant searches a scroll for instructions and shrugs. Show no detection method on screen (F14)."
+ },
+ {
+  "id": "B04_S13",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "There's no reliable test. No trick. No gadget. There's just you.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      3.3,
+      "shocked"
+     ]
+    ]
+   }
+  ],
+  "notes": "Emotional turn on 'just you'."
+ },
+ {
+  "id": "B04_S14",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "narration": "If you're fine, the food is fine. If you're not fine, well, the food has been reviewed.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      2.8,
+      "nervous_sweat"
+     ]
+    ]
+   },
+   {
+    "id": "taster_felix",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      3.6,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "TASTER",
+    "color": "#1D4ED8",
+    "at": 0.6
+   }
+  ],
+  "notes": "Dark joke, implied only. Slow motion as another taster hesitates mid-bite. Nobody falls on screen."
+ },
+ {
+  "id": "B04_S15",
+  "type": "akira_cutaway",
+  "camera": "whip_right",
+  "narration": "So the safety system is... YOU?",
+  "akiraExpression": "shout",
+  "bubble": {
+   "text": "So the safety system is... YOU?"
+  },
+  "notes": "Script AKIRA cutaway (shout)."
+ },
+ {
+  "id": "B04_S16",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "So you invent your own little systems, like everyone does. You chew slowly.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      3.4,
+      "focused_reading"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.4,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.4
+  },
+  "notes": "MACRO on one slow, careful bite."
+ },
+ {
+  "id": "B04_S17",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "narration": "You count your breaths. You watch the cook's face when a plate goes out.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "fruit"
+   }
+  },
+  "notes": "YOU study the cook. The cook stares back, unimpressed."
+ },
+ {
+  "id": "B04_S18",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "narration": "None of it works. All of it helps you feel like you're doing something.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "shrug_question"
+     ],
+     [
+      2.0,
+      "embarrassed_blush"
+     ]
+    ]
+   }
+  ],
+  "notes": "Deadpan."
+ },
+ {
+  "id": "B04_S19",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "orbit",
+  "narration": "The old tasters pass the time with stories. Their favourite is one Pliny tells.",
+  "characters": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "OLD TASTER",
+    "color": "#1D4ED8",
+    "at": 0.6
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "PLINY SAYS...",
+   "at": 3.0
+  },
+  "notes": "Storytime on the bench. Felix (already tagged in S14) tells it. Hilarus grins because it is his favourite."
+ },
+ {
+  "id": "B04_S20",
+  "type": "infographic_card",
+  "camera": "slow_push",
+  "narration": "Mark Antony wouldn't touch food that hadn't been tasted. Cleopatra tricked him with poisoned flowers anyway.",
+  "infographic": {
+   "title": "PLINY'S STORY",
+   "stat": "TRICKED",
+   "sub": "details are doubtful",
+   "items": [
+    "Antony: only tasted food",
+    "Cleopatra: poisoned flowers",
+    "Tasting wasn't enough",
+    "Source: Pliny (doubtful)"
+   ]
+  },
+  "notes": "[UNCERTAIN] Pliny's story (F12-F13). Antony and Cleopatra have no rig ids, so this is a card only."
+ },
+ {
+  "id": "B04_S21",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "narration": "The old tasters laugh. You laugh too, a little late.",
+  "characters": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "skeptical"
+     ],
+     [
+      2.4,
+      "happy_relief"
+     ]
+    ]
+   }
+  ],
+  "notes": "Whip to YOU joining the laugh a beat late."
+ },
+ {
+  "id": "B04_S22",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "narration": "Because the moral isn't funny. Being careful isn't the same as being safe.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "sad_slump"
+     ],
+     [
+      2.6,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     2.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Emotional turn. The laughter dies and the room goes quiet."
+ },
+ {
+  "id": "B04_S23",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "narration": "Most days, there's nothing to report. Nobody slumps. Nobody shouts.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Peaceful dinner seen from above."
+ },
+ {
+  "id": "B04_S24",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "narration": "The plates go out, the plates come back, and you eat your own dinner standing up, cold, last.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.4,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     2.4,
+     0,
+     -3.0
+    ],
+    "scale": 0.7,
+    "emotion": "focused_reading"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.9,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Fly through the busy kitchen to YOU eating alone from a cold bowl."
+ },
+ {
+  "id": "B04_S25",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "narration": "Months become years. You get very good at boring. In this job, boring is the goal.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "sad_slump"
+     ],
+     [
+      3.0,
+      "confident_point"
+     ]
+    ]
+   }
+  ],
+  "notes": "Time-lapse feel: light sweeps across the room. No stamp, because the script gives no year."
+ },
+ {
+  "id": "B04_S26",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "narration": "You put the old story out of your mind. The year 54 is coming, and so are the mushrooms.",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      3.6,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.4,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.5,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": "Cliffhanger into Beat 5: macro push onto the mushroom platter. Relief turns to dread on 'The year 54'."
+ },
+ {
+  "id": "B05_S01",
+  "narration": "In the year 54, according to Roman writers, Claudius sits down to a dish of mushrooms. His favourite.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "claudius",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "CLAUDIUS",
+    "color": "#7C3AED",
+    "at": 0.6
+   }
+  ],
+  "stamp": "AD 54",
+  "notes": "Claudius delighted, Halotus unreadable (same face as B04)."
+ },
+ {
+  "id": "B05_S02",
+  "narration": "His taster is Halotus. What happens next depends on who you ask, and the Romans themselves couldn't agree.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "HALOTUS",
+    "color": "#B45309",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S03",
+  "type": "infographic_card",
+  "camera": "top_down_drift",
+  "narration": "Version one comes from Tacitus. A woman named Locusta, a specialist in exactly this kind of problem,",
+  "infographic": {
+   "title": "WHO POISONED CLAUDIUS?",
+   "stat": "4 versions",
+   "sub": "every one is an allegation",
+   "items": [
+    "Tacitus",
+    "Suetonius, take one",
+    "Suetonius, take two",
+    "The doctor"
+   ]
+  },
+  "notes": "Script cue infographic."
+ },
+ {
+  "id": "B05_S04",
+  "narration": "allegedly prepares poison for the empress Agrippina. And Halotus serves it.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "locusta",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "LOCUSTA",
+    "color": "#15803D",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "AGRIPPINA",
+    "color": "#BE123C",
+    "at": 0.6
+   }
+  ],
+  "notes": "Implied only, no vial or method shown."
+ },
+ {
+  "id": "B05_S05",
+  "narration": "Version two comes from Suetonius. It's Halotus again, at a banquet with the priests.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S06",
+  "narration": "Version three also comes from Suetonius, who apparently couldn't pick. There's no banquet.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shrug_question"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "SUETONIUS",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S07",
+  "narration": "It's a family dinner, and Agrippina serves Claudius the mushrooms herself.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "agrippina",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S08",
+  "narration": "And one more account puts the blame on the emperor's doctor.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "physician",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "DOCTOR",
+    "color": "#3B82F6",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S09",
+  "narration": "One emperor, one plate of mushrooms, and at least three versions of the evening.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.45,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S10",
+  "narration": "Every one of them is an allegation. None of them is a verdict.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S11",
+  "narration": "For someone in your line of work, though, the versions share one uncomfortable detail.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      3.0,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S12",
+  "narration": "In two of the three, the poison allegedly goes through the emperor's own taster.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S13",
+  "narration": "The man who tested you. The job that is supposed to stop this exact thing",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shocked"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S14",
+  "narration": "is standing right in the middle of it.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -2.1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "claudius",
+    "pos": [
+     2.1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S15",
+  "type": "akira_cutaway",
+  "camera": "whip_right",
+  "narration": "Three versions. Zero confessions.",
+  "akiraExpression": "smirk",
+  "bubble": {
+   "text": "Three versions. Zero confessions."
+  },
+  "notes": "Script AKIRA cutaway."
+ },
+ {
+  "id": "B05_S16",
+  "narration": "Where are you that night? Close enough to see. Not close enough to know.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      2.8,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "claudius",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S17",
+  "narration": "You see Claudius eat. You see him go quiet. You see him helped away from the table.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "claudius",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      2.0,
+      "sad_slump"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shocked"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S18",
+  "narration": "And you see Halotus, standing exactly where a taster stands, with exactly the face he always has.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S19",
+  "narration": "According to the Roman writers, Claudius never recovers. Whether it was poison, and whose, is something nobody will ever settle.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "characters": [
+   {
+    "id": "claudius",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "physician",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S20",
+  "narration": "Remember that joke about the empire changing hands before dessert? It turns out it wasn't much of a joke.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "skeptical"
+     ],
+     [
+      3.5,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S21",
+  "narration": "The new emperor is young Nero, Agrippina's son. He's relaxed. He smiles a lot.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "nero",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "NERO",
+    "color": "#7C3AED",
+    "at": 0.6
+   },
+   {
+    "who": 1,
+    "text": "AGRIPPINA",
+    "color": "#BE123C",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S22",
+  "narration": "And later, he makes a little joke about the whole affair. Mushrooms, he says, are \"the food of the gods.\"",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "nero",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "o": {
+    "kind": "mushroom"
+   }
+  },
+  "bubble": {
+   "who": 0,
+   "text": "FOOD OF THE GODS",
+   "at": 0.5
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S23",
+  "narration": "Let that sit for a second. Then stop thinking about it, because you work here,",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      3.0,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S24",
+  "narration": "and thinking is how people stop working here.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "angry_glare"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S25",
+  "narration": "As for Halotus, according to ancient sources, he isn't punished. He keeps his post.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B05_S26",
+  "narration": "He just goes on tasting, for the new emperor now, with the same calm face.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": ""
+ },
+ {
+  "id": "B05_S27",
+  "narration": "You get a new post too. It's the best thing that ever happens to you. Give it a few months.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      4.6,
+      "nervous_sweat"
+     ]
+    ]
+   },
+   {
+    "id": "mother",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S01",
+  "narration": "You're assigned to the children's table.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "child_octavia",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "child_gaius",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "stamp": "AD 54 - AGE 23",
+  "notes": ""
+ },
+ {
+  "id": "B06_S02",
+  "narration": "In the palace, the imperial children eat at their own table, a plainer one, set where the family can see them.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "child_titus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.75,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "child_octavia",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.75,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.0
+  },
+  "notes": ""
+ },
+ {
+  "id": "B06_S03",
+  "narration": "Simpler dishes, smaller cups. And every bite, every drink, is tested by a taster",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": ""
+ },
+ {
+  "id": "B06_S04",
+  "narration": "chosen from the prince's own attendants. That's you now.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "child_gaius",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "TASTER",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S05",
+  "narration": "Your table is plainer, but it isn't private. The children eat in full view of the family,",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "agrippina",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S06",
+  "narration": "which means every bite you take is watched by the most powerful people in Rome.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "agrippina",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0.0,
+     0,
+     -3.4
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S07",
+  "narration": "You learn to taste with your whole face perfectly still. A frown could start a panic. A smile could start a rumour.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "neutral"
+     ],
+     [
+      4.0,
+      "focused_reading"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S08",
+  "narration": "The prince is Britannicus. He's thirteen, he's the late emperor's son,",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "BRITANNICUS",
+    "color": "#38BDF8",
+    "at": 0.6
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S09",
+  "narration": "and he is the first person you've ever tasted for who actually says thank you.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "embarrassed_blush"
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "THANK YOU!",
+   "at": 0.5
+  },
+  "notes": ""
+ },
+ {
+  "id": "B06_S10",
+  "narration": "He's polite. He asks your name. He remembers it the next day, which in this building is practically a scandal.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "surprised_jump"
+     ],
+     [
+      2.5,
+      "happy_relief"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S11",
+  "narration": "He likes his drinks hot. So you test them hot. You burn your tongue about once a week.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.3
+  },
+  "notes": ""
+ },
+ {
+  "id": "B06_S12",
+  "narration": "It's the only workplace injury of your career you're happy to have.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S13",
+  "narration": "Sometimes he sings. Not for an audience. Not for anyone important. Just a boy singing at a table,",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "child_octavia",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S14",
+  "narration": "while the adults around him go suspiciously quiet.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     0.0,
+     0,
+     -3.4
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S15",
+  "narration": "You never learn the words. You don't need to. You just know it's the best sound in the building.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S16",
+  "narration": "For a while, life at the plainer table is good. The food is simple. The danger feels far away.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "child_titus",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "child_octavia",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.1
+  },
+  "notes": ""
+ },
+ {
+  "id": "B06_S17",
+  "narration": "You start to think the children's table might be the safest posting in the palace. Who would bother with a kid?",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      3.5,
+      "happy_relief"
+     ]
+    ]
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S18",
+  "narration": "You do notice how the grown-up table watches the little one.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S19",
+  "narration": "Nero laughs easily. His smile reaches everyone in the room. It's just hard to tell what's behind it.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "nero",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S20",
+  "narration": "Your mother says you look happier. She's right. These are your best months.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B06_S21",
+  "narration": "And then it's the year 55. An ordinary dinner. Ordinary hot drinks. And an ordinary jug of cold water.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "neutral"
+     ],
+     [
+      4.0,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S01",
+  "narration": "This is the evening as Tacitus tells it.",
+  "set": "banquet_hall_day",
+  "grade": "night_torch",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "TACITUS",
+    "color": "#0F766E",
+    "at": 0.6
+   }
+  ],
+  "stamp": "AD 55 - AGE 24",
+  "notes": ""
+ },
+ {
+  "id": "B07_S02",
+  "narration": "The family is at the main table. The children are at theirs.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "child_octavia",
+    "pos": [
+     0.0,
+     0,
+     -3.4
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S03",
+  "narration": "You're standing where you always stand, beside Britannicus, close enough to reach his cup.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.1
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S04",
+  "narration": "He's in a good mood. He's been talking all evening, about nothing much, the way thirteen-year-olds do.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S05",
+  "narration": "You've heard every story twice. You don't mind.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "talking_animated"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S06",
+  "narration": "A drink arrives for him. It's very hot. Steam rises off the top.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "neutral"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S07",
+  "narration": "You taste it first, the way you always do. It burns, the way it always does. Then you wait.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      3.5,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S08",
+  "narration": "Nothing happens. It's harmless. You know it is, because you're still standing. You hand it to him.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "neutral"
+     ],
+     [
+      2.5,
+      "happy_relief"
+     ]
+    ]
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S09",
+  "narration": "Around you, the dinner carries on. Cups clink at the main table. Somebody laughs at something.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     0.0,
+     0,
+     -3.4
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S10",
+  "narration": "A servant crosses behind you with a tray.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "neutral"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "neutral"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S11",
+  "narration": "It's the kind of evening you've stood through a hundred times, the kind you'd forget by morning.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      3.5,
+      "neutral"
+     ]
+    ]
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S12",
+  "narration": "Britannicus lifts the cup, and puts it straight back down. Too hot, he says.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": [
+     [
+      0,
+      "curious"
+     ],
+     [
+      2.0,
+      "skeptical"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "bubble": {
+   "who": 0,
+   "text": "TOO HOT.",
+   "at": 0.5
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S13",
+  "narration": "That's normal. Hot drinks get cooled down. That's what the water is for.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "neutral"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "neutral"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S14",
+  "narration": "The jug. The cup. The wait.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "macro_push",
+  "characters": [],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "neutral"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.5
+  },
+  "notes": "MACRO: jug, cup, a hand at the edge of frame. No pouring detail."
+ },
+ {
+  "id": "B07_S15",
+  "narration": "It's the same kind of jug you carried as a child. The jug you stopped seeing years ago.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "happy_relief"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.3
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S16",
+  "narration": "Britannicus drinks. He goes quiet. He slumps at the table. He doesn't get up.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "slowmo_impact",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      1.4,
+      "sad_slump"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "focused_reading"
+     ],
+     [
+      1.8,
+      "shocked"
+     ]
+    ]
+   }
+  ],
+  "notes": "By implication only."
+ },
+ {
+  "id": "B07_S17",
+  "narration": "At the main table, Nero stays where he is. He tells the guests it's nothing to worry about.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "nero",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "agrippina",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "shocked"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S18",
+  "narration": "Just one of Britannicus's epileptic fits.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "nero",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shocked"
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "JUST A FIT.",
+   "at": 0.5
+  },
+  "notes": ""
+ },
+ {
+  "id": "B07_S19",
+  "narration": "You're still standing beside the empty space where the cup was. Your mouth still tastes of the hot drink. You're fine.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [],
+  "crowd": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.4,
+   "anim": "tip"
+  },
+  "notes": "Slow push on the empty cup, characters out of focus."
+ },
+ {
+  "id": "B07_S20",
+  "narration": "That's when you understand. And it's worse than you think.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "shocked"
+     ],
+     [
+      2.4,
+      "nervous_sweat"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S21",
+  "narration": "Tacitus gives a reason for the way it was done. It was arranged, in his words,",
+  "set": "tasters_room_day",
+  "grade": "night_torch",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S22",
+  "type": "infographic_card",
+  "camera": "slow_push",
+  "narration": "so that \"the usage might not be dropped or the crime betrayed by the death of both prince and attendant.\"",
+  "infographic": {
+   "title": "TACITUS ON THE PLAN",
+   "stat": "1 attendant",
+   "sub": "why the taster had to live",
+   "items": [
+    "Keep the usage",
+    "Hide the crime",
+    "The prince dies",
+    "The attendant lives"
+   ]
+  },
+  "notes": "Quote from the research doc."
+ },
+ {
+  "id": "B07_S23",
+  "narration": "The attendant is you. Not you by name. Nobody needed your name.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "shocked"
+     ],
+     [
+      2.4,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S24",
+  "narration": "Just the role. The taster. The one who has to be standing at the end.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S25",
+  "narration": "The plan didn't go around you. It was built around you.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "shocked"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "agrippina",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S26",
+  "narration": "If you had fallen too, everyone would have known. So you had to live. Your survival was the cover story.",
+  "set": "children_table_day",
+  "grade": "night_torch",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      4.0,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S27",
+  "narration": "You think of the old tasters and their story about the poisoned flowers.",
+  "set": "tasters_room_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -2.1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "taster_felix",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     2.1,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": "Memory: they laugh, YOU do not."
+ },
+ {
+  "id": "B07_S28",
+  "narration": "Being careful was never the same as being safe. Now you know exactly how far apart those two things are.",
+  "set": "tasters_room_day",
+  "grade": "night_torch",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S29",
+  "narration": "That same night, Britannicus is cremated. Fast. Quiet. Done before morning.",
+  "set": "palace_corridor_day",
+  "grade": "night_torch",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "neutral"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S30",
+  "narration": "You go back to your quarters. Your mother is waiting. She doesn't ask what happened. She already knows.",
+  "set": "palace_quarters_day",
+  "grade": "night_torch",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "mother",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B07_S31",
+  "narration": "She taught you the rule herself: be somewhere else when things go wrong. Tonight, you weren't somewhere else.",
+  "set": "palace_quarters_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": [
+     [
+      0,
+      "confident_point"
+     ],
+     [
+      3.5,
+      "sad_slump"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": ""
+ },
+ {
+  "id": "B08_S01",
+  "narration": "The next morning, the palace is quiet. Not grieving quiet. Careful quiet.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.7,
+     0,
+     -0.1
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.1,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     0.2,
+     0,
+     -3.1
+    ],
+    "scale": 0.68,
+    "emotion": "sad_slump"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "TASTER",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Quiet, watchful morning in the sunlit palace corridor."
+ },
+ {
+  "id": "B08_S02",
+  "narration": "People speak softly. Nobody says his name.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -0.2,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     3.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.68,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": "Staff whisper in hushed tones while avoiding eye contact."
+ },
+ {
+  "id": "B08_S03",
+  "narration": "The servants move a little faster, and nobody looks at the children's table, which is suddenly one chair emptier.",
+  "set": "children_table_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "child_titus",
+    "pos": [
+     -2.2,
+     0,
+     0.0
+    ],
+    "scale": 0.75,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "child_octavia",
+    "pos": [
+     0.0,
+     0,
+     0.0
+    ],
+    "scale": 0.75,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "child_gaius",
+    "pos": [
+     2.2,
+     0,
+     0.0
+    ],
+    "scale": 0.75,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.2,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.1,
+     0,
+     -2.7
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.8,
+    0.88,
+    -0.8
+   ],
+   "scale": 1.1
+  },
+  "notes": "The remaining children sit quietly beside the noticeably empty spot while servants hurry past."
+ },
+ {
+  "id": "B08_S04",
+  "narration": "Nobody blames you. That's the point. You did your job perfectly.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      1.8,
+      "sad_slump"
+     ]
+    ]
+   },
+   {
+    "id": "taster_felix",
+    "pos": [
+     1.6,
+     0,
+     -0.1
+    ],
+    "scale": 0.82,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "notes": "Punch-in on the protagonist realizing there is no blame because the job was done exactly by the rules."
+ },
+ {
+  "id": "B08_S05",
+  "narration": "You tasted the drink, and the drink was fine. You keep your post.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     2.8,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    1.2,
+    0.9,
+    -0.9
+   ],
+   "scale": 1.2
+  },
+  "notes": "Low angle emphasizing the heavy reality of keeping the post."
+ },
+ {
+  "id": "B08_S06",
+  "type": "akira_cutaway",
+  "narration": "Good news: you're not fired. That's the bad news.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "akiraExpression": "deadpan",
+  "bubble": {
+   "text": "Good news: you're not fired. That's the bad news."
+  },
+  "notes": "Akira cutaway delivering the dry punchline deadpan."
+ },
+ {
+  "id": "B08_S07",
+  "type": "infographic_card",
+  "narration": "And you're not the only one. Here's who else gets to keep their job.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "orbit",
+  "infographic": {
+   "title": "STILL EMPLOYED",
+   "stat": "4",
+   "sub": "Who else gets to keep their job",
+   "items": [
+    "You",
+    "Locusta",
+    "Halotus",
+    "The jug"
+   ]
+  },
+  "notes": "Infographic card listing the four who stay employed."
+ },
+ {
+  "id": "B08_S08",
+  "narration": "Locusta, the woman named in the Claudius story.",
+  "set": "palace_kitchen_night",
+  "grade": "night_torch",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "locusta",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.8,
+     0,
+     -2.4
+    ],
+    "scale": 0.75,
+    "emotion": "angry_glare"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    1.3,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "LOCUSTA",
+    "color": "#15803D",
+    "at": 0.6
+   }
+  ],
+  "notes": "Torch-lit night cutaway introducing Locusta in the shadowed palace kitchen."
+ },
+ {
+  "id": "B08_S09",
+  "narration": "According to ancient writers, she goes on working during Nero's reign. Nobody seems in any hurry to stop her.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "locusta",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "scribe",
+    "pos": [
+     -3.0,
+     0,
+     -2.7
+    ],
+    "scale": 0.7,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.74,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "NERO",
+    "color": "#9333EA",
+    "at": 0.8
+   }
+  ],
+  "notes": "Locusta remains calmly at work under Nero while guards and scribes look away."
+ },
+ {
+  "id": "B08_S10",
+  "narration": "Halotus. Still calm. Still unreadable. Still tasting for the emperor, as if the year 54 was just another dinner.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     1.8,
+     0,
+     -0.1
+    ],
+    "scale": 0.85,
+    "emotion": "talking_animated"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -3.1,
+     0,
+     -2.4
+    ],
+    "scale": 0.72,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     3.1,
+     0,
+     -2.8
+    ],
+    "scale": 0.68,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "mushroom"
+   },
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.25
+  },
+  "tags": [
+   {
+    "who": 0,
+    "text": "HALOTUS",
+    "color": "#B45309",
+    "at": 0.5
+   }
+  ],
+  "notes": "Halotus stands composed beside Nero and a mushroom platter."
+ },
+ {
+  "id": "B08_S11",
+  "narration": "And the cold-water jugs. They're still on every table.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -2.0,
+     0,
+     -1.6
+    ],
+    "scale": 0.8,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.6
+   ],
+   "scale": 1.45
+  },
+  "notes": "Macro close-up pushing directly onto a cold-water jug sitting on the banquet table."
+ },
+ {
+  "id": "B08_S12",
+  "narration": "Somebody still carries them. Somebody still sets them down exactly where they're told.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     0.0,
+     0,
+     -2.9
+    ],
+    "scale": 0.74,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.88,
+    -0.9
+   ],
+   "scale": 1.2
+  },
+  "notes": "Top-down drift watching servants quietly place jugs along the tables."
+ },
+ {
+  "id": "B08_S13",
+  "narration": "You go back to work, because there is nothing else to go back to. Taste, wait, watch.",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": [
+     [
+      0,
+      "sad_slump"
+     ],
+     [
+      2.0,
+      "focused_reading"
+     ]
+    ]
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.6,
+     0,
+     -0.1
+    ],
+    "scale": 0.84,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "taster_primus",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "fish"
+   },
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Returning to the daily kitchen routine of tasting and waiting."
+ },
+ {
+  "id": "B08_S14",
+  "narration": "Except now you watch differently. You watch hands. You watch jugs.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.8,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.8,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "halotus",
+    "pos": [
+     -3.1,
+     0,
+     -2.6
+    ],
+    "scale": 0.72,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    1.1,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.25
+  },
+  "notes": "Emotional turn: punch-in as the taster's eyes dart suspiciously across servants and jugs."
+ },
+ {
+  "id": "B08_S15",
+  "narration": "You watch what happens after you've handed the cup over,",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.6,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     2.9,
+     0,
+     -2.3
+    ],
+    "scale": 0.74,
+    "emotion": "talking_animated"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    -0.1,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.3
+  },
+  "notes": "Camera tracks past the handed-off goblet toward the table."
+ },
+ {
+  "id": "B08_S16",
+  "narration": "the one part of the meal that was never your job.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "thinking_chin"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.82,
+    "emotion": "angry_glare"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     2.5,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "notes": "Uneasy dutch tilt highlighting the blind spot outside the taster's authority."
+ },
+ {
+  "id": "B08_S17",
+  "narration": "The rules haven't changed. You taste everything. You're not allowed to refuse.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.3,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "halotus",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.86,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "sad_slump"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "fruit"
+   },
+   "pos": [
+    0.1,
+    0.88,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Orbit around the taster trapped by the rigid rules of the household."
+ },
+ {
+  "id": "B08_S18",
+  "narration": "And now you know what tasting everything really proves. Not that the food is safe.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.8,
+     0,
+     -1.4
+    ],
+    "scale": 0.82,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "cook",
+    "pos": [
+     2.2,
+     0,
+     -2.8
+    ],
+    "scale": 0.72,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.6
+   ],
+   "scale": 1.45
+  },
+  "notes": "Macro push into the rim of the tasting goblet."
+ },
+ {
+  "id": "B08_S19",
+  "narration": "Only that it was safe at the moment you swallowed.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      1.6,
+      "shocked"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.8,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.8,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.9,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.25
+  },
+  "notes": "Slow-motion impact emphasizing the chilling limit of the taster's test."
+ },
+ {
+  "id": "B08_S20",
+  "narration": "Some nights you replay the moment you handed him the cup. The heat. The wait.",
+  "set": "banquet_hall_day",
+  "grade": "night_torch",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.4,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   },
+   {
+    "id": "britannicus",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.25
+  },
+  "notes": "Torch-lit memory replay of handing the steaming cup to Britannicus."
+ },
+ {
+  "id": "B08_S21",
+  "narration": "His voice saying it was too hot. You never find the mistake, because there wasn't one.",
+  "set": "banquet_hall_day",
+  "grade": "night_torch",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "britannicus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.8,
+    "emotion": [
+     [
+      0,
+      "talking_animated"
+     ],
+     [
+      1.8,
+      "shocked"
+     ]
+    ]
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.4,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      2.0,
+      "sad_slump"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "nero",
+    "pos": [
+     -3.1,
+     0,
+     -2.4
+    ],
+    "scale": 0.72,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Jug",
+   "pos": [
+    0.0,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2,
+   "anim": "tip"
+  },
+  "bubble": {
+   "who": 0,
+   "text": "Too hot.",
+   "at": 0.4
+  },
+  "notes": "Emotional turn in memory: cold water tips in as the taster realizes there was never a mistake to fix."
+ },
+ {
+  "id": "B08_S22",
+  "narration": "You did everything right. That's what keeps you awake.",
+  "set": "tasters_room_day",
+  "grade": "night_torch",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -2.8,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Sleepless torch-lit night in the tasters' room."
+ },
+ {
+  "id": "B08_S23",
+  "narration": "Years go by like this. Quietly. Carefully. You get older.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   },
+   {
+    "id": "taster_primus",
+    "pos": [
+     1.8,
+     0,
+     -0.1
+    ],
+    "scale": 0.82,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.1,
+     0,
+     -2.8
+    ],
+    "scale": 0.68,
+    "emotion": "curious"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     3.1,
+     0,
+     -2.6
+    ],
+    "scale": 0.74,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Steady corridor dolly conveying the careful passage of years."
+ },
+ {
+  "id": "B08_S24",
+  "narration": "Nobody poisons you. In this job, that counts as a career highlight.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "shrug_question"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.82,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "cook",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "skeptical"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "bread"
+   },
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.15
+  },
+  "notes": "Whip-right dry humor beat celebrating simply staying unpoisoned."
+ },
+ {
+  "id": "B08_S25",
+  "narration": "And somewhere in the back of your mind, a number keeps getting closer. Thirty.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.1
+    ],
+    "scale": 0.9,
+    "emotion": [
+     [
+      0,
+      "thinking_chin"
+     ],
+     [
+      2.0,
+      "curious"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "scribe",
+    "pos": [
+     -2.8,
+     0,
+     -2.6
+    ],
+    "scale": 0.72,
+    "emotion": "focused_reading"
+   }
+  ],
+  "bubble": {
+   "who": 0,
+   "text": "Thirty.",
+   "at": 2.4
+  },
+  "notes": "Tight macro push building quiet hope toward the age of thirty."
+ },
+ {
+  "id": "B09_S01",
+  "narration": "In the emperor's household, slaves are routinely freed somewhere between the ages of thirty and thirty-five.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.4,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.0,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Establishing the administrative room where imperial household manumissions are recorded."
+ },
+ {
+  "id": "B09_S02",
+  "narration": "You make it to about thirty-three. One day, it's official. You're free.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": [
+     [
+      0,
+      "surprised_jump"
+     ],
+     [
+      1.6,
+      "happy_relief"
+     ]
+    ]
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     1.6,
+     0,
+     -0.1
+    ],
+    "scale": 0.84,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "doorkeeper",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "happy_relief"
+   }
+  ],
+  "stamp": "c. AD 64 - AGE 33",
+  "notes": "Emotional turn: punch-in with age stamp as official freedom arrives."
+ },
+ {
+  "id": "B09_S03",
+  "narration": "You get a new name, too. You take the family name of the house that owned you.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.3,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "curious"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "talking_animated"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -3.0,
+     0,
+     -2.6
+    ],
+    "scale": 0.74,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Walking the sunlit corridor as the scribe explains the new freedman name."
+ },
+ {
+  "id": "B09_S04",
+  "narration": "So now you're Tiberius Claudius, with your old slave name tacked on the end, like a receipt.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": [
+     [
+      0,
+      "happy_relief"
+     ],
+     [
+      2.0,
+      "skeptical"
+     ]
+    ]
+   }
+  ],
+  "crowd": [
+   {
+    "id": "scribe",
+    "pos": [
+     -2.6,
+     0,
+     -2.4
+    ],
+    "scale": 0.72,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "servant_a",
+    "pos": [
+     2.7,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "TI. CLAUDIUS - FREEDMAN",
+    "color": "#2563EB",
+    "at": 0.6
+   }
+  ],
+  "notes": "Role-change tag reveals the new Roman freedman identity with dry amusement."
+ },
+ {
+  "id": "B09_S05",
+  "narration": "Freedom in the palace is a strange thing.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -2.6,
+     0,
+     -2.4
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     2.6,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     0.4,
+     0,
+     -3.4
+    ],
+    "scale": 0.72,
+    "emotion": "skeptical"
+   }
+  ],
+  "notes": "Top-down drift showing the protagonist still inside the same palace walls."
+ },
+ {
+  "id": "B09_S06",
+  "narration": "Some imperial freedmen go on to become powerful officials, men with offices, staff and real influence.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "physician",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.86,
+    "emotion": "talking_animated"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "doorkeeper",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Confident imperial freedmen directing staff inside busy palace offices."
+ },
+ {
+  "id": "B09_S07",
+  "narration": "Others just keep doing the same work under a better name.",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.84,
+    "emotion": "shrug_question"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     0.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "hero": {
+   "t": "Amphora",
+   "pos": [
+    0.0,
+    0.9,
+    -0.9
+   ],
+   "scale": 1.2
+  },
+  "notes": "Whip-right contrast back to ordinary palace workers doing the exact same chores."
+ },
+ {
+  "id": "B09_S08",
+  "narration": "You're somewhere in the middle. You still know the taste of every sauce in the building.",
+  "set": "palace_kitchen_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.86,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "cook",
+    "pos": [
+     1.6,
+     0,
+     -0.1
+    ],
+    "scale": 0.84,
+    "emotion": "talking_animated"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     3.0,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Bowl",
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.25
+  },
+  "notes": "Experienced freedman calmly inspecting kitchen sauces."
+ },
+ {
+  "id": "B09_S09",
+  "narration": "But for the first time in your life, your stomach legally belongs to you.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     -2.7,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_primus",
+    "pos": [
+     2.7,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "curious"
+   }
+  ],
+  "notes": "Warm punch-in on genuine personal relief."
+ },
+ {
+  "id": "B09_S10",
+  "narration": "The first thing you do as a free person is eat a meal that nobody else has tasted,",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "bread"
+   },
+   "pos": [
+    0.0,
+    0.9,
+    -0.7
+   ],
+   "scale": 1.25
+  },
+  "notes": "Quiet, unhurried orbit around the protagonist sitting alone with a simple plate."
+ },
+ {
+  "id": "B09_S11",
+  "narration": "and nobody else is waiting on. It's bread. It's ordinary.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.8,
+     0,
+     -1.5
+    ],
+    "scale": 0.82,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "bread"
+   },
+   "pos": [
+    0.0,
+    0.9,
+    -0.6
+   ],
+   "scale": 1.45
+  },
+  "notes": "Macro close-up on the plain, ordinary loaf of bread."
+ },
+ {
+  "id": "B09_S12",
+  "narration": "You still stop before the first bite. You still wait.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slowmo_impact",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": [
+     [
+      0,
+      "nervous_sweat"
+     ],
+     [
+      1.8,
+      "thinking_chin"
+     ]
+    ]
+   }
+  ],
+  "crowd": [],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "bread"
+   },
+   "pos": [
+    0.0,
+    0.88,
+    -0.7
+   ],
+   "scale": 1.2
+  },
+  "notes": "Instinctive slow-motion pause before taking a bite of his own bread."
+ },
+ {
+  "id": "B09_S13",
+  "narration": "Old habits are hard to break when they're the reason you're alive.",
+  "set": "tasters_room_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": [
+     [
+      0,
+      "skeptical"
+     ],
+     [
+      1.8,
+      "happy_relief"
+     ]
+    ]
+   }
+  ],
+  "crowd": [],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "bread"
+   },
+   "pos": [
+    0.9,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.15
+  },
+  "notes": "Soft, bittersweet acceptance before finally eating."
+ },
+ {
+  "id": "B09_S14",
+  "narration": "You visit your mother. She's older now, slower, still folding the emperor's clothes.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "mother",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_b",
+    "pos": [
+     3.1,
+     0,
+     -2.7
+    ],
+    "scale": 0.68,
+    "emotion": "curious"
+   }
+  ],
+  "tags": [
+   {
+    "who": 1,
+    "text": "MOTHER",
+    "color": "#0D9488",
+    "at": 0.6
+   }
+  ],
+  "notes": "Gentle reunion in the laundry quarters where mother still works."
+ },
+ {
+  "id": "B09_S15",
+  "narration": "She looks at your new name for a long time, as if it might be a trick.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -1.4,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "embarrassed_blush"
+   }
+  ],
+  "crowd": [],
+  "notes": "Mother inspects the manumission name with wary palace instincts."
+ },
+ {
+  "id": "B09_S16",
+  "narration": "Then she tells you she always knew you'd be useful. From her, that's practically a poem.",
+  "set": "palace_quarters_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "mother",
+    "pos": [
+     -1.3,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.4,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": [
+     [
+      0,
+      "surprised_jump"
+     ],
+     [
+      1.6,
+      "happy_relief"
+     ]
+    ]
+   }
+  ],
+  "crowd": [],
+  "bubble": {
+   "who": 0,
+   "text": "Always knew you'd be useful.",
+   "at": 0.6
+  },
+  "notes": "Heartwarming punch-in as mother offers her highest form of praise."
+ },
+ {
+  "id": "B09_S17",
+  "narration": "And Halotus? According to ancient sources, his career outlasts Nero himself.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.2,
+     0,
+     0.2
+    ],
+    "scale": 0.88,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "nero",
+    "pos": [
+     1.8,
+     0,
+     -0.2
+    ],
+    "scale": 0.82,
+    "emotion": "sad_slump"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.74,
+    "emotion": "skeptical"
+   }
+  ],
+  "tags": [
+   {
+    "who": 0,
+    "text": "HALOTUS",
+    "color": "#B45309",
+    "at": 0.5
+   }
+  ],
+  "notes": "Whip-right tonal shift back to Halotus standing poised as Nero fades."
+ },
+ {
+  "id": "B09_S18",
+  "narration": "Emperors come and go. The man at the centre of the mushroom story just keeps landing on his feet.",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "dutch_punch",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     -2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.82,
+    "emotion": "shrug_question"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     2.2,
+     0,
+     -0.2
+    ],
+    "scale": 0.82,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.2,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "mushroom"
+   },
+   "pos": [
+    0.9,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Dutch punch spotlighting Halotus's uncanny political survival."
+ },
+ {
+  "id": "B09_S19",
+  "narration": "That's the real skill in this house. Not a strong stomach. Being useful to whoever comes next.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "halotus",
+    "pos": [
+     -1.6,
+     0,
+     -1.3
+    ],
+    "scale": 0.82,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     1.8,
+     0,
+     -1.5
+    ],
+    "scale": 0.82,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "crowd": [],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.0,
+    0.9,
+    -0.6
+   ],
+   "scale": 1.4
+  },
+  "notes": "Macro push on the imperial goblet framing Halotus and the protagonist behind it."
+ },
+ {
+  "id": "B09_S20",
+  "narration": "Which leaves one question. What happens to people like you, in the end? Who remembers a taster?",
+  "set": "palace_corridor_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     0.0,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_felix",
+    "pos": [
+     -2.6,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "taster_hilarus",
+    "pos": [
+     2.6,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Reflective top-down drift posing the closing question."
+ },
+ {
+  "id": "B09_S21",
+  "narration": "As it turns out, one of them made sure he'd be remembered. In stone.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "fly_through",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.8,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     2.5,
+     0,
+     -2.6
+    ],
+    "scale": 0.72,
+    "emotion": "focused_reading"
+   }
+  ],
+  "notes": "Fly-through transition into the sunlit stone-carver's yard."
+ },
+ {
+  "id": "B10_S01",
+  "narration": "You were never a real person. But the job was real. And so was he.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     1.8,
+     0,
+     -0.2
+    ],
+    "scale": 0.8,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [],
+  "notes": "Soft daylight crane-down in the stone-carver's yard separating fiction from history."
+ },
+ {
+  "id": "B10_S02",
+  "narration": "His name was Tiberius Claudius Zosimus. An imperial freedman, with the same family name you were given.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "punch_in",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "confident_point"
+   },
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -2.2,
+     0,
+     -0.1
+    ],
+    "scale": 0.82,
+    "emotion": "curious"
+   }
+  ],
+  "crowd": [],
+  "tags": [
+   {
+    "who": 0,
+    "text": "TI. CLAUDIUS ZOSIMUS",
+    "color": "#0F766E",
+    "at": 0.5
+   }
+  ],
+  "notes": "Punch-in introducing the real historical freedman Tiberius Claudius Zosimus."
+ },
+ {
+  "id": "B10_S03",
+  "narration": "He served the emperor Domitian, as one of the men who ate first.",
+  "set": "banquet_hall_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     -1.2,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "focused_reading"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.8,
+     0,
+     -0.1
+    ],
+    "scale": 0.85,
+    "emotion": "skeptical"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     -3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   },
+   {
+    "id": "servant_b",
+    "pos": [
+     3.0,
+     0,
+     -2.6
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Platter",
+   "o": {
+    "kind": "fruit"
+   },
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Orbit around Zosimus performing the ancient duty of eating first."
+ },
+ {
+  "id": "B10_S04",
+  "narration": "His tombstone was found at Mainz, the Roman town of Mogontiacum.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     -1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "thinking_chin"
+   },
+   {
+    "id": "scribe",
+    "pos": [
+     1.5,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "focused_reading"
+   }
+  ],
+  "crowd": [],
+  "notes": "Slow push in the stone-carver's yard locating the Mainz tombstone."
+ },
+ {
+  "id": "B10_S05",
+  "narration": "It dates to around the year 83, when Domitian was campaigning against the Chatti.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "low_angle_tilt",
+  "characters": [
+   {
+    "id": "palace_guard",
+    "pos": [
+     -1.6,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "angry_glare"
+   },
+   {
+    "id": "zosimus",
+    "pos": [
+     1.6,
+     0,
+     0.0
+    ],
+    "scale": 0.85,
+    "emotion": "nervous_sweat"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "servant_a",
+    "pos": [
+     0.0,
+     0,
+     -2.8
+    ],
+    "scale": 0.7,
+    "emotion": "curious"
+   }
+  ],
+  "stamp": "c. AD 83 - MAINZ",
+  "notes": "Frontier campaign framing with date and place stamp."
+ },
+ {
+  "id": "B10_S06",
+  "narration": "Even at the edge of the empire, someone still had to eat first.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "corridor_dolly",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     -1.3,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "skeptical"
+   },
+   {
+    "id": "palace_guard",
+    "pos": [
+     1.7,
+     0,
+     -0.1
+    ],
+    "scale": 0.84,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "cook",
+    "pos": [
+     -3.0,
+     0,
+     -2.5
+    ],
+    "scale": 0.72,
+    "emotion": "curious"
+   }
+  ],
+  "hero": {
+   "t": "Goblet",
+   "pos": [
+    0.2,
+    0.9,
+    -0.8
+   ],
+   "scale": 1.2
+  },
+  "notes": "Lateral dolly underscoring that imperial food tasting followed the emperor even to the frontier."
+ },
+ {
+  "id": "B10_S07",
+  "narration": "You can see it today, in the Landesmuseum Mainz. And carved into it is the word for his job.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "top_down_drift",
+  "characters": [
+   {
+    "id": "scribe",
+    "pos": [
+     -1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "curious"
+   },
+   {
+    "id": "zosimus",
+    "pos": [
+     1.4,
+     0,
+     0.0
+    ],
+    "scale": 0.84,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [],
+  "notes": "Top-down drift admiring the carved Latin inscription."
+ },
+ {
+  "id": "B10_S08",
+  "narration": "The word that once meant \"take the risk, so the emperor doesn't have to.\"",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "whip_right",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "thinking_chin"
+   },
+   {
+    "id": "zosimus",
+    "pos": [
+     1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.86,
+    "emotion": "confident_point"
+   }
+  ],
+  "crowd": [],
+  "notes": "Whip-right linking the fictional taster and real Zosimus across the meaning of the title."
+ },
+ {
+  "id": "B10_S09",
+  "narration": "Praegustator. Cut in stone, like something to be proud of.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "macro_push",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     0.0,
+     0,
+     0.2
+    ],
+    "scale": 0.9,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [],
+  "bubble": {
+   "who": 0,
+   "text": "Praegustator.",
+   "at": 0.4
+  },
+  "notes": "Macro close-up celebrating the title cut permanently in stone."
+ },
+ {
+  "id": "B10_S10",
+  "narration": "Nobody wrote a history about him. Nobody wrote one about you, either.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "slow_push",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "sad_slump"
+   },
+   {
+    "id": "zosimus",
+    "pos": [
+     1.5,
+     0,
+     0.1
+    ],
+    "scale": 0.85,
+    "emotion": "thinking_chin"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "scribe",
+    "pos": [
+     0.0,
+     0,
+     -2.9
+    ],
+    "scale": 0.72,
+    "emotion": "sad_slump"
+   }
+  ],
+  "notes": "Quiet, respectful slow push as both tasters stand side by side."
+ },
+ {
+  "id": "B10_S11",
+  "narration": "But somebody decided that word belonged on his grave,",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "orbit",
+  "characters": [
+   {
+    "id": "zosimus",
+    "pos": [
+     0.0,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "happy_relief"
+   }
+  ],
+  "crowd": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -2.4,
+     0,
+     -2.3
+    ],
+    "scale": 0.75,
+    "emotion": "happy_relief"
+   }
+  ],
+  "notes": "Warm daylight orbit honoring the decision to preserve his title."
+ },
+ {
+  "id": "B10_S12",
+  "narration": "and it's still there, almost two thousand years later. Not bad, for a praegustator.",
+  "set": "stonecarver_yard_day",
+  "grade": "day",
+  "camera": "crane_down",
+  "characters": [
+   {
+    "id": "taster_protagonist",
+    "pos": [
+     -1.4,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "happy_relief"
+   },
+   {
+    "id": "zosimus",
+    "pos": [
+     1.4,
+     0,
+     0.1
+    ],
+    "scale": 0.88,
+    "emotion": "celebrate_arms_up"
+   }
+  ],
+  "crowd": [],
+  "notes": "Final warm daylight closing shot honoring Zosimus and every forgotten praegustator."
+ }
+]

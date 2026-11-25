@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "remotion studio src/index.ts",
     "test:chars": "remotion still src/index.ts CharacterConsistencySheet out/qa/character_consistency_sheet.png --frame=0 --gl=swangle",
-    "test:proj": "node --no-warnings scripts/test_projection.mjs",
-    "qa:b0": "bash scripts/qa_b0.sh",
     "bench:shot1": "python3 scripts/benchmark_shot.py",
     "render:styletest": "remotion render src/index.ts StyleTestOpening out/style_test_opening.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --gl=swangle --concurrency=2",
     "render:main": "remotion render src/index.ts MainVideo out/main_silent.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --gl=swangle --concurrency=2"
@@ -25,6 +23,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.7",
     "@types/three": "^0.169.0",
     "typescript": "^5.6.3"
   }
