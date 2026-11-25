@@ -86,6 +86,9 @@ jobs:
           pattern: chunk-*
           merge-multiple: true
           path: chunks
+      - name: Install ffmpeg
+        run: |
+          which ffmpeg || (sudo apt-get update -y && sudo apt-get install -y ffmpeg)
       - name: Concat chunks, mux -14 LUFS audio, and output benchmark JSON
         run: |
           mkdir -p out/qa
