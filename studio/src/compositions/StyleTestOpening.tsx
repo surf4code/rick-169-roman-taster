@@ -47,12 +47,12 @@ export const StyleTestOpening: React.FC = () => {
   const markups: Record<string, string> = {};
   all.forEach((c) => {
     const talking = !c.bg && shot.bubble && shot.characters[shot.bubble.who]?.id === c.id;
-    const key = `${c.id}:${c.emotion}:${talking ? 1 : 0}`;
-    c._key = key;
+    c._talking = !!talking;
+    c._key = `${c.id}:${c.emotion}:${talking ? 1 : 0}`;
     const turn = restingTurn(c.id);
     LAYERS.forEach((l) => {
       const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn });
-      markups[`${key}|${l}`] = mk;
+      markups[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] = mk;
     });
   });
   const textures = useSvgTextures(markups);
@@ -70,7 +70,7 @@ export const StyleTestOpening: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: grade.bgColor }}>
-      <ThreeCanvas width={width} height={height} shadows camera={{ fov: 38, near: 0.05, far: 80 }}>
+      <ThreeCanvas width={width} height={height} dpr={1.75} gl={{ antialias: true }} shadows camera={{ fov: 38, near: 0.05, far: 80 }}>
         <Rig mode={shot.camera} localT={localT} dur={dur} />
         <RomanDioramaStage setId={shot.set} grade={grade} />
         <AtmosphereFX warmTorch={isNight} />
@@ -83,7 +83,7 @@ export const StyleTestOpening: React.FC = () => {
           return <C key={i} position={pos} rotation={rot} scale={h.s ?? 1} {...(h.o || {})} />;
         })}
         {all.map((c: any, i: number) => (
-          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[`${c._key}|${l}`] ?? null]))} />
+          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} time={frame / fps} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
         <PostFX focusDistance={0} worldFocus={focusDist} bokehScale={macro ? 3.4 : 1.6} grade={grade} />
       </ThreeCanvas>

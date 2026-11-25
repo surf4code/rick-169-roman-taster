@@ -4,7 +4,7 @@ import { GradePreset } from "../utils/colorGrade";
 
 /** worldFocus = camera-to-subject distance in world units (keeps the subject sharp, set dressing soft). */
 export const PostFX: React.FC<{ focusDistance: number; worldFocus?: number; bokehScale: number; grade: GradePreset }> = ({ focusDistance, worldFocus, bokehScale, grade }) => (
-  <EffectComposer multisampling={0}>
+  <EffectComposer multisampling={4}>
     <DepthOfField
       focusDistance={focusDistance}
       {...(worldFocus ? ({ worldFocusDistance: worldFocus, worldFocusRange: Math.max(3.0, worldFocus * 1.3) } as any) : {})}

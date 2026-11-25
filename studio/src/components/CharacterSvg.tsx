@@ -20,6 +20,31 @@ export interface CharacterSvgProps {
 }
 
 const INK = "#231A29";
+/** Brush-ink ring around a closed contour: width varies with the light side (heavy lower-left, thin upper-right) + hand wobble.
+ *  Rendered as a FILLED ring (two subpaths, evenodd) so it antialiases like a brush stroke, not a uniform CSS stroke. */
+const brushRing = (pts: [number, number][], base: number, heavy: number, seed: number): string => {
+  const n = pts.length, L = [0.6, -0.8];
+  const outer: string[] = [], inner: string[] = [];
+  for (let i = 0; i < n; i++) {
+    const a = pts[(i + n - 1) % n], b = pts[(i + 1) % n], p = pts[i];
+    let tx = b[0] - a[0], ty = b[1] - a[1]; const tl = Math.hypot(tx, ty) || 1; tx /= tl; ty /= tl;
+    let nx = ty, ny = -tx; // outward for clockwise-in-screen contours
+    const cx = pts.reduce((m, q) => m + q[0], 0) / n, cy = pts.reduce((m, q) => m + q[1], 0) / n;
+    if ((p[0] - cx) * nx + (p[1] - cy) * ny < 0) { nx = -nx; ny = -ny; }
+    const sh = 0.5 - 0.5 * (nx * L[0] + ny * L[1]);
+    const th = (i / n) * Math.PI * 2;
+    const w = base + heavy * sh * sh + 0.5 * Math.sin(3 * th + seed) + 0.35 * Math.sin(7 * th + seed * 2);
+    outer.push(`${(p[0] + nx * w * 0.5).toFixed(2)} ${(p[1] + ny * w * 0.5).toFixed(2)}`);
+    inner.push(`${(p[0] - nx * w * 0.5).toFixed(2)} ${(p[1] - ny * w * 0.5).toFixed(2)}`);
+  }
+  return `M ${outer.join(" L ")} Z M ${inner.join(" L ")} Z`;
+};
+const roundRectPts = (x: number, y: number, w: number, h: number, r: number): [number, number][] => {
+  const pts: [number, number][] = [], seg = 14;
+  const corners: [number, number, number][] = [[x + w - r, y + r, -Math.PI / 2], [x + w - r, y + h - r, 0], [x + r, y + h - r, Math.PI / 2], [x + r, y + r, Math.PI]];
+  corners.forEach(([cx, cy, a0]) => { for (let k = 0; k <= seg; k++) { const a = a0 + (k / seg) * (Math.PI / 2); pts.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]); } });
+  return pts;
+};
 /* hand-drawn head contour (measured from reference: slightly pointed crown, fuller jaw, chin taper, ~10% asymmetry) */
 const headGeom = (a: number, b: number, seed: number) => {
   const N = 72, nTop = 1.75, nBot = 2.25, egg = -0.12, asym = seed % 2 ? 0.08 : -0.08, rot = ((seed % 7) - 3) * 0.012;
@@ -33,7 +58,7 @@ const headGeom = (a: number, b: number, seed: number) => {
   }
   const full = "M " + pts.map((q) => `${q[0].toFixed(1)} ${q[1].toFixed(1)}`).join(" L ") + " Z";
   const thick = "M " + pts.filter((q) => q[2] > 0.2 && q[2] < 2.0).map((q) => `${q[0].toFixed(1)} ${q[1].toFixed(1)}`).join(" L ");
-  return { full, thick };
+  return { full, thick, pts: pts.map((q) => [q[0], q[1]] as [number, number]) };
 };
 const hashId = (id: string) => id.split("").reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
 /** Closed-mouth shape per emotion so faces read the situation even when nobody is talking. */
@@ -167,6 +192,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
   characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0", layer = "all", turn = 0,
 }) => {
   const show = (l: string) => layer === "all" || layer === l;
+  if (layer !== "all") { breathY = 0; talkNod = 0; }
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
 
@@ -208,14 +234,11 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         <clipPath id={clipTorsoId}><rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" /></clipPath>
         <clipPath id={clipHeadId}><path d={HG.full} /></clipPath>
       </defs>
-      <g transform={`translate(140, ${228 + breathY}) rotate(${pose.torsoLeanDeg})`}>
+      <g transform={`translate(140, ${228 + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
         {show("lower") && (<>
         {/* cape behind body */}
         {outfit === "cuirass" && <path d="M -40 -50 Q -70 20 -58 112 Q 0 124 58 112 Q 70 20 40 -50 Z" fill="#B91C1C" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />}
 
-        {/* legs */}
-        <path d="M -18 50 Q -26 94 -22 136 L -38 136" fill="none" stroke={INK} strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M 18 50 Q 26 94 22 136 L 38 136" fill="none" stroke={INK} strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
         {(outfit === "cuirass" || outfit === "tunic" || outfit === "apron") && [[-22, 100], [22, 100]].map(([x, y], i) => (
           <path key={i} d={`M ${x - 8} ${y - 6} Q ${x} ${y - 14} ${x + 8} ${y - 6}`} fill="none" stroke="#FFFFFF" strokeOpacity="0.0" />
         ))}
@@ -248,17 +271,9 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
 
         </>)}
         {show("armB") && (<>
-        {/* back arm */}
-        <g transform={`translate(-40, -24) rotate(${pose.armLeftDeg})`}>
-          <path d="M 0 0 Q -22 34 -12 72" fill="none" stroke={INK} strokeWidth="7" strokeLinecap="round" />
-          <circle cx="-12" cy="74" r="8.5" fill={INK} />
-          <Sleeve side={-1} outfit={outfit} shirt={shirt} accent={accent} />
-        </g>
-
         </>)}
         {show("torso") && (<>
         {/* torso (clipped garment + cel shading) */}
-        <rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" fill={INK} stroke={INK} strokeWidth="5.2" transform="translate(-3,4.5)" />
         <g clipPath={`url(#${clipTorsoId})`}>
           <rect x="-44" y="-58" width="88" height="118" rx="44" fill={outfit === "apron" ? shirt : shirt} />
 
@@ -333,36 +348,27 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <ellipse cx="-38" cy="4" rx="34" ry="70" fill="#000000" opacity="0.16" />
           <ellipse cx="38" cy="-4" rx="18" ry="52" fill="#FFF3D4" opacity="0.24" />
         </g>
-        <rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" fill="none" stroke={INK} strokeWidth="5.2" />
+        <path d={brushRing(roundRectPts(-44, -58, 88, 118, 44), 3.2, 5.4, hid % 9)} fill={INK} fillRule="evenodd" />
 
         </>)}
         {show("armF") && (<>
-        {/* front arm */}
-        <g transform={`translate(40, -24) rotate(${pose.armRightDeg + talkNod * 1.4})`}>
-          <path d="M 0 0 Q 22 34 12 72" fill="none" stroke={INK} strokeWidth="7" strokeLinecap="round" />
-          <circle cx="12" cy="74" r="8.5" fill={INK} />
-          <Sleeve side={1} outfit={outfit} shirt={shirt} accent={accent} />
-        </g>
-
         </>)}
         {show("head") && (<>
         {/* head */}
-        <g transform={`translate(0, -84) rotate(${pose.headTiltDeg + talkNod})`}>
+        <g transform={`translate(0, -84) rotate(${layer === "all" ? pose.headTiltDeg + talkNod : 0})`}>
           {[-1, 1].map((sd) => (
             <g key={`ear${sd}`}>
               <ellipse cx={sd * (hx - 1)} cy="-2" rx="8.5" ry="11.5" fill={skin} stroke={INK} strokeWidth="4" />
               <path d={`M ${sd * (hx - 1)} -7 Q ${sd * (hx + 3)} -2 ${sd * (hx - 1)} 4`} fill="none" stroke={INK} strokeOpacity="0.55" strokeWidth="2.2" strokeLinecap="round" />
             </g>
           ))}
-          <path d={HG.full} fill={INK} stroke={INK} strokeWidth="4.4" strokeLinejoin="round" transform="translate(-2.6,3.8)" />
           <g clipPath={`url(#${clipHeadId})`}>
             <path d={HG.full} fill={skin} />
             <ellipse cx="-50" cy="14" rx="30" ry="50" fill="#E3D9DD" opacity="0.55" />
             <ellipse cx="-46" cy="18" rx="20" ry="40" fill="#D6CAD1" opacity="0.45" />
             <ellipse cx="32" cy="-24" rx="22" ry="26" fill="#FFFFFF" opacity="0.45" />
           </g>
-          <path d={HG.full} fill="none" stroke={INK} strokeWidth="4.4" strokeLinejoin="round" />
-          <path d={HG.thick} fill="none" stroke={INK} strokeWidth="7.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={brushRing(HG.pts, 3.4, 5.6, hid % 11)} fill={INK} fillRule="evenodd" />
 
           <Hair style={spec.hairStyle} c={hairC} accent={accent} />
 
