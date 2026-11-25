@@ -10,7 +10,7 @@ import { cameraFor } from "../utils/cameraModes";
 import charactersData from "../data/characters.json";
 import { RomanDioramaStage } from "../components/RomanDioramaStage";
 import * as P from "../components/props/RomanProps";
-import { CutoutCharacter, CharacterId, characterMarkup, useSvgTextures } from "../components/CutoutCharacter";
+import { CutoutCharacter, CharacterId, characterMarkup, useSvgTextures, LAYERS, restingTurn } from "../components/CutoutCharacter";
 import { AtmosphereFX } from "../components/AtmosphereFX";
 import { PostFX } from "../components/PostFX";
 import { InfographicCard } from "../components/InfographicCard";
@@ -39,7 +39,7 @@ export const StyleTestOpening: React.FC = () => {
   const grade = isNight ? RICK_WARM_TORCH_NIGHT : RICK_WARM_BRIGHT_DAY;
 
   // Characters are rasterised OUTSIDE the ThreeCanvas so the capture waits for them (see CutoutCharacter.tsx).
-  const rms = 0.35 + 0.35 * Math.abs(Math.sin(frame * 0.4));
+  const rms = Math.round((0.35 + 0.35 * Math.abs(Math.sin(Math.floor(frame / 2) * 0.8))) * 4) / 4;
   const isCard = shot.type === "akira_cutaway" || shot.type === "infographic_card";
   // emotion may be a track: [[tSec, emotion], ...] -> expression changes on story beats inside a shot
   const emoAt = (e: any): string => (Array.isArray(e) ? [...e].reverse().find(([ts]: [number, string]) => localT >= ts)?.[1] ?? e[0][1] : e);
@@ -49,7 +49,11 @@ export const StyleTestOpening: React.FC = () => {
     const talking = !c.bg && shot.bubble && shot.characters[shot.bubble.who]?.id === c.id;
     const key = `${c.id}:${c.emotion}:${talking ? 1 : 0}`;
     c._key = key;
-    markups[key] = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05 });
+    const turn = restingTurn(c.id);
+    LAYERS.forEach((l) => {
+      const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn });
+      markups[`${key}|${l}`] = mk;
+    });
   });
   const textures = useSvgTextures(markups);
 
@@ -79,7 +83,7 @@ export const StyleTestOpening: React.FC = () => {
           return <C key={i} position={pos} rotation={rot} scale={h.s ?? 1} {...(h.o || {})} />;
         })}
         {all.map((c: any, i: number) => (
-          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} texture={textures[c._key] ?? null} />
+          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[`${c._key}|${l}`] ?? null]))} />
         ))}
         <PostFX focusDistance={0} worldFocus={focusDist} bokehScale={macro ? 3.4 : 1.6} grade={grade} />
       </ThreeCanvas>

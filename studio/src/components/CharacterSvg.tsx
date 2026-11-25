@@ -15,6 +15,8 @@ export interface CharacterSvgProps {
   width?: number;
   height?: number;
   uid?: string;
+  layer?: "all" | "lower" | "armB" | "torso" | "armF" | "head";
+  turn?: number; // -1..1 head 3/4 turn (face features slide + compress)
 }
 
 const INK = "#231A29";
@@ -162,8 +164,9 @@ const Sleeve: React.FC<{ side: 1 | -1; outfit: string; shirt: string; accent: st
 };
 
 export const CharacterSvg: React.FC<CharacterSvgProps> = ({
-  characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0",
+  characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0", layer = "all", turn = 0,
 }) => {
+  const show = (l: string) => layer === "all" || layer === l;
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
 
@@ -206,6 +209,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         <clipPath id={clipHeadId}><path d={HG.full} /></clipPath>
       </defs>
       <g transform={`translate(140, ${228 + breathY}) rotate(${pose.torsoLeanDeg})`}>
+        {show("lower") && (<>
         {/* cape behind body */}
         {outfit === "cuirass" && <path d="M -40 -50 Q -70 20 -58 112 Q 0 124 58 112 Q 70 20 40 -50 Z" fill="#B91C1C" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />}
 
@@ -242,6 +246,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <rect key={i} x={x - 8} y="44" width="16" height="32" rx="5" fill="#C29538" stroke={INK} strokeWidth="3" />
         ))}
 
+        </>)}
+        {show("armB") && (<>
         {/* back arm */}
         <g transform={`translate(-40, -24) rotate(${pose.armLeftDeg})`}>
           <path d="M 0 0 Q -22 34 -12 72" fill="none" stroke={INK} strokeWidth="7" strokeLinecap="round" />
@@ -249,7 +255,10 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <Sleeve side={-1} outfit={outfit} shirt={shirt} accent={accent} />
         </g>
 
+        </>)}
+        {show("torso") && (<>
         {/* torso (clipped garment + cel shading) */}
+        <rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" fill={INK} stroke={INK} strokeWidth="5.2" transform="translate(-3,4.5)" />
         <g clipPath={`url(#${clipTorsoId})`}>
           <rect x="-44" y="-58" width="88" height="118" rx="44" fill={outfit === "apron" ? shirt : shirt} />
 
@@ -326,6 +335,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         </g>
         <rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" fill="none" stroke={INK} strokeWidth="5.2" />
 
+        </>)}
+        {show("armF") && (<>
         {/* front arm */}
         <g transform={`translate(40, -24) rotate(${pose.armRightDeg + talkNod * 1.4})`}>
           <path d="M 0 0 Q 22 34 12 72" fill="none" stroke={INK} strokeWidth="7" strokeLinecap="round" />
@@ -333,6 +344,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <Sleeve side={1} outfit={outfit} shirt={shirt} accent={accent} />
         </g>
 
+        </>)}
+        {show("head") && (<>
         {/* head */}
         <g transform={`translate(0, -84) rotate(${pose.headTiltDeg + talkNod})`}>
           {[-1, 1].map((sd) => (
@@ -341,6 +354,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
               <path d={`M ${sd * (hx - 1)} -7 Q ${sd * (hx + 3)} -2 ${sd * (hx - 1)} 4`} fill="none" stroke={INK} strokeOpacity="0.55" strokeWidth="2.2" strokeLinecap="round" />
             </g>
           ))}
+          <path d={HG.full} fill={INK} stroke={INK} strokeWidth="4.4" strokeLinejoin="round" transform="translate(-2.6,3.8)" />
           <g clipPath={`url(#${clipHeadId})`}>
             <path d={HG.full} fill={skin} />
             <ellipse cx="-50" cy="14" rx="30" ry="50" fill="#E3D9DD" opacity="0.55" />
@@ -352,7 +366,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
 
           <Hair style={spec.hairStyle} c={hairC} accent={accent} />
 
-          <g transform="translate(3.5,0)">
+          <g transform={`translate(${3.5 + turn * 11},0) scale(${1 - Math.abs(turn) * 0.14},1)`}>
           {/* eyes */}
           {isShock ? (
             T.shock === 0 ? (<>
@@ -441,6 +455,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
             </g>
           )}
         </g>
+        </>)}
       </g>
     </svg>
   );
