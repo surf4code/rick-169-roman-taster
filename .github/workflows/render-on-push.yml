@@ -60,7 +60,7 @@ jobs:
         run: |
           mkdir -p out/chunks
           START_TS=$(python3 -c 'import time; print(time.time())')
-          npx remotion render src/index.ts "${{ needs.plan.outputs.composition }}"             "out/chunks/part_${{ matrix.idx }}.mp4"             --frames="${{ matrix.start }}-${{ matrix.end }}"             --codec=h264 --crf=18 --pixel-format=yuv420p             --gl=swangle --concurrency=2 --timeout=120000 --muted
+          npx remotion render src/index.ts "${{ needs.plan.outputs.composition }}"             "out/chunks/part_${{ matrix.idx }}.mp4"             --frames="${{ matrix.start }}-${{ matrix.end }}"             --codec=h264 --crf=14 --pixel-format=yuv420p             --gl=swangle --concurrency=2 --timeout=120000 --muted
           python3 - << EOF
           import json, time
           elapsed = time.time() - float("${START_TS}")

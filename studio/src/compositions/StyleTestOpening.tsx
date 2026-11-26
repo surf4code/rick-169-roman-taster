@@ -67,7 +67,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
     c._key = `${c.id}:${c.emotion}:${talking ? 1 : 0}`;
     const turn = restingTurn(c.id);
     LAYERS.forEach((l) => {
-      const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn, look: miko ? "miko" : "rick" });
+      const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn, look: miko ? "miko" : "rick", collar: !!c.collar });
       markups[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] = mk;
     });
   });
@@ -110,7 +110,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         {all.map((c: any, i: number) => (
           <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
-        <PostFX focusDistance={0} worldFocus={focusDist} focusRange={miko ? Math.max(0.9, focusDist * 0.4) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 3.6 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
+        <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 720 : 360} focusRange={miko ? Math.max(0.7, focusDist * 0.26) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 5.4 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
       </ThreeCanvas>
 
       {(shot.tags || []).map((tg: any, i: number) => {
