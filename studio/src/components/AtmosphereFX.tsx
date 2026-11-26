@@ -21,14 +21,14 @@ function getShaftTexture() {
 }
 
 /** Soft light shafts (feathered additive planes) + tiny drifting dust motes. */
-export const AtmosphereFX: React.FC<{ count?: number; seed?: number; warmTorch?: boolean }> = ({ count = 40, seed = 9001, warmTorch = false }) => {
+export const AtmosphereFX: React.FC<{ count?: number; seed?: number; warmTorch?: boolean }> = ({ count = 12, seed = 9001, warmTorch = false }) => {
   const frame = useCurrentFrame();
   const tex = useMemo(() => getShaftTexture(), []);
   const particles = useMemo(() => {
     const rng = mulberry32(seed);
     return Array.from({ length: count }, () => ({
       x: (rng() - 0.5) * 9.0, y: rng() * 4.2 + 0.3, z: (rng() - 0.5) * 5.0,
-      speedY: 0.002 + rng() * 0.003, phase: rng() * Math.PI * 2, size: 0.008 + rng() * 0.012,
+      speedY: 0.002 + rng() * 0.003, phase: rng() * Math.PI * 2, size: 0.016 + rng() * 0.022,
     }));
   }, [count, seed]);
   const col = warmTorch ? "#FFC27A" : "#FFF0BE";
@@ -46,7 +46,7 @@ export const AtmosphereFX: React.FC<{ count?: number; seed?: number; warmTorch?:
         return (
           <mesh key={i} position={[x, y, p.z]}>
             <sphereGeometry args={[p.size, 6, 6]} />
-            <meshBasicMaterial color="#FFFBEB" transparent opacity={0.35} toneMapped={false} />
+            <meshBasicMaterial color="#FFD79A" transparent opacity={0.3} toneMapped={false} />
           </mesh>
         );
       })}

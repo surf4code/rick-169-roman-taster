@@ -10,6 +10,7 @@ import { cameraFor } from "../utils/cameraModes";
 import charactersData from "../data/characters.json";
 import { RomanDioramaStage } from "../components/RomanDioramaStage";
 import * as P from "../components/props/RomanProps";
+import { CollarTag } from "../components/props/CollarTag";
 import { CutoutCharacter, CharacterId, characterMarkup, useSvgTextures, LAYERS, restingTurn } from "../components/CutoutCharacter";
 import { AtmosphereFX } from "../components/AtmosphereFX";
 import { PostFX } from "../components/PostFX";
@@ -17,16 +18,16 @@ import { InfographicCard } from "../components/InfographicCard";
 import { AkiraCutaway, AkiraExpression } from "../components/AkiraCutaway";
 import { RoleTag, Bubble, projectToScreen } from "../components/Overlays";
 
-const Rig: React.FC<{ mode: string; localT: number; dur: number }> = ({ mode, localT, dur }) => {
+const Rig: React.FC<{ mode: string; localT: number; dur: number; focus: [number, number, number] }> = ({ mode, localT, dur, focus }) => {
   const { camera } = useThree();
-  const cs = cameraFor(mode, localT, dur);
+  const cs = cameraFor(mode, localT, dur, focus);
   (camera as THREE.PerspectiveCamera).fov = cs.fov;
   (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
   place(camera as any, cs.pos, cs.look, cs.roll);
   return null;
 };
 
-const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl };
+const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl, CollarTag };
 
 const normalise = (plan: any) => ({
   ...plan,
@@ -72,19 +73,22 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
   if (shot.type === "akira_cutaway") return <AkiraCutaway expression={(shot.akiraExpression || "smirk") as AkiraExpression} bubbleText={shot.bubble?.text} />;
   if (shot.type === "infographic_card") return <InfographicCard {...shot.infographic} />;
 
-  const cs = cameraFor(shot.camera, localT, dur);
+  const focus: [number, number, number] = shot.focus ?? (shot.characters && shot.characters[0] ? [shot.characters[0].pos[0], 0, shot.characters[0].pos[2]] : [0, 0, 0]);
+  const cs = cameraFor(shot.camera, localT, dur, focus);
   const headPos = (c: any): [number, number, number] => {
     const spec = (charactersData.cast as Record<string, any>)[c.id];
     return [c.pos[0], 2.15 * (c.scale ?? 1) * (spec?.heightScale ?? 1) + 0.25, c.pos[2]];
   };
   const focusDist = Math.hypot(cs.pos[0] - cs.look[0], cs.pos[1] - cs.look[1], cs.pos[2] - cs.look[2]);
-  const macro = shot.camera === "macro_push" || shot.camera === "slowmo_impact";
+  const macro = shot.camera === "macro_push" || shot.camera === "slowmo_impact" || shot.camera === "insert_macro";
+  const cine = !!shot.cine;
+  const tight = ["cu_hero", "low_hero", "ecu_face"].includes(shot.camera);
 
   return (
     <AbsoluteFill style={{ backgroundColor: grade.bgColor }}>
       <ThreeCanvas width={width} height={height} dpr={1.75} gl={{ antialias: true }} shadows camera={{ fov: 38, near: 0.05, far: 80 }}>
-        <Rig mode={shot.camera} localT={localT} dur={dur} />
-        <RomanDioramaStage setId={shot.set} grade={grade} />
+        <Rig mode={shot.camera} localT={localT} dur={dur} focus={focus} />
+        <RomanDioramaStage setId={shot.set} grade={grade} cine={cine} />
         <AtmosphereFX warmTorch={isNight} />
         {(shot.hero || []).map((h: any, i: number) => {
           const C = HERO[h.t];
@@ -97,7 +101,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         {all.map((c: any, i: number) => (
           <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
-        <PostFX focusDistance={0} worldFocus={focusDist} bokehScale={macro ? 3.4 : 1.6} grade={grade} />
+        <PostFX focusDistance={0} worldFocus={focusDist} focusRange={shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
       </ThreeCanvas>
 
       {(shot.tags || []).map((tg: any, i: number) => {

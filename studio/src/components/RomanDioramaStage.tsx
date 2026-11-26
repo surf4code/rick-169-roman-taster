@@ -18,7 +18,7 @@ const MAP: Record<string, React.FC<any>> = {
 /** Number of dressed props in a set (used by the density QA gate). */
 export const setObjectCount = (setId: string) => buildSet(setId).items.length;
 
-export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset }> = ({ setId, grade }) => {
+export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; cine?: boolean }> = ({ setId, grade, cine = false }) => {
   const frame = useCurrentFrame();
   const spec = useMemo(() => buildSet(setId), [setId]);
   const wallTex = useMemo(() => wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night), [spec]);
@@ -32,10 +32,11 @@ export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset }> 
       <color attach="background" args={[spec.night ? "#6C86C9" : spec.sky]} />
       <ambientLight intensity={grade.ambientIntensity} />
       <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
-      <directionalLight position={[4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity} color={grade.keyLightColor} castShadow
+      <directionalLight position={cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
         shadow-mapSize-width={1024} shadow-mapSize-height={1024}
         shadow-camera-left={-9} shadow-camera-right={9} shadow-camera-top={9} shadow-camera-bottom={-9} shadow-camera-near={0.5} shadow-camera-far={30} shadow-bias={-0.0004} />
       <directionalLight position={[-5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={"#9FB0F0"} />
+      {cine && <directionalLight position={[5, 2.6, -4]} intensity={1.1} color="#FFD3A0" />}
       {spec.torchLights.map((p, i) => <pointLight key={i} position={p} intensity={spec.night ? 5 : 3} distance={9} decay={1.6} color="#FFB45E" />)}
 
       {/* floor */}

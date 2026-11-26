@@ -3,6 +3,7 @@ import { Composition } from "remotion";
 import { StyleTestOpening } from "./compositions/StyleTestOpening";
 import shotPlan from "./data/styleTestShots.json";
 import timedPlan from "./data/shots_timed.json";
+import first20 from "./data/first20.json";
 import { SetTest } from "./compositions/SetTest";
 import { CharacterConsistencySheet } from "./compositions/CharacterConsistencySheet";
 
@@ -25,6 +26,15 @@ export const RemotionRoot: React.FC = () => (
       fps={30}
       width={1920}
       height={1080}
+    />
+    <Composition
+      id="First20"
+      component={StyleTestOpening as any}
+      durationInFrames={600}
+      fps={30}
+      width={1920}
+      height={1080}
+      defaultProps={{ plan: first20 }}
     />
     <Composition
       id="EpisodePreview"

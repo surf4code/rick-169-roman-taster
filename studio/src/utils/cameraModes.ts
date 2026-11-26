@@ -4,7 +4,8 @@ export type V3 = [number, number, number];
 export interface CamState { pos: V3; look: V3; roll: number; fov: number; }
 
 /** Zack-D-Films style camera vocabulary. Pure function of (mode, time in shot, shot duration). */
-export function cameraFor(mode: string, localT: number, dur: number): CamState {
+export function cameraFor(mode: string, localT: number, dur: number, f: V3 = [0, 0, 0]): CamState {
+  const A = (v: V3): V3 => [v[0] + f[0], v[1] + f[1], v[2] + f[2]];
   const u = Math.min(1, Math.max(0, localT / Math.max(dur, 0.1)));
   let pos: V3 = [0, 1.5, 5.2];
   let look: V3 = [0, 1.15, 0];
@@ -41,6 +42,17 @@ export function cameraFor(mode: string, localT: number, dur: number): CamState {
       pos = kfVec3(u, [[0, [0, 4.8, 5.4]], [1, [0, 1.6, 4.2]]], easeInOut); look = [0, 1.0, 0]; break;
     case "dutch_punch":
       pos = kfVec3(u, [[0, [0.4, 1.35, 4.0]], [1, [0.1, 1.3, 2.7]]], easeOut); look = [0, 1.3, 0]; roll = 0.07; break;
+    // --- Rick-style cinematography (all relative to the focus point f; none are static) ---
+    case "wide_est":
+      pos = A(kfVec3(u, [[0, [-0.9, 1.5, 6.0]], [1, [0.3, 1.38, 4.7]]])); look = A([0, 1.1, 0]); fov = 40; break;
+    case "cu_hero":   // head ~45% of frame height, character on the right third
+      pos = A(kfVec3(u, [[0, [1.0, 1.46, 2.6]], [1, [0.55, 1.42, 2.0]]], easeOut)); look = A([-0.3, 1.38, 0]); fov = 32; break;
+    case "low_hero":  // low-angle hero shot with push-in
+      pos = A(kfVec3(u, [[0, [0.8, 0.45, 3.1]], [1, [0.35, 0.62, 2.3]]], easeOut)); look = A(kfVec3(u, [[0, [-0.25, 1.4, 0]], [1, [-0.2, 1.55, 0]]])); fov = 36; break;
+    case "ecu_face":  // extreme close-up on the face
+      pos = A(kfVec3(u, [[0, [0.5, 1.42, 2.3]], [1, [0.3, 1.4, 1.85]]], easeOut)); look = A([-0.1, 1.36, 0]); fov = 30; break;
+    case "insert_macro": // prop insert
+      pos = A(kfVec3(u, [[0, [0.3, 0.1, 1.9]], [1, [0.08, 0.04, 1.45]]], easeOut)); look = A([0, 0.05, 0]); roll = 0.025; fov = 30; break;
     default: break;
   }
   return { pos, look, roll, fov };
