@@ -1,0 +1,467 @@
+{
+ "look": "miko",
+ "fps": 30,
+ "total_frames": 600,
+ "shots": [
+  {
+   "id": "N01",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 0,
+   "durFrames": 180,
+   "narration": "You're born in Rome, in the year 31, and you already have an owner.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 0.95,
+     "emotion": [
+      [
+       0,
+       "cradle_calm"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     0.15,
+     1.0,
+     1.75
+    ],
+    "to": [
+     0.35,
+     1.38,
+     4.5
+    ],
+    "look": [
+     -0.1,
+     0.98,
+     0
+    ],
+    "lookTo": [
+     0,
+     1.12,
+     0
+    ],
+    "fov": 34,
+    "fovTo": 38
+   },
+   "baby": {
+    "p": [
+     -0.12,
+     0.98,
+     0.14
+    ],
+    "s": 0.8
+   },
+   "crowd": [
+    {
+     "id": "servant_b",
+     "pos": [
+      -2.8,
+      0,
+      -2.6
+     ],
+     "scale": 0.78,
+     "emotion": "sad_slump"
+    }
+   ],
+   "plates": [
+    {
+     "text": "Rome",
+     "sub": "31 AD",
+     "at": 0.4
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "You",
+     "color": "#F2A53A",
+     "at": 1.8,
+     "pos": [
+      -0.42,
+      1.2,
+      0.2
+     ]
+    }
+   ]
+  },
+  {
+   "id": "N02",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 180,
+   "durFrames": 60,
+   "narration": "It isn't your mother.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 1.05,
+     "emotion": [
+      [
+       0,
+       "palms_out"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     0.4,
+     1.45,
+     3.9
+    ],
+    "to": [
+     0.2,
+     1.43,
+     3.65
+    ],
+    "look": [
+     0,
+     1.3,
+     0
+    ],
+    "fov": 34
+   },
+   "tags": [
+    {
+     "who": 0,
+     "text": "Not your mother",
+     "color": "#D8402F",
+     "at": 0.4
+    }
+   ]
+  },
+  {
+   "id": "N03",
+   "set": "palace_corridor_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 240,
+   "durFrames": 51,
+   "narration": "It isn't your father.",
+   "characters": [
+    {
+     "id": "father",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 1.05,
+     "emotion": [
+      [
+       0,
+       "shrug_question"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     -0.5,
+     1.45,
+     3.95
+    ],
+    "to": [
+     -0.3,
+     1.45,
+     3.7
+    ],
+    "look": [
+     0,
+     1.3,
+     0
+    ],
+    "fov": 34
+   },
+   "tags": [
+    {
+     "who": 0,
+     "text": "Not your father",
+     "color": "#D8402F",
+     "at": 0.35
+    }
+   ]
+  },
+  {
+   "id": "N04",
+   "set": "banquet_hall_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 291,
+   "durFrames": 54,
+   "narration": "It's the emperor.",
+   "characters": [
+    {
+     "id": "emperor",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 1.05,
+     "emotion": [
+      [
+       0,
+       "present_palm"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     0.6,
+     0.7,
+     3.7
+    ],
+    "to": [
+     0.4,
+     0.85,
+     3.3
+    ],
+    "look": [
+     0,
+     1.55,
+     0
+    ],
+    "fov": 36
+   },
+   "crowd": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      -2.6,
+      0,
+      -2.4
+     ],
+     "scale": 0.9,
+     "emotion": "neutral"
+    },
+    {
+     "id": "palace_guard",
+     "pos": [
+      2.6,
+      0,
+      -2.4
+     ],
+     "scale": 0.9,
+     "emotion": "neutral"
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "The emperor",
+     "color": "#7C5CC4",
+     "at": 0.3
+    }
+   ]
+  },
+  {
+   "id": "N05",
+   "set": "palace_corridor_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 345,
+   "durFrames": 75,
+   "narration": "Your mother is a slave in the imperial household,",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      -0.3,
+      0,
+      0
+     ],
+     "scale": 1.05,
+     "emotion": [
+      [
+       0,
+       "scrub"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     -1.5,
+     1.9,
+     3.8
+    ],
+    "to": [
+     -0.9,
+     1.7,
+     3.45
+    ],
+    "look": [
+     0.1,
+     0.75,
+     0
+    ],
+    "fov": 36
+   },
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      2.1,
+      0,
+      -1.2
+     ],
+     "scale": 0.85,
+     "emotion": "scrub"
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "Imperial slave",
+     "color": "#7C5CC4",
+     "at": 0.7
+    }
+   ]
+  },
+  {
+   "id": "N06",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 420,
+   "durFrames": 81,
+   "narration": "which makes you one too.",
+   "characters": [],
+   "cam": {
+    "from": [
+     0.3,
+     0.95,
+     2.7
+    ],
+    "to": [
+     0.1,
+     0.9,
+     2.25
+    ],
+    "look": [
+     0,
+     0.5,
+     0
+    ],
+    "fov": 34
+   },
+   "baby": {
+    "p": [
+     0,
+     0.46,
+     0.1
+    ],
+    "s": 1.0,
+    "rock": 0.3
+   },
+   "hero": [
+    {
+     "t": "Cushion",
+     "p": [
+      0,
+      0.12,
+      0.05
+     ],
+     "s": 1.5
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "Also a slave",
+     "color": "#F2A53A",
+     "at": 0.7,
+     "pos": [
+      0,
+      1.0,
+      0.1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "N07",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 501,
+   "durFrames": 99,
+   "narration": "The Romans have a word for a baby like you: verna.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 1.05,
+     "emotion": [
+      [
+       0,
+       "cradle_calm"
+      ]
+     ]
+    }
+   ],
+   "cam": {
+    "from": [
+     -0.3,
+     1.45,
+     3.7
+    ],
+    "to": [
+     -0.1,
+     1.4,
+     3.35
+    ],
+    "look": [
+     0,
+     1.3,
+     0
+    ],
+    "fov": 34
+   },
+   "baby": {
+    "p": [
+     -0.12,
+     1.02,
+     0.14
+    ],
+    "s": 0.85,
+    "rock": 0.7
+   },
+   "plates": [
+    {
+     "text": "Verna",
+     "sub": "a slave born in the house",
+     "at": 0.3
+    }
+   ]
+  }
+ ]
+}

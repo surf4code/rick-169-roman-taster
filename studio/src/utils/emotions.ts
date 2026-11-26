@@ -2,7 +2,8 @@ export type EmotionName =
   | "neutral" | "curious" | "talking_animated" | "shocked"
   | "skeptical" | "happy_relief" | "nervous_sweat" | "focused_reading"
   | "confident_point" | "embarrassed_blush" | "sad_slump" | "angry_glare"
-  | "thinking_chin" | "surprised_jump" | "shrug_question" | "celebrate_arms_up";
+  | "thinking_chin" | "surprised_jump" | "shrug_question" | "celebrate_arms_up"
+  | "palms_out" | "present_palm" | "scrub" | "cradle_calm" | "wash_face";
 
 export interface EmotionPose {
   headTiltDeg: number;
@@ -35,5 +36,10 @@ export const EMOTION_LIBRARY: Record<EmotionName, EmotionPose> = {
   thinking_chin: { headTiltDeg: 9, torsoLeanDeg: 2, browLeftDeg: 10, browRightDeg: -10, eyeScaleY: 0.95, pupilOffsetX: -2, armLeftDeg: 12, armRightDeg: -42, forearmRightDeg: -95 },
   surprised_jump: { headTiltDeg: -10, torsoLeanDeg: -10, browLeftDeg: -20, browRightDeg: -20, eyeScaleY: 1.35, pupilOffsetX: 0, armLeftDeg: 85, armRightDeg: -85, forearmRightDeg: -15, showShockLines: true },
   shrug_question: { headTiltDeg: 7, torsoLeanDeg: 0, browLeftDeg: -12, browRightDeg: -12, eyeScaleY: 1.05, pupilOffsetX: 0, armLeftDeg: 48, armRightDeg: -48, forearmRightDeg: -65 },
+  palms_out: { headTiltDeg: -4, torsoLeanDeg: -2, browLeftDeg: -10, browRightDeg: -10, eyeScaleY: 1.05, pupilOffsetX: 0, armLeftDeg: 40, armRightDeg: -40, forearmRightDeg: -40 },
+  present_palm: { headTiltDeg: -3, torsoLeanDeg: 1, browLeftDeg: 4, browRightDeg: 4, eyeScaleY: 0.92, pupilOffsetX: 0, armLeftDeg: 14, armRightDeg: -60, forearmRightDeg: -30 },
+  scrub: { headTiltDeg: 10, torsoLeanDeg: 14, browLeftDeg: -12, browRightDeg: 12, eyeScaleY: 0.8, pupilOffsetX: 0, armLeftDeg: 20, armRightDeg: -20, forearmRightDeg: -10 },
+  cradle_calm: { headTiltDeg: 8, torsoLeanDeg: 2, browLeftDeg: -8, browRightDeg: -8, eyeScaleY: 0.82, pupilOffsetX: 0, armLeftDeg: 20, armRightDeg: -20, forearmRightDeg: -15, showBlush: true },
+  wash_face: { headTiltDeg: 6, torsoLeanDeg: 8, browLeftDeg: 0, browRightDeg: 0, eyeScaleY: 0.4, pupilOffsetX: 0, armLeftDeg: 30, armRightDeg: -30, forearmRightDeg: -90 },
   celebrate_arms_up: { headTiltDeg: -8, torsoLeanDeg: -4, browLeftDeg: -10, browRightDeg: -10, eyeScaleY: 1.1, pupilOffsetX: 0, armLeftDeg: 135, armRightDeg: -135, forearmRightDeg: -10 },
 };

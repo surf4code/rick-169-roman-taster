@@ -60,8 +60,8 @@ export function characterMarkup(i: CharacterMarkupInput): string {
   const blinkStart = Math.floor(rng() * (fps * 2.4));
   const localF = charFrame % cycleLen;
   const isBlinking = localF >= blinkStart && localF <= blinkStart + 3;
-  const breathY = Math.sin(charFrame * 0.12 + (seed % 7)) * 2.5;
-  const talkNod = rmsAmplitude > 0.18 ? Math.sin(charFrame * 0.65) * 3.2 * rmsAmplitude : 0;
+  const breathY = look === "miko" ? 0 : Math.sin(charFrame * 0.12 + (seed % 7)) * 2.5;
+  const talkNod = look === "miko" ? 0 : rmsAmplitude > 0.18 ? Math.sin(charFrame * 0.65) * 3.2 * rmsAmplitude : 0;
 
   const markup = renderToStaticMarkup(
     <CharacterSvg
@@ -217,22 +217,37 @@ const bowed = (a: V2, b: V2, bow: number): V2 => {
   const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy) || 1;
   return [(a[0] + b[0]) / 2 + (-dy / l) * bow, (a[1] + b[1]) / 2 + (dx / l) * bow];
 };
-const Disc: React.FC<{ p: V2; d: number; z?: number }> = ({ p, d, z = 0 }) => (
-  <mesh position={[wx(p[0]), wy(p[1]), z]} scale={[d * 0.5 * U, d * 0.5 * U, 1]}><circleGeometry args={[1, 24]} /><meshBasicMaterial {...INK_MAT} /></mesh>
+const Disc: React.FC<{ p: V2; d: number; z?: number; col?: string }> = ({ p, d, z = 0, col }) => (
+  <mesh position={[wx(p[0]), wy(p[1]), z]} scale={[d * 0.5 * U, d * 0.5 * U, 1]}><circleGeometry args={[1, 28]} /><meshBasicMaterial {...INK_MAT} {...(col ? { color: col } : {})} /></mesh>
 );
 
 /** One bone: a tapered brush ribbon (slight bow so it never looks like a ruler line). */
-const Bone: React.FC<{ a: V2; b: V2; w0: number; w1: number; bow?: number }> = ({ a, b, w0, w1, bow = 1.4 }) => {
+const Bone: React.FC<{ a: V2; b: V2; w0: number; w1: number; bow?: number; col?: string }> = ({ a, b, w0, w1, bow = 1.4, col }) => {
   const key = [a, b].map((p) => p.map((v) => v.toFixed(2)).join(",")).join("|") + w0 + w1 + bow;
   const m = bowed(a, b, bow);
   const geo = React.useMemo(() => ribbonGeometry(a, m, b, w0, w1, 0.22), [key]);
   useEffect(() => () => geo.dispose(), [geo]);
-  return <mesh geometry={geo}><meshBasicMaterial {...INK_MAT} /></mesh>;
+  return <mesh geometry={geo}><meshBasicMaterial {...INK_MAT} {...(col ? { color: col } : {})} /></mesh>;
 };
 
 /** Jointed limb: root -> joint (elbow/knee) -> tip. Two bones + a visible round joint, hand/foot blob at the tip. */
-const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; wj: number; w1: number; z: number; hand?: number; thumb?: boolean }> = ({ a, mid, b, w0, wj, w1, z, hand = 0, thumb = false }) => {
+const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; wj: number; w1: number; z: number; hand?: number; thumb?: boolean; fillU?: string; fillF?: string; skin?: string }> = ({ a, mid, b, w0, wj, w1, z, hand = 0, thumb = false, fillU, fillF, skin }) => {
   const fx = b[0] - mid[0], fy = b[1] - mid[1], fl = Math.hypot(fx, fy) || 1;
+  if (fillU && fillF) {
+    // miko arm: coloured sleeve + skin forearm/hand inside an ink outline; smooth round elbow, no bump
+    const k = 3.0;
+    return (
+      <group position={[0, 0, z]}>
+        <Bone a={a} b={mid} w0={w0} w1={wj} /><Bone a={mid} b={b} w0={wj} w1={w1} />
+        <Disc p={a} d={w0} /><Disc p={mid} d={wj} /><Disc p={b} d={hand} />
+        <group position={[0, 0, 0.004]}>
+          <Bone a={a} b={mid} w0={w0 - k} w1={wj - k} col={fillU} /><Bone a={mid} b={b} w0={wj - k} w1={w1 - k} col={fillF} />
+          <Disc p={a} d={w0 - k} col={fillU} /><Disc p={mid} d={wj - k} z={0.0005} col={fillU} />
+        </group>
+        <Disc p={b} d={hand - 3.4} z={0.006} col={skin} />
+      </group>
+    );
+  }
   return (
     <group position={[0, 0, z]}>
       <Bone a={a} b={mid} w0={w0} w1={wj} />
@@ -275,6 +290,7 @@ export interface CutoutCharacterProps {
   time?: number; // seconds (continuous, NOT stepped) -> smooth joints
   talking?: boolean;
   focus?: boolean; // speaker gets the halo
+  look?: "rick" | "miko";
 }
 
 /** Two-bone IK: elbow position for root->tip, choosing the solution whose elbow lies toward `pole`. */
@@ -297,7 +313,7 @@ function solveElbow(root: V2, tip: V2, l1: number, l2: number, pole: V2): { E: V
  * Every joint is continuous-time (never on twos). Body language comes from GESTURES (wrist targets + elbow poles), blended
  * between emotions with a small overshoot; overlapping action: wrist lags shoulder, head lags torso, chest breathes.
  */
-export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", prevEmotion, sinceT = 99, time = 0, talking = false, focus = false }) => {
+export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", prevEmotion, sinceT = 99, time = 0, talking = false, focus = false, look = "rick" }) => {
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
   const finalScale = scale * (spec.heightScale ?? 1.0);
@@ -358,6 +374,11 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
     <mesh position={[0, y, z]}><planeGeometry args={[PLANE_W, PLANE_H]} /><meshBasicMaterial map={tex} {...planeMat} /></mesh>
   );
   const hand = 13;
+  const M = look === "miko";
+  const SKIN = "#FFF5E6";
+  const longSleeve = spec.outfit === "robe" || spec.outfit === "toga";
+  const armFill = M ? { fillU: spec.outfit === "cuirass" ? "#D6A64E" : spec.bodyColor, fillF: longSleeve ? spec.bodyColor : SKIN, skin: SKIN } : {};
+  const aw = M ? [9.4, 8.2, 7.0] : [7.4, 6, 4.9];
 
   return (
     <group position={position} scale={[finalScale * (flipX ? -1 : 1), finalScale, finalScale]}>
@@ -383,9 +404,9 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
         })}
         <group position={[0, hipWorldY, 0]} rotation={[0, 0, -lean * D2R]} scale={[1, breath, 1]}>
           {plane(textures.lower, planeCy, 0.02)}
-          <Limb a={armL.S} mid={armL.E} b={armL.W} w0={7.4} wj={6} w1={4.9} z={0.06} hand={hand} thumb />
+          <Limb a={armL.S} mid={armL.E} b={armL.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.06} hand={M ? 15 : hand} thumb={!M} {...armFill} />
           {plane(textures.torso, planeCy, 0.1)}
-          <Limb a={armR.S} mid={armR.E} b={armR.W} w0={7.4} wj={6} w1={4.9} z={0.17} hand={hand} thumb />
+          <Limb a={armR.S} mid={armR.E} b={armR.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.17} hand={M ? 15 : hand} thumb={!M} {...armFill} />
           <group position={[0, neckRel, 0.24]} rotation={[0, headYaw - bodyYaw, -tilt * D2R]}>
             {plane(textures.head, planeCy - neckRel, 0)}
           </group>

@@ -39,6 +39,16 @@ export const GESTURES: Record<EmotionName, Gesture> = {
   surprised_jump: G({ R: [52, -34], L: [52, -30], poleR: [1, 0.3], poleL: [1, 0.3], browLiftL: 9, browLiftR: 9, shrug: 5 }),
   // "I don't know": shoulders up, elbows tucked and bent, palms out, eyebrows up, head sunk a little
   shrug_question: G({ R: [58, 30], L: [58, 32], poleR: down, poleL: down, shrug: 12, headDown: 4, browLiftL: 7, browLiftR: 7 }),
+  // open palms out: "it isn't me / no" (arms forward-out, elbows low)
+  palms_out: G({ R: [56, 26], L: [56, 28], poleR: down, poleL: down, shrug: 4, headDown: 1, browLiftL: 5, browLiftR: 5 }),
+  // presenting someone with one open hand raised, other relaxed
+  present_palm: G({ R: [70, 8], L: [30, 70], poleR: [0.5, 1], poleL: out, browLiftL: 2, browLiftR: 2 }),
+  // scrubbing a floor: hands low and wide, rubbing back and forth
+  scrub: G({ R: [30, 98], L: [-6, 98], poleR: [1, 0.2], poleL: [-1, 0.2], shrug: -2, headDown: -4, fidget: 2.6 }),
+  // cradling a baby: forearms crossed low under the chest, slow rock
+  cradle_calm: G({ R: [-30, 52], L: [-18, 60], poleR: down, poleL: down, shrug: -1, headDown: -2, fidget: 0.12 }),
+  // washing the face: both hands at the cheeks, circular rub
+  wash_face: G({ R: [-24, -34], L: [-24, -30], poleR: [0.8, 0.7], poleL: [0.8, 0.7], shrug: 5, headDown: 3, fidget: 1.8 }),
   celebrate_arms_up: G({ R: [38, -88], L: [38, -88], poleR: [1, 0.2], poleL: [1, 0.2], browLiftL: 4, browLiftR: 4 }),
 };
 

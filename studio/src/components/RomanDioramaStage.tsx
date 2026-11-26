@@ -50,7 +50,7 @@ const BokehOrbs: React.FC<{ spec: ReturnType<typeof buildSet>; frame: number }> 
     <group>
       {orbs.map((o, i) => (
         <sprite key={i} position={o.p} scale={[o.s, o.s, o.s]}>
-          <spriteMaterial map={tex} color={o.c} transparent opacity={o.o * (0.9 + 0.1 * Math.sin(frame * 0.05 + o.ph))} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+          <spriteMaterial map={tex} color={o.c} transparent opacity={o.o} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
         </sprite>
       ))}
     </group>

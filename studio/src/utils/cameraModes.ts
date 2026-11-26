@@ -3,6 +3,14 @@ import { kfVec3, easeOut, easeInOut, shake, slowMoTime } from "./anim";
 export type V3 = [number, number, number];
 export interface CamState { pos: V3; look: V3; roll: number; fov: number; }
 
+export interface CustomCam { from: V3; to: V3; look: V3; lookTo?: V3; fov?: number; fovTo?: number; }
+/** Hand-authored smooth move: position/look/fov eased with one smoothstep over the whole shot (no snaps, no overshoot). */
+export function customCamera(c: CustomCam, u: number): CamState {
+  const k = u * u * (3 - 2 * u);
+  const L = (a: V3, b: V3): V3 => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
+  return { pos: L(c.from, c.to), look: L(c.look, c.lookTo ?? c.look), roll: 0, fov: (c.fov ?? 36) + ((c.fovTo ?? c.fov ?? 36) - (c.fov ?? 36)) * k };
+}
+
 /** Zack-D-Films style camera vocabulary. Pure function of (mode, time in shot, shot duration). */
 export function cameraFor(mode: string, localT: number, dur: number, f: V3 = [0, 0, 0]): CamState {
   const A = (v: V3): V3 => [v[0] + f[0], v[1] + f[1], v[2] + f[2]];

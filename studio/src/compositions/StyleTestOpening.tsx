@@ -6,7 +6,8 @@ import { useThree } from "@react-three/fiber";
 import styleShotPlan from "../data/styleTestShots.json";
 import { RICK_WARM_BRIGHT_DAY, RICK_WARM_TORCH_NIGHT } from "../utils/colorGrade";
 import { place, easeOut, clamp } from "../utils/anim";
-import { cameraFor } from "../utils/cameraModes";
+import { cameraFor, customCamera } from "../utils/cameraModes";
+import { BabyProp, babyMarkup } from "../components/props/Baby";
 import charactersData from "../data/characters.json";
 import { RomanDioramaStage } from "../components/RomanDioramaStage";
 import * as P from "../components/props/RomanProps";
@@ -18,16 +19,15 @@ import { InfographicCard } from "../components/InfographicCard";
 import { AkiraCutaway, AkiraExpression } from "../components/AkiraCutaway";
 import { RoleTag, Bubble, MikoTag, MikoPlate, projectToScreen } from "../components/Overlays";
 
-const Rig: React.FC<{ mode: string; localT: number; dur: number; focus: [number, number, number] }> = ({ mode, localT, dur, focus }) => {
+const Rig: React.FC<{ cs: any }> = ({ cs }) => {
   const { camera } = useThree();
-  const cs = cameraFor(mode, localT, dur, focus);
   (camera as THREE.PerspectiveCamera).fov = cs.fov;
   (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
   place(camera as any, cs.pos, cs.look, cs.roll);
   return null;
 };
 
-const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl, CollarTag };
+const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl, Cushion: P.Cushion, CollarTag };
 
 const normalise = (plan: any) => ({
   ...plan,
@@ -44,7 +44,9 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
   const dur = shot.end - shot.start;
   const miko = shotPlan.look === "miko";
   const isNight = shot.grade === "night_torch";
-  const grade = isNight ? RICK_WARM_TORCH_NIGHT : RICK_WARM_BRIGHT_DAY;
+  const baseGrade = isNight ? RICK_WARM_TORCH_NIGHT : RICK_WARM_BRIGHT_DAY;
+  // miko mood: a bit more contrast (lower fill, stronger key, deeper vignette) so characters separate from the set
+  const grade = miko ? { ...baseGrade, ambientIntensity: baseGrade.ambientIntensity * 0.8, hemiIntensity: baseGrade.hemiIntensity * 0.82, keyLightIntensity: baseGrade.keyLightIntensity * 1.12, vignetteDarkness: 0.24 } : baseGrade;
 
   // Characters are rasterised OUTSIDE the ThreeCanvas so the capture waits for them (see CutoutCharacter.tsx).
   const rms = Math.round((0.35 + 0.35 * Math.abs(Math.sin(Math.floor(frame / 2) * 0.8))) * 4) / 4;
@@ -69,13 +71,18 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
       markups[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] = mk;
     });
   });
+  const babyOn = !!shot.baby;
+  if (babyOn) {
+    const blinkB = (t % 3.4) > 3.15;
+    markups["baby"] = babyMarkup(blinkB, shot.baby.wrap, shot.baby.band);
+  }
   const textures = useSvgTextures(markups);
 
   if (shot.type === "akira_cutaway") return <AkiraCutaway expression={(shot.akiraExpression || "smirk") as AkiraExpression} bubbleText={shot.bubble?.text} />;
   if (shot.type === "infographic_card") return <InfographicCard {...shot.infographic} />;
 
   const focus: [number, number, number] = shot.focus ?? (shot.characters && shot.characters[0] ? [shot.characters[0].pos[0], 0, shot.characters[0].pos[2]] : [0, 0, 0]);
-  const cs = cameraFor(shot.camera, localT, dur, focus);
+  const cs = shot.cam ? customCamera(shot.cam, Math.min(1, Math.max(0, localT / Math.max(dur, 0.1)))) : cameraFor(shot.camera, localT, dur, focus);
   const headPos = (c: any): [number, number, number] => {
     const spec = (charactersData.cast as Record<string, any>)[c.id];
     return [c.pos[0], 2.15 * (c.scale ?? 1) * (spec?.heightScale ?? 1) + 0.25, c.pos[2]];
@@ -88,9 +95,9 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: grade.bgColor }}>
       <ThreeCanvas width={width} height={height} dpr={1.75} gl={{ antialias: true }} shadows camera={{ fov: 38, near: 0.05, far: 80 }}>
-        <Rig mode={shot.camera} localT={localT} dur={dur} focus={focus} />
+        <Rig cs={cs} />
         <RomanDioramaStage setId={shot.set} grade={grade} cine={cine} miko={miko} />
-        <AtmosphereFX warmTorch={isNight} />
+        <AtmosphereFX warmTorch={isNight} count={miko ? 0 : 12} />
         {(shot.hero || []).map((h: any, i: number) => {
           const C = HERO[h.t];
           if (!C) return null;
@@ -99,16 +106,17 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
           const rot: [number, number, number] = [0, 0, -tip * 1.45];
           return <C key={i} position={pos} rotation={rot} scale={h.s ?? 1} {...(h.o || {})} />;
         })}
+        {babyOn && <BabyProp tex={textures["baby"] ?? null} position={shot.baby.p} scale={shot.baby.s ?? 0.55} time={frame / fps} rock={shot.baby.rock ?? 1} />}
         {all.map((c: any, i: number) => (
-          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
+          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
         <PostFX focusDistance={0} worldFocus={focusDist} focusRange={miko ? Math.max(0.9, focusDist * 0.4) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 3.6 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
       </ThreeCanvas>
 
       {(shot.tags || []).map((tg: any, i: number) => {
         const c = shot.characters[tg.who];
-        if (!c) return null;
-        const sp = projectToScreen(headPos(c), cs);
+        if (!c && !tg.pos) return null;
+        const sp = projectToScreen(tg.pos ?? headPos(c), cs);
         if (miko) return <MikoTag key={i} x={sp.x} y={sp.y} text={tg.text} color={tg.color} frame={frame} appearFrame={Math.round((shot.start + tg.at) * fps)} fps={fps} />;
         return <RoleTag key={i} x={sp.x} y={sp.y} text={tg.text} color={tg.color} frame={frame} appearFrame={Math.round((shot.start + tg.at) * fps)} fps={fps} />;
       })}
@@ -122,7 +130,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
       ))}
       {miko && (() => {
         // soft dip to warm cream at shot boundaries instead of a hard cut
-        const D = 0.3;
+        const D = 0.14;
         const idx = shotPlan.shots.indexOf(shot);
         const inA = idx > 0 ? 1 - clamp(localT / D) : 0;
         const outA = idx < shotPlan.shots.length - 1 ? clamp((localT - (dur - D)) / D) : 0;
