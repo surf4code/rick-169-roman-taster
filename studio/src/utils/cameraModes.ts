@@ -53,6 +53,17 @@ export function cameraFor(mode: string, localT: number, dur: number, f: V3 = [0,
       pos = A(kfVec3(u, [[0, [0.5, 1.42, 2.3]], [1, [0.3, 1.4, 1.85]]], easeOut)); look = A([-0.1, 1.36, 0]); fov = 30; break;
     case "insert_macro": // prop insert
       pos = A(kfVec3(u, [[0, [0.3, 0.1, 1.9]], [1, [0.08, 0.04, 1.45]]], easeOut)); look = A([0, 0.05, 0]); roll = 0.025; fov = 30; break;
+    // --- Miko-style calm camera: constant fov, tiny travel (<= ~0.9 world units), symmetric ease, never a punch/zoom ---
+    case "calm_wide":   // wide establishing, gentle lateral glide
+      pos = A(kfVec3(u, [[0, [-0.55, 1.55, 6.1]], [1, [0.55, 1.5, 5.8]]])); look = A([0, 1.15, 0]); fov = 40; break;
+    case "calm_mid":    // medium shot, slow glide to the right
+      pos = A(kfVec3(u, [[0, [-0.45, 1.42, 3.9]], [1, [0.45, 1.4, 3.75]]])); look = A([0, 1.22, 0]); fov = 36; break;
+    case "calm_mid_l":  // medium shot, slow glide to the left
+      pos = A(kfVec3(u, [[0, [0.45, 1.42, 3.9]], [1, [-0.45, 1.4, 3.75]]])); look = A([0, 1.22, 0]); fov = 36; break;
+    case "calm_close":  // chest-up, almost still, 6% drift
+      pos = A(kfVec3(u, [[0, [0.3, 1.36, 3.7]], [1, [-0.1, 1.34, 3.55]]])); look = A([0, 1.25, 0]); fov = 34; break;
+    case "calm_low":    // low-angle hold, slow rise
+      pos = A(kfVec3(u, [[0, [0.5, 0.75, 4.3]], [1, [0.2, 0.95, 4.1]]])); look = A([0, 1.45, 0]); fov = 37; break;
     default: break;
   }
   return { pos, look, roll, fov };

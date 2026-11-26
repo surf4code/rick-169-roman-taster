@@ -43,11 +43,12 @@ export interface CharacterMarkupInput {
   stepOnTwos?: boolean;
   layer?: "all" | "lower" | "torso" | "head";
   turn?: number;
+  look?: "rick" | "miko";
 }
 
 /** Pure function: the exact SVG markup for one character on one frame (blink/breath/talk included). */
 export function characterMarkup(i: CharacterMarkupInput): string {
-  const { characterId, emotion, frame, fps, rmsAmplitude = 0, spectralCentroid = 0.5, stepOnTwos = true, layer = "all", turn = 0 } = i;
+  const { characterId, emotion, frame, fps, rmsAmplitude = 0, spectralCentroid = 0.5, stepOnTwos = true, layer = "all", turn = 0, look = "rick" } = i;
   const charFrame = stepOnTwos ? Math.floor(frame / 2) * 2 : frame;
   let seed = 2166136261;
   for (let k = 0; k < characterId.length; k++) seed = Math.imul(seed ^ characterId.charCodeAt(k), 16777619);
@@ -62,7 +63,7 @@ export function characterMarkup(i: CharacterMarkupInput): string {
   const breathY = Math.sin(charFrame * 0.12 + (seed % 7)) * 2.5;
   const talkNod = rmsAmplitude > 0.18 ? Math.sin(charFrame * 0.65) * 3.2 * rmsAmplitude : 0;
 
-  return renderToStaticMarkup(
+  const markup = renderToStaticMarkup(
     <CharacterSvg
       characterId={characterId}
       emotion={emotion}
@@ -74,10 +75,13 @@ export function characterMarkup(i: CharacterMarkupInput): string {
       uid={`${characterId}-3d`}
       layer={layer}
       turn={turn}
+      look={look}
       browLiftL={GESTURES[emotion]?.browLiftL ?? 0}
       browLiftR={GESTURES[emotion]?.browLiftR ?? 0}
     />
   );
+  // miko look: hairline ink (outline widths x0.62; brush-ring outlines are fills and already set thin)
+  return look === "miko" ? markup.replace(/stroke-width="([0-9.]+)"/g, (_m, w) => `stroke-width="${(parseFloat(w) * 0.62).toFixed(2)}"`) : markup;
 }
 
 function toDataUrl(markup: string): string {

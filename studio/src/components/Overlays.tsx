@@ -47,3 +47,40 @@ export const Bubble: React.FC<{ x: number; y: number; text: string; frame: numbe
     </div>
   );
 };
+
+const MIKO_FONT = "'Trebuchet MS', 'Gill Sans', 'Segoe UI', Arial, sans-serif";
+const plateStyle: React.CSSProperties = {
+  background: "rgba(46,28,18,0.92)", border: "2px solid #E9B863", borderRadius: 6, color: "#FFEBC8", fontFamily: MIKO_FONT, fontWeight: 800, textTransform: "uppercase",
+  boxShadow: "inset 0 0 0 3px #2E1C12, inset 0 0 0 4px rgba(233,184,99,0.55), 0 10px 30px rgba(40,20,10,0.35), 0 0 28px rgba(255,190,90,0.25)",
+};
+
+/** Miko-style floating role tag: calm fade/rise, thin gold leader line, no bounce. */
+export const MikoTag: React.FC<{ x: number; y: number; text: string; color: string; frame: number; appearFrame: number; fps: number }> = ({ x, y, text, color, frame, appearFrame, fps }) => {
+  if (frame < appearFrame) return null;
+  const a = spring({ frame: frame - appearFrame, fps, config: { damping: 26, stiffness: 70 } });
+  const float = Math.sin(frame * 0.045) * 3;
+  const cx = Math.min(1920 - 40, Math.max(40, x));
+  return (
+    <div style={{ position: "absolute", left: cx, top: Math.max(120, y) + float + (1 - a) * 18, opacity: a, transform: "translate(-50%, -100%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ ...plateStyle, padding: "9px 24px", fontSize: 28, letterSpacing: 4, whiteSpace: "nowrap", display: "flex", alignItems: "center" }}>
+        <span style={{ width: 13, height: 13, borderRadius: 7, background: color, marginRight: 14, boxShadow: `0 0 12px ${color}` }} />{text}
+      </div>
+      <div style={{ width: 2, height: 30, background: "linear-gradient(#E9B863, rgba(233,184,99,0))" }} />
+    </div>
+  );
+};
+
+/** Miko-style location/time plate (screen space, top-left), fades in and eases to rest. */
+export const MikoPlate: React.FC<{ text: string; sub?: string; frame: number; appearFrame: number; fps: number; fadeOutAt?: number }> = ({ text, sub, frame, appearFrame, fps, fadeOutAt }) => {
+  if (frame < appearFrame) return null;
+  const a = spring({ frame: frame - appearFrame, fps, config: { damping: 30, stiffness: 60 } });
+  const out = fadeOutAt === undefined ? 1 : 1 - Math.min(1, Math.max(0, (frame - fadeOutAt) / 10));
+  return (
+    <div style={{ position: "absolute", top: 64, left: 72, opacity: a * out, transform: `translateX(${(1 - a) * -26}px)` }}>
+      <div style={{ ...plateStyle, padding: "12px 30px", fontSize: 38, letterSpacing: 6 }}>
+        {text}
+        {sub && <div style={{ fontSize: 20, letterSpacing: 4, fontWeight: 600, color: "#E9B863", marginTop: 4 }}>{sub}</div>}
+      </div>
+    </div>
+  );
+};

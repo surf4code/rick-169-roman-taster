@@ -1,0 +1,194 @@
+{
+ "look": "miko",
+ "fps": 30,
+ "total_frames": 600,
+ "shots": [
+  {
+   "id": "M01",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_wide",
+   "cine": true,
+   "startFrame": 0,
+   "durFrames": 165,
+   "narration": "You're born in Rome, in the year 31, and you already have an owner.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 0.9,
+     "emotion": [
+      [
+       0,
+       "happy_relief"
+      ]
+     ]
+    }
+   ],
+   "crowd": [
+    {
+     "id": "servant_b",
+     "pos": [
+      -2.6,
+      0,
+      -2.6
+     ],
+     "scale": 0.75,
+     "emotion": "sad_slump"
+    }
+   ],
+   "plates": [
+    {
+     "text": "Rome",
+     "sub": "31 AD",
+     "at": 0.5
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "Your mother",
+     "color": "#F2A53A",
+     "at": 2.6
+    }
+   ]
+  },
+  {
+   "id": "M02",
+   "set": "banquet_hall_day",
+   "grade": "day",
+   "camera": "calm_mid_l",
+   "cine": true,
+   "startFrame": 165,
+   "durFrames": 150,
+   "narration": "It isn't your mother. It isn't your father. It's the emperor.",
+   "characters": [
+    {
+     "id": "palace_guard",
+     "pos": [
+      0.9,
+      0,
+      0
+     ],
+     "scale": 0.85,
+     "emotion": "angry_glare"
+    }
+   ],
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      -2.4,
+      0,
+      -2.4
+     ],
+     "scale": 0.75,
+     "emotion": "nervous_sweat"
+    },
+    {
+     "id": "cook",
+     "pos": [
+      2.9,
+      0,
+      -2.2
+     ],
+     "scale": 0.75,
+     "emotion": "shocked"
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "The emperor's guard",
+     "color": "#D8402F",
+     "at": 1.6
+    }
+   ]
+  },
+  {
+   "id": "M03",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_mid",
+   "cine": true,
+   "startFrame": 315,
+   "durFrames": 185,
+   "narration": "Your mother is a slave in the imperial household, which makes you one too.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 0.9,
+     "emotion": [
+      [
+       0,
+       "sad_slump"
+      ]
+     ]
+    }
+   ],
+   "crowd": [
+    {
+     "id": "servant_a",
+     "pos": [
+      2.5,
+      0,
+      -2.6
+     ],
+     "scale": 0.75,
+     "emotion": "sad_slump"
+    }
+   ],
+   "tags": [
+    {
+     "who": 0,
+     "text": "Imperial slave",
+     "color": "#7C5CC4",
+     "at": 1.2
+    }
+   ]
+  },
+  {
+   "id": "M04",
+   "set": "palace_quarters_day",
+   "grade": "day",
+   "camera": "calm_close",
+   "cine": true,
+   "startFrame": 500,
+   "durFrames": 100,
+   "narration": "The Romans have a word for a baby like you: verna.",
+   "characters": [
+    {
+     "id": "mother",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "scale": 0.9,
+     "emotion": [
+      [
+       0,
+       "sad_slump"
+      ]
+     ]
+    }
+   ],
+   "plates": [
+    {
+     "text": "Verna",
+     "sub": "a slave born in the house",
+     "at": 0.3
+    }
+   ]
+  }
+ ]
+}
