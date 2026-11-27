@@ -122,9 +122,11 @@ jobs:
           else
             cp out/silent.mp4 out/final.mp4
           fi
+          ffmpeg -y -i out/final.mp4 -vf fps=30 -c:v libx264 -crf 14 -preset veryfast -pix_fmt yuv420p -c:a copy out/final_30fps.mp4
       - uses: actions/upload-artifact@v4
         with:
           name: final-video-and-qa
           path: |
             out/final.mp4
+            out/final_30fps.mp4
             out/qa/

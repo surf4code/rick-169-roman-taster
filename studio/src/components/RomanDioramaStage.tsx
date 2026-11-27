@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import * as THREE from "three";
-import { useCurrentFrame } from "remotion";
+import { useCurrentFrame, useVideoConfig } from "remotion";
 import { GradePreset } from "../utils/colorGrade";
 import { buildSet } from "./sets/dressing";
 import { floorTexture, wallTexture } from "./sets/textures";
@@ -69,25 +69,28 @@ const MAP: Record<string, React.FC<any>> = {
 export const setObjectCount = (setId: string) => buildSet(setId).items.length;
 
 export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; cine?: boolean; miko?: boolean }> = ({ setId, grade, cine = false, miko = false }) => {
-  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const frame = (useCurrentFrame() * 30) / fps; // 30-fps-equivalent clock so flicker/sway speed is identical at 60 fps
   const spec = useMemo(() => buildSet(setId), [setId]);
-  const wallTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night); return miko ? soften(t, 2.4) : t; }, [spec, miko]);
-  const floorTex = useMemo(() => { const t = floorTexture(spec.floor, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]); return miko ? soften(t, 1.8) : t; }, [spec, miko]);
-  const sideTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round(spec.floorD / 3)), spec.night); return miko ? soften(t, 2.4) : t; }, [spec, miko]);
+  const wallTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
+  const floorTex = useMemo(() => { const t = floorTexture(spec.floor, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]); return miko ? soften(t, 0.7) : t; }, [spec, miko]);
+  const sideTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round(spec.floorD / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
   const isCorridor = setId.includes("corridor");
   const wallMat = <meshStandardMaterial map={wallTex} roughness={0.85} />;
 
   return (
     <group>
-      <color attach="background" args={[spec.night ? "#6C86C9" : spec.sky]} />
+      <color attach="background" args={[miko ? "#3A2230" : spec.night ? "#6C86C9" : spec.sky]} />
+      {miko && <fog attach="fog" args={["#432A33", 3.2, 15]} />}
       <ambientLight intensity={grade.ambientIntensity} />
       <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
-      <directionalLight position={cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
+      <directionalLight position={miko ? [-6.0, 4.6, 4.6] : cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine && !miko ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
         shadow-mapSize-width={1024} shadow-mapSize-height={1024}
         shadow-radius={miko ? 5 : 1} shadow-camera-left={-9} shadow-camera-right={9} shadow-camera-top={9} shadow-camera-bottom={-9} shadow-camera-near={0.5} shadow-camera-far={30} shadow-bias={-0.0004} />
-      <directionalLight position={[-5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={"#9FB0F0"} />
-      {cine && <directionalLight position={[5, 2.6, -4]} intensity={1.1} color="#FFD3A0" />}
-      {spec.torchLights.map((p, i) => <pointLight key={i} position={p} intensity={spec.night ? 5 : 3} distance={9} decay={1.6} color="#FFB45E" />)}
+      <directionalLight position={miko ? [5.5, 3.2, -3] : [-5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={miko ? grade.rimLightColor : "#9FB0F0"} />
+      {miko && <spotLight position={[-2.4, 4.4, 3.4]} angle={0.62} penumbra={1} intensity={85} distance={14} decay={2} color="#FFC48A" castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} shadow-bias={-0.0004} />}
+      {cine && !miko && <directionalLight position={[5, 2.6, -4]} intensity={1.1} color="#FFD3A0" />}
+      {spec.torchLights.map((p, i) => <pointLight key={i} position={p} intensity={spec.night ? 5 : miko ? 4.2 : 3} distance={miko ? 7 : 9} decay={1.6} color="#FFB45E" />)}
 
       {/* floor */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, spec.floorZ]} receiveShadow>

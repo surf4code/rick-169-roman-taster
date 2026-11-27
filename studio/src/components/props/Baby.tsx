@@ -35,7 +35,7 @@ export function babyMarkup(blink: boolean, wrap = "#F3E3C6", band = "#C98A4E"): 
 }
 
 // same plane size as CutoutCharacter (REGION 360x320 svg units, 2/302 world per unit)
-const U = 2 / 302;
+const U = 2 / 392;
 export const BabyProp: React.FC<{ tex: THREE.Texture | null; position: [number, number, number]; scale?: number; time: number; rock?: number }> = ({ tex, position, scale = 1, time, rock = 1 }) => {
   if (!tex) return null;
   const sway = Math.sin(time * 1.1) * 0.035 * rock;

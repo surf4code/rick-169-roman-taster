@@ -48,39 +48,45 @@ export const Bubble: React.FC<{ x: number; y: number; text: string; frame: numbe
   );
 };
 
-const MIKO_FONT = "'Trebuchet MS', 'Gill Sans', 'Segoe UI', Arial, sans-serif";
-const plateStyle: React.CSSProperties = {
-  background: "rgba(46,28,18,0.92)", border: "2px solid #E9B863", borderRadius: 6, color: "#FFEBC8", fontFamily: MIKO_FONT, fontWeight: 800, textTransform: "uppercase",
-  boxShadow: "inset 0 0 0 3px #2E1C12, inset 0 0 0 4px rgba(233,184,99,0.55), 0 10px 30px rgba(40,20,10,0.35), 0 0 28px rgba(255,190,90,0.25)",
-};
+const MIKO_FONT = "'Arial Black', 'Helvetica Neue', Arial, sans-serif";
+const WHITE = "#F4F0E8";
+/** Miko's location/time plate: dark navy glass box, double rounded white border, bold white geometric caps. */
+const MikoBox: React.FC<{ children: React.ReactNode; size: number; pad: [number, number]; track: number; style?: React.CSSProperties }> = ({ children, size, pad, track, style }) => (
+  <div style={{ border: `3px solid ${WHITE}`, borderRadius: 16, padding: 5, boxShadow: "0 8px 26px rgba(8,4,16,0.5)", display: "inline-block", ...style }}>
+    <div style={{ border: `2px solid ${WHITE}`, borderRadius: 10, background: "rgba(26,22,54,0.88)", padding: `${pad[0]}px ${pad[1]}px`, color: WHITE, fontFamily: MIKO_FONT, fontWeight: 900, fontSize: size, letterSpacing: track, textTransform: "uppercase", whiteSpace: "nowrap", lineHeight: 1.05, textAlign: "center" }}>
+      {children}
+    </div>
+  </div>
+);
 
-/** Miko-style floating role tag: calm fade/rise, thin gold leader line, no bounce. */
+/** Miko-style floating role tag: calm fade/rise, thin leader line, no bounce. Time-based so 30 and 60 fps match. */
 export const MikoTag: React.FC<{ x: number; y: number; text: string; color: string; frame: number; appearFrame: number; fps: number }> = ({ x, y, text, color, frame, appearFrame, fps }) => {
   if (frame < appearFrame) return null;
   const a = spring({ frame: frame - appearFrame, fps, config: { damping: 26, stiffness: 70 } });
-  const float = Math.sin(frame * 0.045) * 3;
+  const float = Math.sin((frame / fps) * 1.35) * 3;
   const cx = Math.min(1920 - 40, Math.max(40, x));
   return (
     <div style={{ position: "absolute", left: cx, top: Math.max(120, y) + float + (1 - a) * 18, opacity: a, transform: "translate(-50%, -100%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div style={{ ...plateStyle, padding: "9px 24px", fontSize: 28, letterSpacing: 4, whiteSpace: "nowrap", display: "flex", alignItems: "center" }}>
-        <span style={{ width: 13, height: 13, borderRadius: 7, background: color, marginRight: 14, boxShadow: `0 0 12px ${color}` }} />{text}
-      </div>
-      <div style={{ width: 2, height: 30, background: "linear-gradient(#E9B863, rgba(233,184,99,0))" }} />
+      <MikoBox size={26} pad={[8, 22]} track={3}>
+        <span style={{ display: "inline-block", width: 12, height: 12, borderRadius: 6, background: color, marginRight: 12, boxShadow: `0 0 10px ${color}` }} />{text}
+      </MikoBox>
+      <div style={{ width: 2, height: 30, background: `linear-gradient(${WHITE}, rgba(244,240,232,0))` }} />
     </div>
   );
 };
 
-/** Miko-style location/time plate (screen space, top-left), fades in and eases to rest. */
+/** Location/time plate in Miko's exact "DAY TWO" format: top-left, one line, e.g. "ROME, 31 AD". */
 export const MikoPlate: React.FC<{ text: string; sub?: string; frame: number; appearFrame: number; fps: number; fadeOutAt?: number }> = ({ text, sub, frame, appearFrame, fps, fadeOutAt }) => {
   if (frame < appearFrame) return null;
   const a = spring({ frame: frame - appearFrame, fps, config: { damping: 30, stiffness: 60 } });
-  const out = fadeOutAt === undefined ? 1 : 1 - Math.min(1, Math.max(0, (frame - fadeOutAt) / 10));
+  const out = fadeOutAt === undefined ? 1 : 1 - Math.min(1, Math.max(0, (frame - fadeOutAt) / (fps * 0.33)));
+  const short = !!sub && sub.length <= 10;
   return (
-    <div style={{ position: "absolute", top: 64, left: 72, opacity: a * out, transform: `translateX(${(1 - a) * -26}px)` }}>
-      <div style={{ ...plateStyle, padding: "12px 30px", fontSize: 38, letterSpacing: 6 }}>
-        {text}
-        {sub && <div style={{ fontSize: 20, letterSpacing: 4, fontWeight: 600, color: "#E9B863", marginTop: 4 }}>{sub}</div>}
-      </div>
+    <div style={{ position: "absolute", top: 70, left: 86, opacity: a * out, transform: `translateY(${(1 - a) * -14}px)` }}>
+      <MikoBox size={50} pad={[12, 36]} track={5}>
+        {short ? `${text}, ${sub}` : text}
+        {!short && sub && <div style={{ fontSize: 20, letterSpacing: 3, fontWeight: 700, marginTop: 6, opacity: 0.9 }}>{sub}</div>}
+      </MikoBox>
     </div>
   );
 };

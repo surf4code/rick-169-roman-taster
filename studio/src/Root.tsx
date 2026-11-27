@@ -57,6 +57,15 @@ export const RemotionRoot: React.FC = () => (
       defaultProps={{ plan: first20Miko2 }}
     />
     <Composition
+      id="First20MikoV2-60fps"
+      component={StyleTestOpening as any}
+      durationInFrames={1200}
+      fps={60}
+      width={1920}
+      height={1080}
+      defaultProps={{ plan: first20Miko2 }}
+    />
+    <Composition
       id="EpisodePreview"
       component={StyleTestOpening as any}
       durationInFrames={600}

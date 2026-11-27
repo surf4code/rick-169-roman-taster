@@ -29,6 +29,14 @@ const Rig: React.FC<{ cs: any }> = ({ cs }) => {
 
 const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platter, Jug: P.Jug, Amphora: P.Amphora, Bowl: P.Bowl, Cushion: P.Cushion, CollarTag };
 
+/** Miko moody lighting translated to the Rick warm palette. */
+const MIKO_MOOD = {
+  ambientIntensity: 0.1, hemiSkyColor: "#8C73B0", hemiGroundColor: "#2E1A22", hemiIntensity: 0.22,
+  keyLightColor: "#FFB36E", keyLightIntensity: 1.35, rimLightColor: "#8F86E6", rimLightIntensity: 0.8,
+  vignetteDarkness: 0.72, bloomThreshold: 0.84, bloomIntensity: 0.3, bgColor: "#2C1A26",
+};
+const smooth01 = (x: number) => { const k = Math.min(1, Math.max(0, x)); return k * k * (3 - 2 * k); };
+
 const normalise = (plan: any) => ({
   ...plan,
   shots: plan.shots.map((x: any) => (x.startFrame !== undefined ? { ...x, start: x.startFrame / 30, end: (x.startFrame + x.durFrames) / 30 } : x)),
@@ -46,10 +54,10 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
   const isNight = shot.grade === "night_torch";
   const baseGrade = isNight ? RICK_WARM_TORCH_NIGHT : RICK_WARM_BRIGHT_DAY;
   // miko mood: a bit more contrast (lower fill, stronger key, deeper vignette) so characters separate from the set
-  const grade = miko ? { ...baseGrade, ambientIntensity: baseGrade.ambientIntensity * 0.8, hemiIntensity: baseGrade.hemiIntensity * 0.82, keyLightIntensity: baseGrade.keyLightIntensity * 1.12, vignetteDarkness: 0.24 } : baseGrade;
+  const grade = miko ? { ...baseGrade, ...MIKO_MOOD } : baseGrade; // Miko-like moody light: dim fill, one warm key, cool rim, deep vignette (true blacks), Rick warm palette
 
   // Characters are rasterised OUTSIDE the ThreeCanvas so the capture waits for them (see CutoutCharacter.tsx).
-  const rms = Math.round((0.35 + 0.35 * Math.abs(Math.sin(Math.floor(frame / 2) * 0.8))) * 4) / 4;
+  const rms = Math.round((0.35 + 0.35 * Math.abs(Math.sin(Math.floor(t * 15) * 0.8))) * 4) / 4;
   const isCard = shot.type === "akira_cutaway" || shot.type === "infographic_card";
   // emotion may be a track: [[tSec, emotion], ...] -> expression changes on story beats inside a shot
   const emoInfo = (e: any): { cur: string; prev: string; since: number } => {
@@ -65,9 +73,15 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
     const talking = !c.bg && shot.bubble && shot.characters[shot.bubble.who]?.id === c.id;
     c._talking = !!talking;
     c._key = `${c.id}:${c.emotion}:${talking ? 1 : 0}`;
-    const turn = restingTurn(c.id);
+    const rest = restingTurn(c.id);
+    const orb = shot.cam?.orbit ?? 0;
+    const u0 = localT / Math.max(dur, 0.1);
+    // face + eyes + mouth slide toward the side the camera is drifting to (Miko's head-turn / immersive 3D feel), quantised to 1/16 for texture caching
+    const raw = orb ? rest * 0.5 + Math.sign(orb) * (c.bg ? 0.3 : 0.62) * smooth01((u0 - 0.1) / 0.55) : rest + 0.1 * Math.sin(t * 0.55 + c.id.length);
+    const turn = Math.round(Math.max(-0.8, Math.min(0.8, raw)) * 16) / 16;
+    c._turn = turn;
     LAYERS.forEach((l) => {
-      const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn, look: miko ? "miko" : "rick", collar: !!c.collar });
+      const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn, look: miko ? "miko" : "rick", collar: !!c.collar, stepOnTwos: false });
       markups[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] = mk;
     });
   });
@@ -108,9 +122,9 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         })}
         {babyOn && <BabyProp tex={textures["baby"] ?? null} position={shot.baby.p} scale={shot.baby.s ?? 0.55} time={frame / fps} rock={shot.baby.rock ?? 1} />}
         {all.map((c: any, i: number) => (
-          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
+          <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} turn={miko ? c._turn : undefined} tone={miko ? "#EDE4EA" : undefined} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
-        <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 720 : 360} focusRange={miko ? Math.max(0.7, focusDist * 0.26) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 5.4 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
+        <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 1080 : 360} focusRange={miko ? Math.max(2.0, focusDist * 0.62) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 2.6 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
       </ThreeCanvas>
 
       {(shot.tags || []).map((tg: any, i: number) => {
@@ -129,13 +143,13 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         <MikoPlate key={i} text={pl.text} sub={pl.sub} frame={frame} appearFrame={Math.round((shot.start + pl.at) * fps)} fps={fps} fadeOutAt={Math.round((shot.end - 0.35) * fps)} />
       ))}
       {miko && (() => {
-        // soft dip to warm cream at shot boundaries instead of a hard cut
-        const D = 0.14;
+        // plain dip-to-black fade at shot boundaries (no white flash)
+        const D = 0.2;
         const idx = shotPlan.shots.indexOf(shot);
         const inA = idx > 0 ? 1 - clamp(localT / D) : 0;
         const outA = idx < shotPlan.shots.length - 1 ? clamp((localT - (dur - D)) / D) : 0;
         const a = Math.max(inA, outA);
-        return a > 0 ? <AbsoluteFill style={{ backgroundColor: "#F6E8CC", opacity: a }} /> : null;
+        return a > 0 ? <AbsoluteFill style={{ backgroundColor: "#07040A", opacity: a * a * (3 - 2 * a) }} /> : null;
       })()}
       {!miko && shot.stamp && (
         <div style={{ position: "absolute", top: 44, left: 64, color: "#FFFFFF", fontSize: 40, fontWeight: 900, fontStyle: "italic", textShadow: "3px 3px 0 #141414, -2px -2px 0 #141414, 2px -2px 0 #141414, -2px 2px 0 #141414", fontFamily: "'Arial Black', Arial, sans-serif" }}>

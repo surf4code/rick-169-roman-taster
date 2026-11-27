@@ -3,12 +3,18 @@ import { kfVec3, easeOut, easeInOut, shake, slowMoTime } from "./anim";
 export type V3 = [number, number, number];
 export interface CamState { pos: V3; look: V3; roll: number; fov: number; }
 
-export interface CustomCam { from: V3; to: V3; look: V3; lookTo?: V3; fov?: number; fovTo?: number; }
+export interface CustomCam { from: V3; to: V3; look: V3; lookTo?: V3; fov?: number; fovTo?: number; orbit?: number; /* degrees swung around the look point (+ = camera drifts to screen-right) */ }
 /** Hand-authored smooth move: position/look/fov eased with one smoothstep over the whole shot (no snaps, no overshoot). */
 export function customCamera(c: CustomCam, u: number): CamState {
   const k = u * u * (3 - 2 * u);
   const L = (a: V3, b: V3): V3 => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k, a[2] + (b[2] - a[2]) * k];
-  return { pos: L(c.from, c.to), look: L(c.look, c.lookTo ?? c.look), roll: 0, fov: (c.fov ?? 36) + ((c.fovTo ?? c.fov ?? 36) - (c.fov ?? 36)) * k };
+  const look = L(c.look, c.lookTo ?? c.look);
+  let pos = L(c.from, c.to);
+  if (c.orbit) { // orbit the look point (3D parallax: set pieces slide against each other like a real camera move)
+    const a = (c.orbit * Math.PI / 180) * k, dx = pos[0] - look[0], dz = pos[2] - look[2];
+    pos = [look[0] + dx * Math.cos(a) + dz * Math.sin(a), pos[1], look[2] - dx * Math.sin(a) + dz * Math.cos(a)];
+  }
+  return { pos, look, roll: 0, fov: (c.fov ?? 36) + ((c.fovTo ?? c.fov ?? 36) - (c.fov ?? 36)) * k };
 }
 
 /** Zack-D-Films style camera vocabulary. Pure function of (mode, time in shot, shot duration). */

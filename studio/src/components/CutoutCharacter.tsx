@@ -25,9 +25,9 @@ export type { CharacterId };
  * SVG region captured (svg units): x -40..320, y 60..380. Feet sit at svg y=364; the figure is about
  * 278 svg units tall (feet to head top), mapped to 2.0 world units at scale 1.
  */
-const REGION = { x: -40, y: 60, w: 360, h: 320 };
+const REGION = { x: -40, y: -30, w: 360, h: 420 };
 const TEX_SCALE = 4; // texture pixels per svg unit
-const WORLD_PER_UNIT = 2.0 / 302;
+const WORLD_PER_UNIT = 2.0 / 392;
 const FEET_SVG_Y = 390;
 const PLANE_W = REGION.w * WORLD_PER_UNIT;
 const PLANE_H = REGION.h * WORLD_PER_UNIT;
@@ -82,8 +82,8 @@ export function characterMarkup(i: CharacterMarkupInput): string {
       browLiftR={GESTURES[emotion]?.browLiftR ?? 0}
     />
   );
-  // miko look: hairline ink (outline widths x0.62; brush-ring outlines are fills and already set thin)
-  return look === "miko" ? markup.replace(/stroke-width="([0-9.]+)"/g, (_m, w) => `stroke-width="${(parseFloat(w) * 0.62).toFixed(2)}"`) : markup;
+  // miko look: bold ink (outline widths x1.0; brush-ring outlines are fills set ~4.5 units thick)
+  return look === "miko" ? markup.replace(/stroke-width="([0-9.]+)"/g, (_m, w) => `stroke-width="${(parseFloat(w) * 1.0).toFixed(2)}"`) : markup;
 }
 
 function toDataUrl(markup: string): string {
@@ -176,6 +176,7 @@ const U = WORLD_PER_UNIT;
 const INK_COL = "#231A29";
 const HIP_Y = 278; // svg y of hips
 const NECK_Y = 186; // svg y of head pivot (chin)
+const NECK_Y_MIKO = 128; // miko: pivot sits at the base of the thin neck
 
 /** Resting 3/4 turn per character (never dead-front), sign + size seeded by id. */
 export function restingTurn(id: string): number {
@@ -237,7 +238,15 @@ const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; wj: number; w1: number
   const fx = b[0] - mid[0], fy = b[1] - mid[1], fl = Math.hypot(fx, fy) || 1;
   if (fillU && fillF) {
     // miko arm: coloured sleeve + skin forearm/hand inside an ink outline; smooth round elbow, no bump
-    const k = 3.0;
+    const k = 4.4; // total ink thickness (both sides) -> ~2.5 units per side = Miko's bold border
+    const nrm = (p: V2, q: V2): V2 => { const dx = q[0] - p[0], dy = q[1] - p[1], l = Math.hypot(dx, dy) || 1; let nx = dy / l, ny = -dx / l; if (nx > 0.05 || (Math.abs(nx) <= 0.05 && ny > 0)) { nx = -nx; ny = -ny; } return [nx, ny]; }; // normal toward the light (left / up)
+    const lerp = (p: V2, q: V2, t: number): V2 => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+    const rimBone = (p: V2, q: V2, wp: number, wq: number, t0: number, t1: number, key: string) => {
+      const n = nrm(p, q), off = (wp + wq) / 4 - k / 2 - 1.1;
+      const A = lerp(p, q, t0), B = lerp(p, q, t1);
+      const o = (v: V2): V2 => [v[0] + n[0] * off, v[1] + n[1] * off];
+      return <Bone key={key} a={o(A)} b={o(B)} w0={4.2} w1={3} bow={0.2} col={mixHex(((key === "r3" ? fillF : fillU) as string), "#FFFFFF", 0.42)} />;
+    };
     return (
       <group position={[0, 0, z]}>
         <Bone a={a} b={mid} w0={w0} w1={wj} /><Bone a={mid} b={b} w0={wj} w1={w1} />
@@ -246,7 +255,13 @@ const Limb: React.FC<{ a: V2; mid: V2; b: V2; w0: number; wj: number; w1: number
           <Bone a={a} b={mid} w0={w0 - k} w1={wj - k} col={fillU} /><Bone a={mid} b={b} w0={wj - k} w1={w1 - k} col={fillF} />
           <Disc p={a} d={w0 - k} col={fillU} /><Disc p={mid} d={wj - k} z={0.0005} col={fillU} />
         </group>
-        <Disc p={b} d={hand - 3.4} z={0.006} col={skin} />
+        <group position={[0, 0, 0.005]}>{/* sunlight rim: thin white patches along the lit (left/top) edge, broken like Miko's */}
+          {rimBone(a, mid, w0, wj, 0.1, 0.46, "r1")}
+          {rimBone(a, mid, w0, wj, 0.58, 0.9, "r2")}
+          {rimBone(mid, b, wj, w1, 0.18, 0.62, "r3")}
+        </group>
+        <Disc p={b} d={hand - k * 0.8} z={0.006} col="#D5C4D8" />
+        <Disc p={[b[0] - hand * 0.06, b[1] - hand * 0.07]} d={hand - k * 0.8 - 2.6} z={0.007} col={skin} />
       </group>
     );
   }
@@ -300,6 +315,10 @@ function glowTexture(): THREE.CanvasTexture {
   return GLOW_TEX;
 }
 const LIFT = new THREE.Color(1.05, 1.05, 1.05);
+function mixHex(a: string, b: string, t: number): string {
+  const pa = new THREE.Color(a), pb = new THREE.Color(b);
+  return "#" + pa.lerp(pb, t).getHexString();
+}
 
 export interface CutoutCharacterProps {
   characterId: CharacterId;
@@ -316,6 +335,8 @@ export interface CutoutCharacterProps {
   talking?: boolean;
   focus?: boolean; // speaker gets the halo
   look?: "rick" | "miko";
+  turn?: number; // dynamic face/head turn (-1..1); drives head yaw + slight body lag
+  tone?: string; // multiplies the flat texture colour so characters sit in the scene light
 }
 
 /** Two-bone IK: elbow position for root->tip, choosing the solution whose elbow lies toward `pole`. */
@@ -338,7 +359,7 @@ function solveElbow(root: V2, tip: V2, l1: number, l2: number, pole: V2): { E: V
  * Every joint is continuous-time (never on twos). Body language comes from GESTURES (wrist targets + elbow poles), blended
  * between emotions with a small overshoot; overlapping action: wrist lags shoulder, head lags torso, chest breathes.
  */
-export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", prevEmotion, sinceT = 99, time = 0, talking = false, focus = false, look = "rick" }) => {
+export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, position, scale = 1, textures, flipX = false, camPos, lookAt, emotion = "neutral", prevEmotion, sinceT = 99, time = 0, talking = false, focus = false, look = "rick", turn, tone }) => {
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
   const M = look === "miko";
@@ -348,8 +369,8 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
   const ph = (h % 628) / 100;
   const toward = (t?: [number, number, number]) => (t ? Math.atan2(t[0] - position[0], t[2] - position[2]) : 0);
   const clampA = (v: number, m: number) => Math.max(-m, Math.min(m, v));
-  const bodyYaw = camPos ? clampA(toward(camPos) * 0.5, 0.5) : 0;
-  const headYaw = bodyYaw + (lookAt ? clampA(toward(lookAt) - toward(camPos), 0.35) * 0.4 : 0) + restingTurn(characterId) * 0.25;
+  const bodyYaw = (camPos ? clampA(toward(camPos) * 0.5, 0.5) : 0) + (turn !== undefined ? turn * 0.16 : 0);
+  const headYaw = bodyYaw + (lookAt ? clampA(toward(lookAt) - toward(camPos), 0.35) * 0.4 : 0) + (turn !== undefined ? turn * 0.42 : restingTurn(characterId) * 0.25);
 
   const t = time;
   const gTo = GESTURES[emotion] || GESTURES.neutral;
@@ -366,17 +387,18 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
   const beat = env * (Math.sin(t * 5.1 + ph) * 0.5 + 0.5);
   const fid = g.fidget * 5;
   const lift = g.shrug;
-  const L1 = 46, L2 = 42;
+  const L1 = M ? 76 : 46, L2 = M ? 68 : 42;
+  const SK = M ? 1.55 : 1; // miko arm reach vs the original gesture table
   const mkArm = (side: 1 | -1) => {
     const tgt = side === 1 ? g.R : g.L;
     const pole = side === 1 ? g.poleR : g.poleL;
-    const S: V2 = [140 + side * (M ? 31 : 42), 206 - lift];
+    const S: V2 = [140 + side * (M ? 40 : 42), (M ? 152 : 206) - lift];
     const front = side === 1;
     const tx = tgt[0] + idle(side, 1.6) + (front ? beat * 9 : beat * 3) + fid * Math.sin(t * 9 + side * 1.7);
     const ty = tgt[1] + idle(side + 2, 1.4) - (front ? beat * 14 : beat * 5) + fid * 0.8 * Math.cos(t * 8.2 + side) + 0.8 * Math.sin((t * 2 * Math.PI) / 3.3 + ph - 0.7);
     let tipX = tx, tipY = ty;
     if (scrub) { const sp = Math.sin(t * 3.4); tipX = (front ? -8 : -15) + 12 * sp; tipY = (front ? 88 : 74) + 3 * Math.cos(t * 6.8); } // both hands on the mop handle, pushing it side to side
-    const tip: V2 = [S[0] + side * tipX, S[1] + tipY];
+    const tip: V2 = [S[0] + side * tipX * SK, S[1] + tipY * SK];
     const sol = solveElbow(S, tip, L1, L2, [side * pole[0], pole[1]]);
     return { S, E: sol.E, W: sol.W };
   };
@@ -387,12 +409,12 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
   const leg = (side: 1 | -1) => {
     const bend = 4 + 7 * Math.max(0, side * shift);
     if (M) { // miko legs: slim, nearly straight, parallel, tiny knee give; foot points slightly out
-      const H: V2 = [140 + side * 13, HIP_Y - 4];
-      const F: V2 = [140 + side * (15 + 2 * Math.max(0, -side * shift)), FEET_SVG_Y];
-      const sol = solveElbow(H, F, 62, 58, [side * 0.3, 1]);
+      const H: V2 = [140 + side * 12, 250];
+      const F: V2 = [140 + side * (13 + 1.5 * Math.max(0, -side * shift)), FEET_SVG_Y - 8];
+      const sol = solveElbow(H, F, 66, 66, [side * 0.3, 1]);
       const mx = (H[0] + F[0]) / 2, my = (H[1] + F[1]) / 2;
       const K: V2 = [mx + (sol.E[0] - mx) * 0.35, my + (sol.E[1] - my) * 0.35];
-      return { H, K, F, toe: [F[0] + side * 10, F[1] - 1] as V2 };
+      return { H, K, F, toe: [F[0] + side * 9, F[1]] as V2 };
     }
     const H: V2 = [140 + side * 17, HIP_Y - 4];
     const F: V2 = [140 + side * (24 + 3 * Math.max(0, -side * shift)), FEET_SVG_Y];
@@ -405,16 +427,16 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
 
   const hipWorldY = (FEET_SVG_Y - HIP_Y) * U;
   const planeCy = PLANE_CENTER_Y - hipWorldY; // plane centre relative to hip
-  const neckRel = wy(NECK_Y) - g.headDown * U; // neck pivot relative to hip (head sinks on a shrug)
-  const planeMat = { transparent: true, alphaTest: 0.02, toneMapped: false, side: THREE.DoubleSide, color: LIFT } as const;
+  const neckRel = wy(M ? NECK_Y_MIKO : NECK_Y) - g.headDown * U; // neck pivot relative to hip (head sinks on a shrug)
+  const planeMat = { transparent: true, alphaTest: 0.02, toneMapped: false, side: THREE.DoubleSide, color: tone ? new THREE.Color(tone) : LIFT } as const;
   const plane = (tex: THREE.Texture | null | undefined, y: number, z: number) => tex && (
     <mesh position={[0, y, z]}><planeGeometry args={[PLANE_W, PLANE_H]} /><meshBasicMaterial map={tex} {...planeMat} /></mesh>
   );
   const hand = 13;
   const SKIN = "#FFF5E6";
-  const longSleeve = spec.outfit === "robe" || spec.outfit === "toga";
+  const longSleeve = M || spec.outfit === "robe" || spec.outfit === "toga";
   const armFill = M ? { fillU: spec.outfit === "cuirass" ? "#D6A64E" : spec.bodyColor, fillF: longSleeve ? spec.bodyColor : SKIN, skin: SKIN } : {};
-  const aw = M ? [9.4, 8.2, 7.0] : [7.4, 6, 4.9];
+  const aw = M ? [25, 23.5, 21] : [7.4, 6, 4.9];
 
   return (
     <group position={position} scale={[finalScale * (flipX ? -1 : 1), finalScale, finalScale]}>
@@ -433,10 +455,10 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
           return (
             <group key={`leg${sd}`} position={[0, hipWorldY, 0]}>
               {M ? (<>
-                <Limb a={l.H} mid={l.K} b={l.F} w0={9} wj={8} w1={6.8} z={0.01} hand={6.6} fillU={SKIN} fillF={SKIN} skin={SKIN} />
+                <Limb a={l.H} mid={l.K} b={l.F} w0={22} wj={21} w1={19.5} z={0.01} hand={17} fillU={SKIN} fillF={SKIN} skin={SKIN} />
                 <group position={[0, 0, 0.012]}>
-                  <Bone a={l.F} b={l.toe} w0={8.4} w1={7.2} bow={0.4} /><Disc p={l.toe} d={7.2} />
-                  <group position={[0, 0, 0.003]}><Bone a={l.F} b={l.toe} w0={5.4} w1={4.4} bow={0.4} col="#A8703A" /><Disc p={l.toe} d={4.4} col="#A8703A" /></group>
+                  <Bone a={l.F} b={l.toe} w0={17} w1={15} bow={0.4} /><Disc p={l.toe} d={15} />
+                  <group position={[0, 0, 0.003]}><Bone a={l.F} b={l.toe} w0={12.4} w1={10.6} bow={0.4} col="#A8703A" /><Disc p={l.toe} d={10.6} col="#A8703A" /></group>
                 </group>
               </>) : (<>
                 <Limb a={l.H} mid={l.K} b={l.F} w0={7.4} wj={6.4} w1={5} z={0.03} hand={5.6} />
@@ -453,9 +475,9 @@ export const CutoutCharacter: React.FC<CutoutCharacterProps> = ({ characterId, p
             const tx = (wx(armR.W[0]) + wx(armL.W[0])) / 2, ty = (wy(armR.W[1]) + wy(armL.W[1])) / 2;
             return <MopMesh top={[tx, ty, 0.22]} base={[tx + 0.3 + 0.45 * sp, -hipWorldY + 0.045, 0.55]} />;
           })()}
-          <Limb a={armL.S} mid={armL.E} b={armL.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.06} hand={M ? 15 : hand} thumb={!M} {...armFill} />
+          <Limb a={armL.S} mid={armL.E} b={armL.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.06} hand={M ? 27 : hand} thumb={!M} {...armFill} />
           {plane(textures.torso, planeCy, 0.1)}
-          <Limb a={armR.S} mid={armR.E} b={armR.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.17} hand={M ? 15 : hand} thumb={!M} {...armFill} />
+          <Limb a={armR.S} mid={armR.E} b={armR.W} w0={aw[0]} wj={aw[1]} w1={aw[2]} z={0.17} hand={M ? 27 : hand} thumb={!M} {...armFill} />
           <group position={[0, neckRel, 0.24]} rotation={[0, headYaw - bodyYaw, -tilt * D2R]}>
             {plane(textures.head, planeCy - neckRel, 0)}
           </group>

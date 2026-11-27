@@ -242,7 +242,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
   return (
     <svg width={width} height={height} viewBox="0 0 280 400" style={{ overflow: "visible" }}>
       <defs>
-        <clipPath id={clipTorsoId}><rect x="-44" y="-58" width="88" height="118" rx="44" ry="44" /></clipPath>
+        <clipPath id={clipTorsoId}><rect x="-44" y="-58" width="88" height="118" rx={M ? 20 : 44} ry={M ? 20 : 44} /></clipPath>
         <clipPath id={clipHeadId}><path d={HG.full} /></clipPath>
         <linearGradient id={`lg-${characterId}-${uid}`} x1="1" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#FFF6DD" stopOpacity="0.28" /><stop offset="0.45" stopColor="#FFFFFF" stopOpacity="0" /><stop offset="1" stopColor="#1B1030" stopOpacity="0.26" />
@@ -252,9 +252,9 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0 0.1  1.1 0 0 0 -0.46" />
         </filter>
       </defs>
-      <g transform={`translate(140, ${228 + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
+      <g transform={`translate(140, ${(M ? 195 : 228) + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
         {show("lower") && (<>
-        <g transform={M ? "scale(0.8 1)" : undefined}>
+        <g transform={M ? "translate(0 4) scale(1.02 1.22)" : undefined}>
         {/* cape behind body */}
         {outfit === "cuirass" && <path d="M -40 -50 Q -70 20 -58 112 Q 0 124 58 112 Q 70 20 40 -50 Z" fill="#B91C1C" stroke={INK} strokeWidth="4.5" strokeLinejoin="round" />}
 
@@ -311,10 +311,17 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         {show("armB") && (<>
         </>)}
         {show("torso") && (<>
-        <g transform={M ? "scale(0.78 1)" : undefined}>
+        {M && (
+          <g>{/* short thin neck, hidden behind the head chin + torso shoulders */}
+            <path d="M -8 -84 L -8 -56 L 8 -56 L 8 -84 Z" fill="#F4EEF2" />
+            <path d="M -8 -80 L -8 -60 M 8 -80 L 8 -60" stroke={INK} strokeWidth="3.4" strokeLinecap="round" fill="none" />
+            <path d="M 4 -80 L 4 -60" stroke="#CDBFD6" strokeOpacity="0.7" strokeWidth="4" />
+          </g>
+        )}
+        <g transform={M ? "scale(1.02 1.136)" : undefined}>
         {/* torso (clipped garment + cel shading) */}
         <g clipPath={`url(#${clipTorsoId})`}>
-          <rect x="-44" y="-58" width="88" height="118" rx="44" fill={outfit === "apron" ? shirt : shirt} />
+          <rect x="-44" y="-58" width="88" height="118" rx={M ? 20 : 44} fill={shirt} />
 
           {outfit === "tunic" && (
             <>
@@ -384,9 +391,15 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           {pattern === "stripes" && [-30, -14, 2, 18, 34].map((x, i) => <line key={i} x1={x} y1="-50" x2={x} y2="56" stroke="#FFF3D4" strokeOpacity="0.45" strokeWidth="4" />)}
           {pattern === "dots" && [[-24, -10], [0, 4], [24, -10], [-12, 28], [14, 30], [-30, 40], [30, 42]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="3.6" fill={accent} />)}
 
-          <ellipse cx="-38" cy="4" rx="34" ry="70" fill={M ? "#7A3E22" : "#000000"} opacity={M ? 0.13 : 0.16} />
-          <ellipse cx="38" cy="-4" rx="18" ry="52" fill="#FFF3D4" opacity="0.24" />
-          <rect x="-44" y="-58" width="88" height="118" fill={`url(#lg-${characterId}-${uid})`} />
+          {M ? (<>
+            <ellipse cx="44" cy="10" rx="30" ry="76" fill="#2A1840" opacity="0.30" />
+            <ellipse cx="22" cy="48" rx="70" ry="26" fill="#2A1840" opacity="0.22" />
+            <path d="M -30 -46 Q -50 -2 -34 36 Q -40 -2 -30 -46 Z" fill="#FFFFFF" opacity="0.34" />
+            <path d="M -37 44 Q -48 50 -41 56 L -32 56 Q -34 50 -37 44 Z" fill="#FFFFFF" opacity="0.28" />
+            <path d="M 10 -56 Q 34 -52 44 -36 Q 28 -46 8 -50 Z" fill="#FFFFFF" opacity="0.26" />
+          </>) : <ellipse cx="-38" cy="4" rx="34" ry="70" fill="#000000" opacity="0.16" />}
+          {!M && <ellipse cx="38" cy="-4" rx="18" ry="52" fill="#FFF3D4" opacity="0.24" />}
+          {!M && <rect x="-44" y="-58" width="88" height="118" fill={`url(#lg-${characterId}-${uid})`} />}
           {!M && [0, 1, 2, 3].map((k) => {
             const x = -27 + k * 18 + ((hid >>> (k * 3)) % 5) - 2, dx = ((hid >>> (k + 5)) % 9) - 4;
             return (
@@ -400,7 +413,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <path d="M -30 -50 Q -22 -44 -14 -52 M 14 -52 Q 22 -44 30 -50" fill="none" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="2.2" strokeLinecap="round" />
           {!M && <rect x="-44" y="-58" width="88" height="118" filter={`url(#grain-${characterId}-${uid})`} opacity="0.5" />}
         </g>
-        <path d={brushRing(roundRectPts(-44, -58, 88, 118, 44), M ? 2.5 : 3.2, M ? 1.0 : 5.4, hid % 9)} fill={INK} fillRule="evenodd" />
+        <path d={brushRing(roundRectPts(-44, -58, 88, 118, M ? 20 : 44), M ? 3.2 : 3.2, M ? 1.0 : 5.4, hid % 9)} fill={INK} fillRule="evenodd" />
         </g>
         {collar && (
           <g>
@@ -416,7 +429,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         </>)}
         {show("head") && (<>
         {/* head */}
-        <g transform={`translate(0, ${M ? -90 : -84}) rotate(${layer === "all" ? pose.headTiltDeg + talkNod : 0}) scale(${M ? 1.12 : 1})`}>
+        <g transform={`translate(0, ${M ? -121 : -84}) rotate(${layer === "all" ? pose.headTiltDeg + talkNod : 0}) scale(${M ? 1.12 : 1})`}>
           {!M && [-1, 1].map((sd) => (
             <g key={`ear${sd}`}>
               <ellipse cx={sd * (hx - 1)} cy="-2" rx="8.5" ry="11.5" fill={skin} stroke={INK} strokeWidth="4" />
@@ -426,20 +439,20 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <g clipPath={`url(#${clipHeadId})`}>
             <path d={HG.full} fill={skin} />
             {M ? (<>
-              <ellipse cx="-46" cy="16" rx="34" ry="54" fill="#E7C9AE" opacity="0.55" />
-              <ellipse cx="-40" cy="22" rx="22" ry="40" fill="#D9AE8C" opacity="0.35" />
-              <path d="M -17 -53 A 50 50 0 0 1 41 23" fill="none" stroke="#FFE0A0" strokeWidth="9" strokeLinecap="round" opacity="0.85" />
+              <ellipse cx="64" cy="20" rx="30" ry="60" fill="#D3C2DC" opacity="0.5" />
+              <ellipse cx="60" cy="30" rx="18" ry="46" fill="#B59CC4" opacity="0.32" />
+              <path d="M -4 -54 A 50 50 0 0 0 -50 -2" fill="none" stroke="#FFFFFF" strokeWidth="10" strokeLinecap="round" opacity="0.95" />
             </>) : (<>
               <ellipse cx="-50" cy="14" rx="30" ry="50" fill="#E3D9DD" opacity="0.55" />
               <ellipse cx="-46" cy="18" rx="20" ry="40" fill="#D6CAD1" opacity="0.45" />
               <ellipse cx="32" cy="-24" rx="22" ry="26" fill="#FFFFFF" opacity="0.45" />
             </>)}
           </g>
-          <path d={brushRing(HG.pts, M ? 2.7 : 3.4, M ? 1.2 : 5.6, hid % 11)} fill={INK} fillRule="evenodd" />
+          <path d={brushRing(HG.pts, M ? 3.4 : 3.4, M ? 1.1 : 5.6, hid % 11)} fill={INK} fillRule="evenodd" />
 
           <Hair style={hairStyle} c={hairC} accent={accent} />
 
-          <g transform={`translate(${3.5 + turn * 11},0) scale(${1 - Math.abs(turn) * 0.14},1)`}>
+          <g transform={`translate(${3.5 + turn * (M ? 17 : 11)},0) scale(${1 - Math.abs(turn) * 0.14},1)`}>
           {/* eyes */}
           {isShock ? (
             T.shock === 0 ? (<>
