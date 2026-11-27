@@ -7,6 +7,7 @@ import { floorTexture, wallTexture } from "./sets/textures";
 import * as P from "./props/RomanProps";
 import { SetDressing } from "./sets/extras";
 import { mulberry32 } from "../utils/anim";
+import { SUN_DIR } from "./char3d/materials";
 
 /** Miko-style "painted" surfaces: blur the procedural texture (tiled 3x3 first so the repeat has no seams). */
 const soften = (t: THREE.CanvasTexture, px: number): THREE.CanvasTexture => {
@@ -68,7 +69,8 @@ const MAP: Record<string, React.FC<any>> = {
 /** Number of dressed props in a set (used by the density QA gate). */
 export const setObjectCount = (setId: string) => buildSet(setId).items.length;
 
-export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; cine?: boolean; miko?: boolean }> = ({ setId, grade, cine = false, miko = false }) => {
+export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; cine?: boolean; miko?: boolean; focus?: [number, number, number] }> = ({ setId, grade, cine = false, miko = false, focus = [0, 0, 0] }) => {
+  const spotTarget = useMemo(() => new THREE.Object3D(), []);
   const { fps } = useVideoConfig();
   const frame = (useCurrentFrame() * 30) / fps; // 30-fps-equivalent clock so flicker/sway speed is identical at 60 fps
   const spec = useMemo(() => buildSet(setId), [setId]);
@@ -84,11 +86,12 @@ export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; ci
       {miko && <fog attach="fog" args={["#432A33", 3.2, 15]} />}
       <ambientLight intensity={grade.ambientIntensity} />
       <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
-      <directionalLight position={miko ? [-6.0, 4.6, 4.6] : cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine && !miko ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
+      <directionalLight position={miko ? [SUN_DIR.x * 10, SUN_DIR.y * 10, SUN_DIR.z * 10] : cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine && !miko ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
         shadow-mapSize-width={1024} shadow-mapSize-height={1024}
         shadow-radius={miko ? 5 : 1} shadow-camera-left={-9} shadow-camera-right={9} shadow-camera-top={9} shadow-camera-bottom={-9} shadow-camera-near={0.5} shadow-camera-far={30} shadow-bias={-0.0004} />
       <directionalLight position={miko ? [5.5, 3.2, -3] : [-5, 3.8, -2.5]} intensity={grade.rimLightIntensity} color={miko ? grade.rimLightColor : "#9FB0F0"} />
-      {miko && <spotLight position={[-2.4, 4.4, 3.4]} angle={0.62} penumbra={1} intensity={85} distance={14} decay={2} color="#FFC48A" castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} shadow-bias={-0.0004} />}
+      {miko && <primitive object={spotTarget} position={[focus[0], 0.9, focus[2]]} />}
+      {miko && <spotLight target={spotTarget} position={[focus[0] + SUN_DIR.x * 6.5, 0.9 + SUN_DIR.y * 6.5, focus[2] + SUN_DIR.z * 6.5]} angle={0.62} penumbra={1} intensity={85} distance={14} decay={2} color="#FFC48A" castShadow shadow-mapSize-width={1024} shadow-mapSize-height={1024} shadow-bias={-0.0004} />}
       {cine && !miko && <directionalLight position={[5, 2.6, -4]} intensity={1.1} color="#FFD3A0" />}
       {spec.torchLights.map((p, i) => <pointLight key={i} position={p} intensity={spec.night ? 5 : miko ? 4.2 : 3} distance={miko ? 7 : 9} decay={1.6} color="#FFB45E" />)}
 

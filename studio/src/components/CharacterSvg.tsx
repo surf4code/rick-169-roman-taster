@@ -15,7 +15,7 @@ export interface CharacterSvgProps {
   width?: number;
   height?: number;
   uid?: string;
-  layer?: "all" | "lower" | "armB" | "torso" | "armF" | "head";
+  layer?: "all" | "lower" | "armB" | "torso" | "armF" | "head" | "torsoTex";
   browLiftL?: number;
   browLiftR?: number;
   turn?: number; // -1..1 head 3/4 turn (face features slide + compress)
@@ -201,7 +201,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
   characterId, emotion, rmsAmplitude = 0, spectralCentroid = 0.5, isBlinking = false, breathY = 0, talkNod = 0, width = 280, height = 400, uid = "0", layer = "all", turn = 0, browLiftL = 0, browLiftR = 0, look = "rick", collar = false,
 }) => {
   const M = look === "miko";
-  const show = (l: string) => layer === "all" || layer === l;
+  const TEX = layer === "torsoTex"; // flat garment texture for the 3D torso (no outline/shading/rim: the 3D renderer does those)
+  const show = (l: string) => (TEX ? l === "torso" : layer === "all" || layer === l);
   if (layer !== "all") { breathY = 0; talkNod = 0; }
   const spec = (charactersData.cast as Record<string, any>)[characterId] || charactersData.cast.taster_protagonist;
   const pose = EMOTION_LIBRARY[emotion] || EMOTION_LIBRARY.neutral;
@@ -240,7 +241,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
   const cloak = outfit === "cuirass" ? "#B91C1C" : outfit === "robe" ? "#16382B" : null;
 
   return (
-    <svg width={width} height={height} viewBox="0 0 280 400" style={{ overflow: "visible" }}>
+    <svg width={TEX ? 528 : width} height={TEX ? 708 : height} viewBox={TEX ? "-44 -58 88 118" : "0 0 280 400"} {...(TEX ? ({ "data-raw": "1" } as any) : {})} style={{ overflow: "visible" }}>
       <defs>
         <clipPath id={clipTorsoId}><rect x="-44" y="-58" width="88" height="118" rx={M ? 20 : 44} ry={M ? 20 : 44} /></clipPath>
         <clipPath id={clipHeadId}><path d={HG.full} /></clipPath>
@@ -252,7 +253,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.08  0 0 0 0 0.1  1.1 0 0 0 -0.46" />
         </filter>
       </defs>
-      <g transform={`translate(140, ${(M ? 195 : 228) + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
+      <g transform={TEX ? undefined : `translate(140, ${(M ? 195 : 228) + breathY}) rotate(${layer === "all" ? pose.torsoLeanDeg : 0})`}>
         {show("lower") && (<>
         <g transform={M ? "translate(0 4) scale(1.02 1.22)" : undefined}>
         {/* cape behind body */}
@@ -311,17 +312,17 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
         {show("armB") && (<>
         </>)}
         {show("torso") && (<>
-        {M && (
+        {M && !TEX && (
           <g>{/* short thin neck, hidden behind the head chin + torso shoulders */}
             <path d="M -8 -84 L -8 -56 L 8 -56 L 8 -84 Z" fill="#F4EEF2" />
             <path d="M -8 -80 L -8 -60 M 8 -80 L 8 -60" stroke={INK} strokeWidth="3.4" strokeLinecap="round" fill="none" />
             <path d="M 4 -80 L 4 -60" stroke="#CDBFD6" strokeOpacity="0.7" strokeWidth="4" />
           </g>
         )}
-        <g transform={M ? "scale(1.02 1.136)" : undefined}>
+        <g transform={M && !TEX ? "scale(1.02 1.136)" : undefined}>
         {/* torso (clipped garment + cel shading) */}
-        <g clipPath={`url(#${clipTorsoId})`}>
-          <rect x="-44" y="-58" width="88" height="118" rx={M ? 20 : 44} fill={shirt} />
+        <g clipPath={TEX ? undefined : `url(#${clipTorsoId})`}>
+          <rect x="-44" y="-58" width="88" height="118" rx={TEX ? 0 : M ? 20 : 44} fill={shirt} />
 
           {outfit === "tunic" && (
             <>
@@ -391,7 +392,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           {pattern === "stripes" && [-30, -14, 2, 18, 34].map((x, i) => <line key={i} x1={x} y1="-50" x2={x} y2="56" stroke="#FFF3D4" strokeOpacity="0.45" strokeWidth="4" />)}
           {pattern === "dots" && [[-24, -10], [0, 4], [24, -10], [-12, 28], [14, 30], [-30, 40], [30, 42]].map(([x, y], i) => <circle key={i} cx={x} cy={y} r="3.6" fill={accent} />)}
 
-          {M ? (<>
+          {M && TEX ? null : M ? (<>
             <ellipse cx="44" cy="10" rx="30" ry="76" fill="#2A1840" opacity="0.30" />
             <ellipse cx="22" cy="48" rx="70" ry="26" fill="#2A1840" opacity="0.22" />
             <path d="M -30 -46 Q -50 -2 -34 36 Q -40 -2 -30 -46 Z" fill="#FFFFFF" opacity="0.34" />
@@ -410,12 +411,12 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
             );
           })}
           <path d="M -42 51 Q 0 60 42 51" fill="none" stroke="#2B1B20" strokeOpacity="0.5" strokeWidth="1.6" strokeDasharray="4 3" />
-          <path d="M -30 -50 Q -22 -44 -14 -52 M 14 -52 Q 22 -44 30 -50" fill="none" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="2.2" strokeLinecap="round" />
+          {!TEX && <path d="M -30 -50 Q -22 -44 -14 -52 M 14 -52 Q 22 -44 30 -50" fill="none" stroke="#FFFFFF" strokeOpacity="0.35" strokeWidth="2.2" strokeLinecap="round" />}
           {!M && <rect x="-44" y="-58" width="88" height="118" filter={`url(#grain-${characterId}-${uid})`} opacity="0.5" />}
         </g>
-        <path d={brushRing(roundRectPts(-44, -58, 88, 118, M ? 20 : 44), M ? 3.2 : 3.2, M ? 1.0 : 5.4, hid % 9)} fill={INK} fillRule="evenodd" />
+        {!TEX && <path d={brushRing(roundRectPts(-44, -58, 88, 118, M ? 20 : 44), M ? 3.2 : 3.2, M ? 1.0 : 5.4, hid % 9)} fill={INK} fillRule="evenodd" />}
         </g>
-        {collar && (
+        {collar && !TEX && (
           <g>
             <path d="M -23 -36 Q 0 -12 23 -36" fill="none" stroke={INK} strokeWidth="13" strokeLinecap="round" />
             <path d="M -23 -36 Q 0 -12 23 -36" fill="none" stroke="#D3A04A" strokeWidth="8" strokeLinecap="round" />
