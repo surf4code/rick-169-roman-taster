@@ -1,0 +1,10 @@
+{
+  "_note": "Measured from the Miko reference video (see docs/MIKO_BIBLE.md). Numbers only, no frames.",
+  "mean_luminance": {"target": 50, "min": 40, "max": 66},
+  "letterbox_fraction_each_bar": {"target": 0.065, "min": 0.05},
+  "bg_frame_diff": {"target": 0.4, "max_pass": 0.6, "max_warn": 0.85},
+  "floor_frame_diff": {"target": 0.6, "max_pass": 0.8, "max_warn": 1.1},
+  "character_area_frame_diff": {"target": 1.5, "min": 0.9, "max": 2.3},
+  "shot_length_seconds": {"mean": 3.3, "median": 2.4},
+  "min_fps": 30
+}
