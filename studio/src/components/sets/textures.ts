@@ -130,3 +130,41 @@ export function vistaTexture(night: boolean): THREE.CanvasTexture {
   vistaCache[key] = t;
   return t;
 }
+
+/* ───────────────── Miko-flat set surfaces: big flat shapes, low contrast, thin ink lines, no brick / meander ───────────────── */
+export interface MikoPalette { wall: string; wallLit: string; dado: string; floor: string; floorB: string; ink: string; bg: string; fog: string; hemiSky: string; }
+export const MIKO_PALETTES: Record<string, MikoPalette> = {
+  // warm dusk (plum + amber)
+  palace_quarters_day: { wall: "#6A4560", wallLit: "#86596A", dado: "#4B2E4A", floor: "#5C3B42", floorB: "#6A4448", ink: "#1D1524", bg: "#2C1A28", fog: "#38222F", hemiSky: "#9378B8" },
+  // cool teal corridor
+  palace_corridor_day: { wall: "#3E6A74", wallLit: "#548489", dado: "#2A4A58", floor: "#3B4D5E", floorB: "#455A6A", ink: "#14202A", bg: "#16242E", fog: "#1E3340", hemiSky: "#6FA6BC" },
+  // warm red banquet
+  banquet_hall_day: { wall: "#7A4A3F", wallLit: "#94604A", dado: "#582F34", floor: "#6B4A44", floorB: "#785650", ink: "#231519", bg: "#2A1618", fog: "#3A2022", hemiSky: "#B88A7A" },
+  palace_kitchen_day: { wall: "#6E4A3A", wallLit: "#8A6044", dado: "#4C3030", floor: "#62423A", floorB: "#6E4C42", ink: "#221518", bg: "#2A1A18", fog: "#3A2420", hemiSky: "#B58B70" },
+  palace_kitchen_night: { wall: "#3E4A74", wallLit: "#55639A", dado: "#2A3052", floor: "#343C60", floorB: "#3E476E", ink: "#10142A", bg: "#141830", fog: "#1C2240", hemiSky: "#7A8CD0" },
+};
+export const mikoPalette = (setId: string): MikoPalette => MIKO_PALETTES[setId] || MIKO_PALETTES.palace_quarters_day;
+
+/** Flat painted wall tile (3 world units wide x 7 tall): soft light patch, dado band, one big panel, thin ink lines. */
+export function mikoWallTexture(p: MikoPalette, repeatX: number): THREE.CanvasTexture {
+  return canvasTex(512, 1024, (c, w, h) => {
+    const u = h / 7;
+    c.fillStyle = p.wall; c.fillRect(0, 0, w, h);
+    const g = c.createLinearGradient(0, 0, w, 0); g.addColorStop(0, "rgba(255,200,140,0.20)"); g.addColorStop(0.55, "rgba(255,200,140,0.0)"); g.addColorStop(1, "rgba(20,10,30,0.18)");
+    c.fillStyle = g; c.fillRect(0, 0, w, h);
+    c.fillStyle = p.dado; c.fillRect(0, h - 2.1 * u, w, 2.1 * u);                       // dado band
+    c.fillStyle = p.wallLit; c.fillRect(46, 1.5 * u, w - 92, 3.3 * u);                  // one big flat panel
+    c.strokeStyle = p.ink; c.lineWidth = 5; c.globalAlpha = 0.7;
+    c.strokeRect(46, 1.5 * u, w - 92, 3.3 * u);
+    c.beginPath(); c.moveTo(0, h - 2.1 * u); c.lineTo(w, h - 2.1 * u); c.stroke();
+    c.globalAlpha = 1;
+  }, [repeatX, 1]);
+}
+export function mikoFloorTexture(p: MikoPalette, repeat: [number, number]): THREE.CanvasTexture {
+  return canvasTex(512, 512, (c, w, h) => {
+    for (let i = 0; i < 4; i++) { c.fillStyle = i % 2 ? p.floor : p.floorB; c.fillRect(0, i * 128, w, 128); }
+    c.strokeStyle = p.ink; c.globalAlpha = 0.55; c.lineWidth = 4;
+    for (let i = 0; i <= 4; i++) { c.beginPath(); c.moveTo(0, i * 128); c.lineTo(w, i * 128); c.stroke(); }
+    c.globalAlpha = 1;
+  }, repeat);
+}

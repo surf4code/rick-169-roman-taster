@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { useCurrentFrame, useVideoConfig } from "remotion";
 import { GradePreset } from "../utils/colorGrade";
 import { buildSet } from "./sets/dressing";
-import { floorTexture, wallTexture } from "./sets/textures";
+import { floorTexture, wallTexture, mikoWallTexture, mikoFloorTexture, mikoPalette } from "./sets/textures";
 import * as P from "./props/RomanProps";
 import { SetDressing } from "./sets/extras";
 import { mulberry32 } from "../utils/anim";
@@ -65,6 +65,48 @@ const MAP: Record<string, React.FC<any>> = {
   Scroll: P.Scroll, Loaf: P.Loaf, Chandelier: P.Chandelier, Cushion: P.Cushion,
 };
 
+/** Miko keeps few, readable props: drop clutter, cap repeats. */
+const MIKO_DROP = new Set(["Plant", "Basket", "Sack", "Crate", "Hanging", "Laundry", "Shelf", "Banner", "Cushion", "Goblet", "Platter", "Scroll", "Bowl", "Loaf", "Chandelier", "Barrel", "Bust", "Jug", "Brazier", "Door", "Arch"]);
+const MIKO_CAP: Record<string, number> = { Amphora: 3, Column: 2, Window: 2, Table: 1, Stool: 1, Torch: 2, OilLamp: 1, Couch: 2, Bed: 1, Arch: 1, Rug: 1, Cauldron: 1, Oven: 1 };
+function mikoReduce(items: any[]) {
+  const seen: Record<string, number> = {};
+  return items.filter((it) => {
+    if (MIKO_DROP.has(it.t)) return false;
+    seen[it.t] = (seen[it.t] || 0) + 1;
+    return seen[it.t] <= (MIKO_CAP[it.t] ?? 2);
+  });
+}
+
+/** Ink outline for every solid prop: inverted hull pushed along the VIEW-space normal, so the width is constant whatever the mesh scale. */
+const hullMat = (w: number) => {
+  const m = new THREE.MeshBasicMaterial({ color: "#1D1524", side: THREE.BackSide, toneMapped: false });
+  m.onBeforeCompile = (sh) => {
+    sh.vertexShader = sh.vertexShader.replace("#include <project_vertex>", `
+      vec4 mvPosition = modelViewMatrix * vec4( transformed, 1.0 );
+      mvPosition.xyz += normalize( normalMatrix * normal ) * ${w.toFixed(4)};
+      gl_Position = projectionMatrix * mvPosition;`);
+  };
+  m.customProgramCacheKey = () => "propink" + w;
+  return m;
+};
+const OutlinedGroup: React.FC<{ enabled: boolean; children: React.ReactNode }> = ({ enabled, children }) => {
+  const ref = React.useRef<THREE.Group>(null);
+  React.useLayoutEffect(() => {
+    const g = ref.current; if (!g || !enabled) return;
+    const mat = hullMat(0.012), added: THREE.Mesh[] = [];
+    const meshes: THREE.Mesh[] = [];
+    g.traverse((o) => { const m = o as THREE.Mesh; if (m.isMesh && !m.userData.__hull) meshes.push(m); });
+    meshes.forEach((m) => {
+      const mm = m.material as THREE.Material;
+      if (Array.isArray(mm) || (mm as any).transparent || (mm as any).isMeshBasicMaterial || (mm as any).side === THREE.DoubleSide) return;
+      const h = new THREE.Mesh(m.geometry, mat); h.userData.__hull = true; h.castShadow = false; h.receiveShadow = false; h.renderOrder = -1;
+      m.add(h); added.push(h);
+    });
+    return () => { added.forEach((h) => h.parent?.remove(h)); };
+  }, [enabled, children]);
+  return <group ref={ref}>{children}</group>;
+};
+
 /** Number of dressed props in a set (used by the density QA gate). */
 export const setObjectCount = (setId: string) => buildSet(setId).items.length;
 
@@ -72,18 +114,19 @@ export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; ci
   const { fps } = useVideoConfig();
   const frame = (useCurrentFrame() * 30) / fps; // 30-fps-equivalent clock so flicker/sway speed is identical at 60 fps
   const spec = useMemo(() => buildSet(setId), [setId]);
-  const wallTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
-  const floorTex = useMemo(() => { const t = floorTexture(spec.floor, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]); return miko ? soften(t, 0.7) : t; }, [spec, miko]);
-  const sideTex = useMemo(() => { const t = wallTexture(spec.wall, Math.max(2, Math.round(spec.floorD / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
+  const pal = mikoPalette(setId);
+  const wallTex = useMemo(() => { if (miko) return mikoWallTexture(pal, Math.max(2, Math.round((spec.halfW * 2) / 3))); const t = wallTexture(spec.wall, Math.max(2, Math.round((spec.halfW * 2) / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
+  const floorTex = useMemo(() => { if (miko) return mikoFloorTexture(pal, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]); const t = floorTexture(spec.floor, [Math.round(spec.halfW * 2 / 3), Math.round(spec.floorD / 3)]); return miko ? soften(t, 0.7) : t; }, [spec, miko]);
+  const sideTex = useMemo(() => { if (miko) return mikoWallTexture(pal, Math.max(2, Math.round(spec.floorD / 3))); const t = wallTexture(spec.wall, Math.max(2, Math.round(spec.floorD / 3)), spec.night); return miko ? soften(t, 0.9) : t; }, [spec, miko]);
   const isCorridor = setId.includes("corridor");
   const wallMat = <meshStandardMaterial map={wallTex} roughness={0.85} />;
 
   return (
     <group>
-      <color attach="background" args={[miko ? "#3A2230" : spec.night ? "#6C86C9" : spec.sky]} />
-      {miko && <fog attach="fog" args={["#432A33", 3.2, 15]} />}
+      <color attach="background" args={[miko ? pal.bg : spec.night ? "#6C86C9" : spec.sky]} />
+      {miko && <fog attach="fog" args={[pal.fog, 3.2, 15]} />}
       <ambientLight intensity={grade.ambientIntensity} />
-      <hemisphereLight args={[grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
+      <hemisphereLight args={[miko ? pal.hemiSky : grade.hemiSkyColor, grade.hemiGroundColor, grade.hemiIntensity]} />
       <directionalLight position={miko ? [-6.0, 4.6, 4.6] : cine ? [-6.5, 3.4, 4.2] : [4.5, 8.0, 5.2]} intensity={grade.keyLightIntensity * (cine && !miko ? 1.18 : 1)} color={cine ? "#FFC98A" : grade.keyLightColor} castShadow
         shadow-mapSize-width={1024} shadow-mapSize-height={1024}
         shadow-radius={miko ? 5 : 1} shadow-camera-left={-9} shadow-camera-right={9} shadow-camera-top={9} shadow-camera-bottom={-9} shadow-camera-near={0.5} shadow-camera-far={30} shadow-bias={-0.0004} />
@@ -123,14 +166,16 @@ export const RomanDioramaStage: React.FC<{ setId: string; grade: GradePreset; ci
         </mesh>
       ))}
 
-      <SetDressing spec={spec} setId={setId} night={spec.night} frame={frame} />
+      {!miko && <SetDressing spec={spec} setId={setId} night={spec.night} frame={frame} />}
       {miko && <BokehOrbs spec={spec} frame={frame} />}
+      <OutlinedGroup enabled={miko} key={setId + (miko ? "m" : "")}>
 
-      {spec.items.map((it, i) => {
+      {(miko ? mikoReduce(spec.items) : spec.items).map((it, i) => {
         const C = MAP[it.t];
         if (!C) return null;
         return <C key={i} position={it.p} rotation={it.r} scale={it.s} color={it.c} frame={frame} night={spec.night} {...(it.o || {})} />;
       })}
+      </OutlinedGroup>
     </group>
   );
 };

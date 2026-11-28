@@ -151,6 +151,15 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         const a = Math.max(inA, outA);
         return a > 0 ? <AbsoluteFill style={{ backgroundColor: "#07040A", opacity: a * a * (3 - 2 * a) }} /> : null;
       })()}
+      {miko && shot.fg && (
+        // Miko over-the-shoulder: a dark, heavily blurred head+shoulders at the frame edge, drifting very slowly
+        <svg viewBox="0 0 600 700" style={{ position: "absolute", bottom: -60, [shot.fg.side]: -120, width: 640 * (shot.fg.s ?? 1), height: 750 * (shot.fg.s ?? 1), filter: "blur(16px)", opacity: 0.93, transform: `translateX(${(shot.fg.side === "left" ? 1 : -1) * Math.sin(t * 0.5) * 6}px)` }}>
+          <ellipse cx="300" cy="560" rx="290" ry="200" fill="#120C1A" />
+          <rect x="262" y="330" width="76" height="120" rx="30" fill="#120C1A" />
+          <circle cx="300" cy="250" r="135" fill="#160F1E" />
+          <path d="M 170 200 A 135 135 0 0 1 300 115" fill="none" stroke="#B86F3E" strokeWidth="9" strokeLinecap="round" opacity="0.7" />
+        </svg>
+      )}
       {miko && (<>
         {/* Miko letterbox: about 6.5% black bars top and bottom */}
         <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: Math.round(height * 0.065), background: "#000" }} />

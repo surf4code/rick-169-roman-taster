@@ -139,7 +139,7 @@ export const Window: React.FC<PropBase & { w?: number; h?: number }> = (p) => {
   const w = p.w ?? 1.1, h = p.h ?? 1.3;
   return G(p, <>
     <Part color="#7B4527" position={[0, 0, 0]} geo={Box([w + 0.3, h + 0.3, 0.12])} outline={0.02} />
-    <mesh position={[0, 0, 0.07]}><planeGeometry args={[w, h]} /><meshBasicMaterial color="#FFEFC2" toneMapped={false} /></mesh>
+    <mesh position={[0, 0, 0.07]}><planeGeometry args={[w, h]} /><meshBasicMaterial color="#C2A06A" toneMapped={false} /></mesh>
     <Part color="#7B4527" position={[0, 0, 0.09]} geo={Box([0.06, h, 0.05])} outline={0} />
     <Part color="#7B4527" position={[0, 0, 0.09]} geo={Box([w, 0.06, 0.05])} outline={0} />
   </>);
