@@ -40,9 +40,9 @@ const BokehOrbs: React.FC<{ spec: ReturnType<typeof buildSet>; frame: number }> 
   const orbs = useMemo(() => {
     const r = mulberry32(4242);
     const list: { p: [number, number, number]; s: number; c: string; ph: number; o: number }[] = [];
-    spec.torchLights.forEach((p) => list.push({ p: [p[0], p[1], p[2] + 0.2], s: 0.95, c: "#FFC46B", ph: r() * 6, o: 0.9 }));
-    for (let i = 0; i < 14; i++) list.push({ p: [(r() - 0.5) * spec.halfW * 1.7, 1.2 + r() * 2.6, spec.backZ + 0.5 + r() * 1.4], s: 0.22 + r() * 0.34, c: ORB_COLS[i % 4], ph: r() * 6, o: 0.55 + r() * 0.3 });
-    for (let i = 0; i < 5; i++) list.push({ p: [(r() - 0.5) * 7, 0.6 + r() * 2.4, 2.6 + r() * 1.2], s: 0.16 + r() * 0.2, c: ORB_COLS[(i + 1) % 4], ph: r() * 6, o: 0.4 });
+    spec.torchLights.forEach((p) => list.push({ p: [p[0], p[1], p[2] + 0.2], s: 0.8, c: "#FFC46B", ph: r() * 6, o: 0.5 }));
+    for (let i = 0; i < 0; i++) list.push({ p: [(r() - 0.5) * spec.halfW * 1.7, 1.2 + r() * 2.6, spec.backZ + 0.5 + r() * 1.4], s: 0.22 + r() * 0.34, c: ORB_COLS[i % 4], ph: r() * 6, o: 0.55 + r() * 0.3 });
+    for (let i = 0; i < 0; i++) list.push({ p: [(r() - 0.5) * 7, 0.6 + r() * 2.4, 2.6 + r() * 1.2], s: 0.16 + r() * 0.2, c: ORB_COLS[(i + 1) % 4], ph: r() * 6, o: 0.4 });
     return list;
   }, [spec]);
   const tex = getOrbTex();

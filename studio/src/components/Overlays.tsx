@@ -66,7 +66,7 @@ export const MikoTag: React.FC<{ x: number; y: number; text: string; color: stri
   const float = Math.sin((frame / fps) * 1.35) * 3;
   const cx = Math.min(1920 - 40, Math.max(40, x));
   return (
-    <div style={{ position: "absolute", left: cx, top: Math.max(120, y) + float + (1 - a) * 18, opacity: a, transform: "translate(-50%, -100%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <div style={{ position: "absolute", left: cx, top: Math.max(200, y) + float + (1 - a) * 18, opacity: a, transform: "translate(-50%, -100%)", display: "flex", flexDirection: "column", alignItems: "center" }}>
       <MikoBox size={26} pad={[8, 22]} track={3}>
         <span style={{ display: "inline-block", width: 12, height: 12, borderRadius: 6, background: color, marginRight: 12, boxShadow: `0 0 10px ${color}` }} />{text}
       </MikoBox>

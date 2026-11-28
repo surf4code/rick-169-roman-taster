@@ -32,8 +32,8 @@ const HERO: Record<string, React.FC<any>> = { Goblet: P.Goblet, Platter: P.Platt
 /** Miko moody lighting translated to the Rick warm palette. */
 const MIKO_MOOD = {
   ambientIntensity: 0.1, hemiSkyColor: "#8C73B0", hemiGroundColor: "#2E1A22", hemiIntensity: 0.22,
-  keyLightColor: "#FFB36E", keyLightIntensity: 1.35, rimLightColor: "#8F86E6", rimLightIntensity: 0.8,
-  vignetteDarkness: 0.72, bloomThreshold: 0.84, bloomIntensity: 0.3, bgColor: "#2C1A26",
+  keyLightColor: "#FFB36E", keyLightIntensity: 1.1, rimLightColor: "#8F86E6", rimLightIntensity: 0.8,
+  vignetteDarkness: 0.8, bloomThreshold: 0.84, bloomIntensity: 0.3, bgColor: "#2C1A26",
 };
 const smooth01 = (x: number) => { const k = Math.min(1, Math.max(0, x)); return k * k * (3 - 2 * k); };
 
@@ -124,7 +124,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         {all.map((c: any, i: number) => (
           <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} turn={miko ? c._turn : undefined} tone={miko ? "#EDE4EA" : undefined} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
-        <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 1080 : 360} focusRange={miko ? Math.max(2.0, focusDist * 0.62) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 2.6 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
+        <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 1080 : 360} focusRange={miko ? Math.max(0.55, focusDist * 0.17) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 6.5 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
       </ThreeCanvas>
 
       {(shot.tags || []).map((tg: any, i: number) => {
@@ -151,6 +151,11 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
         const a = Math.max(inA, outA);
         return a > 0 ? <AbsoluteFill style={{ backgroundColor: "#07040A", opacity: a * a * (3 - 2 * a) }} /> : null;
       })()}
+      {miko && (<>
+        {/* Miko letterbox: about 6.5% black bars top and bottom */}
+        <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: Math.round(height * 0.065), background: "#000" }} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: Math.round(height * 0.065), background: "#000" }} />
+      </>)}
       {!miko && shot.stamp && (
         <div style={{ position: "absolute", top: 44, left: 64, color: "#FFFFFF", fontSize: 40, fontWeight: 900, fontStyle: "italic", textShadow: "3px 3px 0 #141414, -2px -2px 0 #141414, 2px -2px 0 #141414, -2px 2px 0 #141414", fontFamily: "'Arial Black', Arial, sans-serif" }}>
           {shot.stamp}

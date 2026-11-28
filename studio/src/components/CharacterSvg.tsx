@@ -27,7 +27,7 @@ const INK = "#231A29";
 /** Brush-ink ring around a closed contour: width varies with the light side (heavy lower-left, thin upper-right) + hand wobble.
  *  Rendered as a FILLED ring (two subpaths, evenodd) so it antialiases like a brush stroke, not a uniform CSS stroke. */
 const brushRing = (pts: [number, number][], base: number, heavy: number, seed: number): string => {
-  const n = pts.length, L = [0.6, -0.8];
+  const n = pts.length, L = [-0.65, -0.75];
   const outer: string[] = [], inner: string[] = [];
   for (let i = 0; i < n; i++) {
     const a = pts[(i + n - 1) % n], b = pts[(i + 1) % n], p = pts[i];
@@ -228,8 +228,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
   const hid = hashId(characterId);
   const pick = (k: number, m: number) => ((hid >>> k) % m);
   const T = {
-    eyeRx: M ? 3.5 + pick(1, 4) * 0.35 : 4.6 + pick(1, 5) * 0.55, eyeRy: M ? 0.82 + pick(3, 4) * 0.06 : 0.9 + pick(3, 4) * 0.08, gap: M ? 17 + pick(5, 4) * 1.1 : 13.5 + pick(5, 5) * 1.3,
-    browW: M ? 4.4 + pick(7, 3) * 0.5 : 3.8 + pick(7, 4) * 0.8, browLen: M ? 11 + pick(9, 3) * 2 : 14 + pick(9, 4) * 2.6, browTilt: (pick(11, 5) - 2) * 2.2, browY: -pick(13, 3) * 1.6,
+    eyeRx: M ? 4.6 + pick(1, 4) * 0.35 : 4.6 + pick(1, 5) * 0.55, eyeRy: M ? 0.82 + pick(3, 4) * 0.06 : 0.9 + pick(3, 4) * 0.08, gap: M ? 15.5 + pick(5, 4) * 1.0 : 13.5 + pick(5, 5) * 1.3,
+    browW: M ? 2.8 + pick(7, 3) * 0.25 : 3.8 + pick(7, 4) * 0.8, browLen: M ? 19 + pick(9, 3) * 1.5 : 14 + pick(9, 4) * 2.6, browTilt: (pick(11, 5) - 2) * 2.2, browY: -pick(13, 3) * 1.6,
     mouthS: 0.85 + pick(15, 4) * 0.1, mouthY: pick(17, 3) * 1.5 - 1,
     shock: pick(19, 5), happy: pick(21, 3),
   };
@@ -449,10 +449,11 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
             </>)}
           </g>
           <path d={brushRing(HG.pts, M ? 3.4 : 3.4, M ? 1.1 : 5.6, hid % 11)} fill={INK} fillRule="evenodd" />
+          {M && <path d="M -57 -7.4 A 54.6 54.6 0 1 0 52.2 -7.4 A 54.6 54.6 0 1 0 -57 -7.4 Z M -52 -6 A 52 52 0 1 0 52 -6 A 52 52 0 1 0 -52 -6 Z" fill="#F6B84E" fillRule="evenodd" opacity="0.96" />}
 
           <Hair style={hairStyle} c={hairC} accent={accent} />
 
-          <g transform={`translate(${3.5 + turn * (M ? 17 : 11)},0) scale(${1 - Math.abs(turn) * 0.14},1)`}>
+          <g transform={`translate(${3.5 + turn * (M ? 17 : 11)},${M ? 9 : 0}) scale(${1 - Math.abs(turn) * 0.14},1)`}>
           {/* eyes */}
           {isShock ? (
             T.shock === 0 ? (<>
@@ -487,6 +488,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
               <ellipse cx={-T.gap} cy="-7" rx={T.eyeRx} ry={isBlinking ? 1.0 : 7.8 * T.eyeRy * pose.eyeScaleY} fill={INK} />
               <ellipse cx={T.gap} cy="-7" rx={T.eyeRx} ry={isBlinking ? 1.0 : 7.8 * T.eyeRy * pose.eyeScaleY} fill={INK} />
               {!isBlinking && !M && <><circle cx={-T.gap + 1.7} cy={-9.6} r="1.7" fill="#FFFFFF" opacity="0.92" /><circle cx={T.gap + 1.7} cy={-9.6} r="1.7" fill="#FFFFFF" opacity="0.92" /></>}
+              {!isBlinking && M && <><circle cx={-T.gap + T.eyeRx * 0.35} cy={-7 - 7.8 * T.eyeRy * pose.eyeScaleY * 0.42} r="1.9" fill="#FFFFFF" /><circle cx={T.gap + T.eyeRx * 0.35} cy={-7 - 7.8 * T.eyeRy * pose.eyeScaleY * 0.42} r="1.9" fill="#FFFFFF" /></>}
+              {!isBlinking && M && pose.eyeScaleY <= 0.95 && [-1, 1].map((sd) => <line key={`mlid${sd}`} x1={sd * T.gap - T.eyeRx - 1.6} x2={sd * T.gap + T.eyeRx + 1.6} y1={-7 - 7.8 * T.eyeRy * pose.eyeScaleY * 0.5} y2={-7 - 7.8 * T.eyeRy * pose.eyeScaleY * 0.5} stroke={INK} strokeWidth="2.8" strokeLinecap="round" />)}
               {!M && [-1, 1].map((sd) => (
                 <path key={`lid${sd}`} d={`M ${sd * T.gap - T.eyeRx - 2.6} -8.5 Q ${sd * T.gap} ${-18 + (1 - pose.eyeScaleY) * 22} ${sd * T.gap + T.eyeRx + 2.6} -8.5`} fill="none" stroke={INK} strokeWidth="2.7" strokeLinecap="round" />
               ))}
@@ -505,8 +508,8 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           )}
 
           {/* brows */}
-          <line x1={-T.gap - T.browLen / 2} y1={-23 + T.browY - browLiftL} x2={-T.gap + T.browLen / 2} y2={-23 + T.browY - browLiftL} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browLeftDeg + T.browTilt}, ${-T.gap}, ${-23 + T.browY - browLiftL})`} />
-          <line x1={T.gap - T.browLen / 2} y1={-23 + T.browY - browLiftR} x2={T.gap + T.browLen / 2} y2={-23 + T.browY - browLiftR} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browRightDeg + T.browTilt}, ${T.gap}, ${-23 + T.browY - browLiftR})`} />
+          <line x1={-T.gap - T.browLen / 2} y1={(M ? -27 : -23) + T.browY - browLiftL} x2={-T.gap + T.browLen / 2} y2={(M ? -27 : -23) + T.browY - browLiftL} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browLeftDeg + T.browTilt}, ${-T.gap}, ${(M ? -27 : -23) + T.browY - browLiftL})`} />
+          <line x1={T.gap - T.browLen / 2} y1={(M ? -27 : -23) + T.browY - browLiftR} x2={T.gap + T.browLen / 2} y2={(M ? -27 : -23) + T.browY - browLiftR} stroke={INK} strokeWidth={T.browW} strokeLinecap="round" transform={`rotate(${pose.browRightDeg + T.browTilt}, ${T.gap}, ${(M ? -27 : -23) + T.browY - browLiftR})`} />
 
           {/* nose (per-character shape) */}
           {!M && pick(23, 4) === 0 && <path d="M 1 -2 Q 7 5 0 9" fill="none" stroke={INK} strokeOpacity="0.8" strokeWidth="2.8" strokeLinecap="round" />}
@@ -515,7 +518,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           {!M && pick(23, 4) === 3 && <ellipse cx="1" cy="6" rx="3.4" ry="2.6" fill="#E9B7A8" stroke={INK} strokeOpacity="0.8" strokeWidth="2.2" />}
 
           {/* mouth */}
-          <g transform={M ? "translate(0,5) scale(0.72)" : undefined}>
+          <g transform={M ? "translate(0,1.5) scale(0.72)" : undefined}>
           {isAngry ? (
             <rect x="-15" y="10" width="30" height="12" rx="5" fill="#FFFFFF" stroke={INK} strokeWidth="3.4" />
           ) : isShock && T.shock === 1 ? (
@@ -535,7 +538,7 @@ export const CharacterSvg: React.FC<CharacterSvgProps> = ({
           ) : viseme === "o" ? (
             <ellipse cx="0" cy="16" rx="8" ry="10" fill="#3A1218" stroke={INK} strokeWidth="3.4" />
           ) : (
-            <path d={CLOSED_MOUTH[emotion] || CLOSED_MOUTH.neutral} fill="none" stroke={INK} strokeWidth={M ? 5.4 : 4} strokeLinecap="round" strokeLinejoin="round" />
+            <path d={CLOSED_MOUTH[emotion] || CLOSED_MOUTH.neutral} fill="none" stroke={INK} strokeWidth={M ? 2.7 : 4} strokeLinecap="round" strokeLinejoin="round" />
           )}
           </g>
           {pose.showBlush && (<><ellipse cx="-34" cy="8" rx="9" ry="5" fill="#F27C8C" opacity="0.55" /><ellipse cx="34" cy="8" rx="9" ry="5" fill="#F27C8C" opacity="0.55" /></>)}

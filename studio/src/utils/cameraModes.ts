@@ -11,7 +11,7 @@ export function customCamera(c: CustomCam, u: number): CamState {
   const look = L(c.look, c.lookTo ?? c.look);
   let pos = L(c.from, c.to);
   if (c.orbit) { // orbit the look point (3D parallax: set pieces slide against each other like a real camera move)
-    const a = (c.orbit * Math.PI / 180) * k, dx = pos[0] - look[0], dz = pos[2] - look[2];
+    const a = (c.orbit * 0.5 * Math.PI / 180) * k, dx = pos[0] - look[0], dz = pos[2] - look[2];
     pos = [look[0] + dx * Math.cos(a) + dz * Math.sin(a), pos[1], look[2] - dx * Math.sin(a) + dz * Math.cos(a)];
   }
   return { pos, look, roll: 0, fov: (c.fov ?? 36) + ((c.fovTo ?? c.fov ?? 36) - (c.fov ?? 36)) * k };

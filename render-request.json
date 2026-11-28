@@ -1,1 +1,7 @@
-{"composition": "First20MikoV2-60fps", "total_frames": 1200, "chunks": 40, "start_frame": 0, "rerun": 10}
+{
+  "composition": "First20MikoV2-60fps",
+  "total_frames": 1200,
+  "chunks": 40,
+  "start_frame": 0,
+  "rerun": 11
+}
