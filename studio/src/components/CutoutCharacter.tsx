@@ -87,7 +87,6 @@ export function characterMarkup(i: CharacterMarkupInput): string {
 }
 
 function toDataUrl(markup: string): string {
-  if (markup.includes('data-raw="1"')) return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(markup.replace(/<svg/, '<svg xmlns="http://www.w3.org/2000/svg"'));
   const svg = markup.replace(
     /<svg[^>]*>/,
     `<svg xmlns="http://www.w3.org/2000/svg" width="${REGION.w * TEX_SCALE}" height="${REGION.h * TEX_SCALE}" viewBox="${REGION.x} ${REGION.y} ${REGION.w} ${REGION.h}">`
@@ -100,9 +99,8 @@ function loadTexture(markup: string): Promise<THREE.CanvasTexture> {
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement("canvas");
-      const raw = markup.includes('data-raw="1"');
-      canvas.width = raw ? img.naturalWidth || 528 : REGION.w * TEX_SCALE;
-      canvas.height = raw ? img.naturalHeight || 708 : REGION.h * TEX_SCALE;
+      canvas.width = REGION.w * TEX_SCALE;
+      canvas.height = REGION.h * TEX_SCALE;
       const ctx = canvas.getContext("2d")!;
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       const tex = new THREE.CanvasTexture(canvas);
@@ -186,7 +184,7 @@ export function restingTurn(id: string): number {
   for (let k = 0; k < id.length; k++) h = (h * 31 + id.charCodeAt(k)) >>> 0;
   return (h % 2 ? 1 : -1) * (0.18 + ((h >>> 3) % 5) * 0.04);
 }
-export const hashStr = (id: string) => id.split("").reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
+const hashStr = (id: string) => id.split("").reduce((h, ch) => (h * 31 + ch.charCodeAt(0)) >>> 0, 7);
 const D2R = Math.PI / 180;
 const wx = (sx: number) => (sx - 140) * U;
 const wy = (sy: number) => (HIP_Y - sy) * U; // relative to the hip
@@ -342,7 +340,7 @@ export interface CutoutCharacterProps {
 }
 
 /** Two-bone IK: elbow position for root->tip, choosing the solution whose elbow lies toward `pole`. */
-export function solveElbow(root: V2, tip: V2, l1: number, l2: number, pole: V2): { E: V2; W: V2 } {
+function solveElbow(root: V2, tip: V2, l1: number, l2: number, pole: V2): { E: V2; W: V2 } {
   let dx = tip[0] - root[0], dy = tip[1] - root[1];
   let d = Math.hypot(dx, dy) || 1; const dMax = (l1 + l2) * 0.998, dMin = Math.abs(l1 - l2) + 4;
   if (d > dMax) { dx *= dMax / d; dy *= dMax / d; d = dMax; }

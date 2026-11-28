@@ -8,8 +8,6 @@ import { RICK_WARM_BRIGHT_DAY, RICK_WARM_TORCH_NIGHT } from "../utils/colorGrade
 import { place, easeOut, clamp } from "../utils/anim";
 import { cameraFor, customCamera } from "../utils/cameraModes";
 import { BabyProp, babyMarkup } from "../components/props/Baby";
-import { Char3D } from "../components/char3d/Char3D";
-import { Baby3D } from "../components/props/Baby3D";
 import charactersData from "../data/characters.json";
 import { RomanDioramaStage } from "../components/RomanDioramaStage";
 import * as P from "../components/props/RomanProps";
@@ -80,16 +78,15 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
     const u0 = localT / Math.max(dur, 0.1);
     // face + eyes + mouth slide toward the side the camera is drifting to (Miko's head-turn / immersive 3D feel), quantised to 1/16 for texture caching
     const raw = orb ? rest * 0.5 + Math.sign(orb) * (c.bg ? 0.3 : 0.62) * smooth01((u0 - 0.1) / 0.55) : rest + 0.1 * Math.sin(t * 0.55 + c.id.length);
-    const turn = miko ? Math.max(-0.8, Math.min(0.8, raw)) : Math.round(Math.max(-0.8, Math.min(0.8, raw)) * 16) / 16;
+    const turn = Math.round(Math.max(-0.8, Math.min(0.8, raw)) * 16) / 16;
     c._turn = turn;
-    if (miko) { markups[`${c.id}|torsoTex`] = characterMarkup({ characterId: c.id as CharacterId, emotion: "neutral", frame: 0, fps, layer: "torsoTex" as any, look: "miko", collar: false, stepOnTwos: false }); return; }
     LAYERS.forEach((l) => {
       const mk = characterMarkup({ characterId: c.id as CharacterId, emotion: c.emotion, frame, fps, rmsAmplitude: talking ? rms : 0.05, layer: l, turn, look: miko ? "miko" : "rick", collar: !!c.collar, stepOnTwos: false });
       markups[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] = mk;
     });
   });
   const babyOn = !!shot.baby;
-  if (babyOn && !miko) {
+  if (babyOn) {
     const blinkB = (t % 3.4) > 3.15;
     markups["baby"] = babyMarkup(blinkB, shot.baby.wrap, shot.baby.band);
   }
@@ -113,7 +110,7 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
     <AbsoluteFill style={{ backgroundColor: grade.bgColor }}>
       <ThreeCanvas width={width} height={height} dpr={1.75} gl={{ antialias: true }} shadows camera={{ fov: 38, near: 0.05, far: 80 }}>
         <Rig cs={cs} />
-        <RomanDioramaStage setId={shot.set} grade={grade} cine={cine} miko={miko} focus={focus} />
+        <RomanDioramaStage setId={shot.set} grade={grade} cine={cine} miko={miko} />
         <AtmosphereFX warmTorch={isNight} count={miko ? 0 : 12} />
         {(shot.hero || []).map((h: any, i: number) => {
           const C = HERO[h.t];
@@ -123,12 +120,8 @@ export const StyleTestOpening: React.FC<{ plan?: any }> = ({ plan }) => {
           const rot: [number, number, number] = [0, 0, -tip * 1.45];
           return <C key={i} position={pos} rotation={rot} scale={h.s ?? 1} {...(h.o || {})} />;
         })}
-        {babyOn && miko && <Baby3D position={shot.baby.p} scale={shot.baby.s ?? 0.55} time={frame / fps} rock={shot.baby.rock ?? 1} wrap={shot.baby.wrap} band={shot.baby.band} />}
-        {babyOn && !miko && <BabyProp tex={textures["baby"] ?? null} position={shot.baby.p} scale={shot.baby.s ?? 0.55} time={frame / fps} rock={shot.baby.rock ?? 1} />}
-        {miko && all.map((c: any, i: number) => (
-          <Char3D key={`${i}:${c.id}`} characterId={c.id} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} time={frame / fps} turn={c._turn} talking={c._talking} collar={!!c.collar} torsoTex={textures[`${c.id}|torsoTex`] ?? null} bg={c.bg} />
-        ))}
-        {!miko && all.map((c: any, i: number) => (
+        {babyOn && <BabyProp tex={textures["baby"] ?? null} position={shot.baby.p} scale={shot.baby.s ?? 0.55} time={frame / fps} rock={shot.baby.rock ?? 1} />}
+        {all.map((c: any, i: number) => (
           <CutoutCharacter key={`${i}:${c._key}`} characterId={c.id as CharacterId} position={c.pos} scale={c.scale ?? 1} flipX={!!c.flipX} camPos={cs.pos as [number, number, number]} emotion={c.emotion} prevEmotion={c.prevEmotion} sinceT={c.sinceT} focus={!c.bg && shot.characters.length === 1} time={frame / fps} look={miko ? "miko" : "rick"} turn={miko ? c._turn : undefined} tone={miko ? "#EDE4EA" : undefined} talking={c._talking} textures={Object.fromEntries(LAYERS.map((l) => [l, textures[l === "head" ? `${c._key}|head` : `${c.id}|${l}`] ?? null]))} />
         ))}
         <PostFX focusDistance={0} worldFocus={focusDist} blurHeight={miko ? 1080 : 360} focusRange={miko ? Math.max(2.0, focusDist * 0.62) : shot.camera === "insert_macro" ? 0.45 : tight ? Math.max(0.9, focusDist * 0.42) : undefined} bokehScale={miko ? 2.6 : macro ? 4.6 : tight ? 4.2 : 1.8} grade={grade} />
