@@ -1,0 +1,86 @@
+name: Render rick-169 Video (Parallel Matrix)
+
+on:
+  workflow_dispatch:
+    inputs:
+      composition:
+        description: "Remotion composition ID"
+        default: "MainVideo"
+      total_frames:
+        description: "Total frames (e.g. 37800 for 21m @30fps)"
+        required: true
+      chunks:
+        description: "Parallel jobs (max 40)"
+        default: "40"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.split.outputs.matrix }}
+    steps:
+      - id: split
+        run: |
+          python3 - << 'EOF'
+          import json, math, os
+          total = int("${{ inputs.total_frames }}")
+          chunks = min(40, max(1, int("${{ inputs.chunks }}")))
+          step = math.ceil(total / chunks)
+          items = []
+          for i in range(chunks):
+              s = i * step
+              e = min(total - 1, (i + 1) * step - 1)
+              if s <= e:
+                  items.append({"idx": f"{i:02d}", "start": s, "end": e})
+          with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
+              fh.write("matrix=" + json.dumps({"include": items}) + "\n")
+          EOF
+
+  render_chunk:
+    needs: plan
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 40
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - name: Render frame range ${{ matrix.start }}-${{ matrix.end }}
+        run: |
+          mkdir -p out/chunks
+          npx remotion render src/index.ts "${{ inputs.composition }}"             "out/chunks/part_${{ matrix.idx }}.mp4"             --frames="${{ matrix.start }}-${{ matrix.end }}"             --codec=h264 --crf=18 --pixel-format=yuv420p             --gl=swangle --concurrency=2 --muted
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chunk-${{ matrix.idx }}
+          path: out/chunks/part_${{ matrix.idx }}.mp4
+
+  stitch_and_qa:
+    needs: render_chunk
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chunk-*
+          merge-multiple: true
+          path: chunks
+      - name: Concat video and mux -14 LUFS audio
+        run: |
+          ls chunks/part_*.mp4 | sort | awk '{print "file \x27" $0 "\x27"}' > list.txt
+          ffmpeg -y -f concat -safe 0 -i list.txt -c copy silent.mp4
+          ffmpeg -y -i silent.mp4 -i public/audio/master_mix.wav             -map 0:v:0 -map 1:a:0 -c:v copy             -af "loudnorm=I=-14:TP=-1.5:LRA=11" -c:a aac -b:a 192k             -shortest out/final.mp4
+      - name: Run video-director QA gate
+        run: |
+          python3 -m pip install -q numpy pillow
+          python3 scripts/qa_video.py out/final.mp4 --out out/qa/ --beats src/timeline.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: final-video-and-qa
+          path: |
+            out/final.mp4
+            out/qa/

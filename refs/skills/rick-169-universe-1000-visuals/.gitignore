@@ -1,0 +1,6 @@
+node_modules/
+.env
+.env.*
+*.key
+studio/out/**/*.mp4
+studio/out/chunks/

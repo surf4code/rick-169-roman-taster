@@ -1,0 +1,7 @@
+winget install OpenJS.NodeJS.LTS
+
+winget install Python.Python.3.12
+
+winget install Gyan.FFmpeg
+
+pip install numpy Pillow

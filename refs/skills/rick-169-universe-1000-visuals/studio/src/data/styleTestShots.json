@@ -1,0 +1,599 @@
+{
+  "meta": {
+    "title": "Why It Sucks to Be a Royal Food Taster (in Ancient Rome) - Style Test",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "duration_sec": 75.0,
+    "total_frames": 2250,
+    "clock": "voice",
+    "loop": false
+  },
+  "terms": [
+    "PRAEGUSTATOR",
+    "ANCIENT ROME",
+    "PALATINE HILL"
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "start": 0.0,
+      "end": 3.5,
+      "type": "wide_establish",
+      "set": "roman_insula_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "stamp": "1ST CENTURY AD - ROME",
+      "characters": [
+        {
+          "id": "mother",
+          "pos": [
+            -1.2,
+            0,
+            0
+          ],
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.9,
+            0,
+            0.2
+          ],
+          "emotion": "curious",
+          "scale": 0.65
+        }
+      ],
+      "narration": "You're born in Ancient Rome, in a cramped brick apartment that smells like wet plaster and cheap fish sauce.",
+      "frontProps": [
+        {
+          "kind": "amphora",
+          "pos": [
+            2.0,
+            0,
+            1.2
+          ],
+          "scale": 1.15,
+          "rotY": 0.4
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "start": 3.5,
+      "end": 6.5,
+      "type": "closeup_punch",
+      "set": "roman_insula_day",
+      "grade": "day",
+      "camera": "punch_in",
+      "bubble": {
+        "speaker": "mother",
+        "text": "AT LEAST HE HAS GOOD TEETH."
+      },
+      "characters": [
+        {
+          "id": "mother",
+          "pos": [
+            -0.4,
+            0,
+            0.2
+          ],
+          "emotion": "sad_slump"
+        }
+      ],
+      "narration": "Before you can even walk, your family already owes more silver than your father will see in a decade."
+    },
+    {
+      "id": "S03",
+      "start": 6.5,
+      "end": 9.8,
+      "type": "two_shot",
+      "set": "roman_insula_day",
+      "grade": "day",
+      "camera": "orbit_gentle",
+      "characters": [
+        {
+          "id": "mother",
+          "pos": [
+            -1.3,
+            0,
+            0
+          ],
+          "emotion": "talking_animated"
+        },
+        {
+          "id": "head_chef",
+          "pos": [
+            1.3,
+            0,
+            0
+          ],
+          "emotion": "confident_point"
+        }
+      ],
+      "floatingTag": {
+        "target": "head_chef",
+        "text": "PALACE STEWARD"
+      },
+      "narration": "So when a polished steward from the Palatine Hill knocks on your door, nobody asks what you think."
+    },
+    {
+      "id": "S04",
+      "start": 9.8,
+      "end": 12.8,
+      "type": "over_shoulder",
+      "set": "roman_insula_day",
+      "grade": "day",
+      "camera": "ots_rack",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.1,
+            0,
+            0.4
+          ],
+          "emotion": "shocked"
+        },
+        {
+          "id": "head_chef",
+          "pos": [
+            1.2,
+            0,
+            -0.5
+          ],
+          "emotion": "skeptical"
+        }
+      ],
+      "bubble": {
+        "speaker": "head_chef",
+        "text": "FREE MEALS. PALACE ROOF."
+      },
+      "narration": "He promises warm bread, a dry roof, and leftovers from the Emperor's own table."
+    },
+    {
+      "id": "S05",
+      "start": 12.8,
+      "end": 16.0,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "day",
+      "camera": "static_punch",
+      "akiraExpression": "smirk",
+      "bubble": {
+        "speaker": "akira",
+        "text": "READ THE FINE PRINT."
+      },
+      "narration": "Which sounds like a dream job, until you hear the single Latin word written next to your name."
+    },
+    {
+      "id": "S06",
+      "start": 16.0,
+      "end": 19.5,
+      "type": "fly_through_transition",
+      "set": "palace_corridor_day",
+      "grade": "day",
+      "camera": "fly_through",
+      "stamp": "PALATINE HILL - 4 YEARS LATER",
+      "characters": [
+        {
+          "id": "palace_guard",
+          "pos": [
+            -1.8,
+            0,
+            -0.8
+          ],
+          "emotion": "neutral"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.0,
+            0,
+            0.0
+          ],
+          "emotion": "curious"
+        }
+      ],
+      "floatingTag": {
+        "target": "taster_protagonist",
+        "text": "PRAEGUSTATOR"
+      },
+      "narration": "Praegustator. The official word means 'taster first.' In practice, it means human poison detector."
+    },
+    {
+      "id": "S07",
+      "start": 19.5,
+      "end": 23.0,
+      "type": "infographic_card",
+      "set": "infographic_parchment",
+      "grade": "day",
+      "camera": "static",
+      "infographic": {
+        "title": "THE IMPERIAL FOOD CHAIN",
+        "stat": "1ST BITE = YOURS",
+        "sub": "Emperors employed dedicated tasters (praegustatores) at palace banquets.",
+        "items": [
+          "WINE CUP",
+          "ROAST COURSE",
+          "MUSHROOM DISH",
+          "WATER PITCHER"
+        ]
+      },
+      "narration": "Every cup of wine, every roasted bird, every plate of mushrooms passes through your mouth before it touches his."
+    },
+    {
+      "id": "S08",
+      "start": 23.0,
+      "end": 26.2,
+      "type": "top_down_overview",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "top_down_drift",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0.0,
+            0,
+            -1.6
+          ],
+          "emotion": "neutral"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.0,
+            0,
+            0.8
+          ],
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            -2.2,
+            0,
+            -1.0
+          ],
+          "emotion": "neutral"
+        }
+      ],
+      "narration": "The banquet hall gleams with marble, gilded couches, and warm sunlight pouring through high colonnades."
+    },
+    {
+      "id": "S09",
+      "start": 26.2,
+      "end": 29.5,
+      "type": "low_angle_power",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "low_angle_tilt",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0.0,
+            0,
+            -0.4
+          ],
+          "emotion": "skeptical"
+        }
+      ],
+      "floatingTag": {
+        "target": "emperor",
+        "text": "THE EMPEROR"
+      },
+      "narration": "At the center reclines the Emperor, smiling at senators he secretly suspects of buying hemlock before lunch."
+    },
+    {
+      "id": "S10",
+      "start": 29.5,
+      "end": 32.8,
+      "type": "macro_prop_insert",
+      "set": "macro_goblet",
+      "grade": "day",
+      "camera": "macro_push",
+      "prop": "golden_goblet",
+      "narration": "A silver platter slides under your nose. One shining goblet of spiced Falernian wine."
+    },
+    {
+      "id": "S11",
+      "start": 32.8,
+      "end": 35.8,
+      "type": "whip_pan_cut",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "whip_right",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -0.2,
+            0,
+            0.2
+          ],
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "head_chef",
+          "pos": [
+            1.8,
+            0,
+            -0.3
+          ],
+          "emotion": "focused_reading"
+        }
+      ],
+      "narration": "Twenty pairs of eyes lock onto your throat. Nobody talks. Nobody blinks."
+    },
+    {
+      "id": "S12",
+      "start": 35.8,
+      "end": 39.2,
+      "type": "closeup_punch",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "punch_in",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.0,
+            0,
+            0.3
+          ],
+          "emotion": "thinking_chin"
+        }
+      ],
+      "bubble": {
+        "speaker": "taster_protagonist",
+        "text": "SMELLS LIKE HONEY... OR ALMONDS?"
+      },
+      "narration": "You swirl the cup once, sniff for bitter herbs, and try not to let your hand shake."
+    },
+    {
+      "id": "S13",
+      "start": 39.2,
+      "end": 42.8,
+      "type": "impact_slowmo",
+      "set": "macro_goblet",
+      "grade": "day",
+      "camera": "slowmo_impact",
+      "prop": "golden_goblet",
+      "narration": "You take a sip. For five agonizing seconds, time stretches like warm wax."
+    },
+    {
+      "id": "S14",
+      "start": 42.8,
+      "end": 45.8,
+      "type": "two_shot",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.2,
+            0,
+            0.1
+          ],
+          "emotion": "happy_relief"
+        },
+        {
+          "id": "emperor",
+          "pos": [
+            1.2,
+            0,
+            -0.2
+          ],
+          "emotion": "happy_relief"
+        }
+      ],
+      "bubble": {
+        "speaker": "emperor",
+        "text": "ACCEPTABLE."
+      },
+      "narration": "Your knees hold. Your breathing stays steady. The Emperor finally reaches for his cup."
+    },
+    {
+      "id": "S15",
+      "start": 45.8,
+      "end": 49.0,
+      "type": "akira_cutaway",
+      "set": "akira_sage",
+      "grade": "day",
+      "camera": "static_punch",
+      "akiraExpression": "deadpan",
+      "bubble": {
+        "speaker": "akira",
+        "text": "CONGRATS. YOU SURVIVED APPETIZERS."
+      },
+      "narration": "Congratulations. You survived course one. Only six courses left before dinner is over."
+    },
+    {
+      "id": "S16",
+      "start": 49.0,
+      "end": 52.5,
+      "type": "wide_establish",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "slow_push",
+      "stamp": "THAT SAME NIGHT",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.4,
+            0,
+            -0.4
+          ],
+          "emotion": "talking_animated"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.0,
+            0,
+            0.2
+          ],
+          "emotion": "sad_slump"
+        }
+      ],
+      "narration": "That night, warm oil lamps flicker across the palace kitchen as servants scrub copper pots."
+    },
+    {
+      "id": "S17",
+      "start": 52.5,
+      "end": 56.0,
+      "type": "over_shoulder",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "ots_rack",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.0,
+            0,
+            0.4
+          ],
+          "emotion": "curious"
+        },
+        {
+          "id": "palace_guard",
+          "pos": [
+            1.3,
+            0,
+            -0.4
+          ],
+          "emotion": "skeptical"
+        }
+      ],
+      "floatingTag": {
+        "target": "palace_guard",
+        "text": "PRAETORIAN"
+      },
+      "narration": "The guards actually respect you—not out of kindness, but because you are the only shield against a quiet coup."
+    },
+    {
+      "id": "S18",
+      "start": 56.0,
+      "end": 59.5,
+      "type": "macro_prop_insert",
+      "set": "macro_coins",
+      "grade": "night_torch",
+      "camera": "macro_push",
+      "prop": "silver_denarii",
+      "narration": "The pay is shockingly decent. Some imperial tasters even rise to run their own guilds and buy fine tombs."
+    },
+    {
+      "id": "S19",
+      "start": 59.5,
+      "end": 63.0,
+      "type": "infographic_card",
+      "set": "infographic_parchment",
+      "grade": "day",
+      "camera": "static",
+      "infographic": {
+        "title": "HIGH STATUS, ZERO SAFETY",
+        "stat": "COLLEGIA",
+        "sub": "Inscriptions record imperial tasters organized under a procurator praegustatorum.",
+        "items": [
+          "PALACE QUARTERS",
+          "FINE FOOD",
+          "POLITICAL TARGET",
+          "ONE MISTAKE = FATAL"
+        ]
+      },
+      "narration": "The truth is, imperial tasters weren't ragged beggars—they were trusted palace insiders with real status."
+    },
+    {
+      "id": "S20",
+      "start": 63.0,
+      "end": 66.2,
+      "type": "closeup_punch",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "punch_in",
+      "characters": [
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            0.0,
+            0,
+            0.2
+          ],
+          "emotion": "skeptical"
+        }
+      ],
+      "narration": "Which makes you useful to the Emperor—and even more useful to anyone who wants him dead."
+    },
+    {
+      "id": "S21",
+      "start": 66.2,
+      "end": 69.5,
+      "type": "two_shot",
+      "set": "palace_kitchen_night",
+      "grade": "night_torch",
+      "camera": "orbit_gentle",
+      "characters": [
+        {
+          "id": "head_chef",
+          "pos": [
+            -1.2,
+            0,
+            0
+          ],
+          "emotion": "nervous_sweat"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            1.1,
+            0,
+            0
+          ],
+          "emotion": "shocked"
+        }
+      ],
+      "bubble": {
+        "speaker": "head_chef",
+        "text": "TOMORROW: WILD MUSHROOMS."
+      },
+      "narration": "Because what you don't realize yet is that a bribe works faster than an antidote."
+    },
+    {
+      "id": "S22",
+      "start": 69.5,
+      "end": 75.0,
+      "type": "wide_establish",
+      "set": "banquet_hall_day",
+      "grade": "day",
+      "camera": "slow_push",
+      "characters": [
+        {
+          "id": "emperor",
+          "pos": [
+            0.0,
+            0,
+            -1.2
+          ],
+          "emotion": "confident_point"
+        },
+        {
+          "id": "taster_protagonist",
+          "pos": [
+            -1.5,
+            0,
+            0.4
+          ],
+          "emotion": "nervous_sweat"
+        }
+      ],
+      "narration": "And in Rome, the most dangerous seat in the empire isn't the throne. It's the stool right next to the kitchen door."
+    }
+  ]
+}

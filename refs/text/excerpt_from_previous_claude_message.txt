@@ -1,0 +1,6 @@
+Dono "bridge short" wali skill hain. Inka look Miko jaisa dark blue grade hai, jo tumhe nahi chahiye, to look nahi lunga. Bas inke audio templates leni hain: synthesized SFX, music, loudness mix aur QA scripts. Isse video me SFX aur background music aa jayega. Captions nahi lunga, kyunki Bernard style me nahi hote.
+
+Ab kya karna hai (is order me)
+
+1. Antigravity ka voice complete karao aur voice.wav + timeline.json mujhe bhejo.
+2. Neon ya Opus ko naye prompt se full shot list banwao. Ye script v2 aur timeline ke timestamps par based ho, sirf valid ids/animations/cameras use kare, aur har shot ≤8.5 s ka ho. Prompt main bana ke de dunga.

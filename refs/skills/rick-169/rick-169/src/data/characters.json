@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "defaults": {
+    "skinColor": "#F6EFE4",
+    "outlineColor": "#141414",
+    "outlineWidth": 4.0,
+    "limbColor": "#141414",
+    "headShape": "bean_egg"
+  },
+  "cast": {
+    "taster_protagonist": {
+      "displayName": "YOU (TASTER)",
+      "roleTagColor": "#2563EB",
+      "headShape": "bean_egg",
+      "heightScale": 0.96,
+      "bodyColor": "#E5984A",
+      "accentColor": "#9A3412",
+      "hairStyle": "messy_tuft",
+      "hairColor": "#4A3222",
+      "accessory": "linen_apron",
+      "allowedExpressions": [
+        "neutral", "curious", "talking_animated", "shocked",
+        "skeptical", "happy_relief", "nervous_sweat", "focused_reading",
+        "confident_point", "embarrassed_blush", "sad_slump", "angry_glare",
+        "thinking_chin", "surprised_jump", "shrug_question", "celebrate_arms_up"
+      ]
+    },
+    "emperor": {
+      "displayName": "THE EMPEROR",
+      "roleTagColor": "#9333EA",
+      "headShape": "tall_bean",
+      "heightScale": 1.12,
+      "bodyColor": "#F8FAFC",
+      "accentColor": "#7E22CE",
+      "hairStyle": "laurel_wreath",
+      "hairColor": "#D97706",
+      "accessory": "purple_toga_stripe",
+      "allowedExpressions": [
+        "neutral", "skeptical", "angry_glare", "confident_point",
+        "happy_relief", "shocked", "talking_animated", "thinking_chin"
+      ]
+    },
+    "mother": {
+      "displayName": "MOTHER",
+      "roleTagColor": "#059669",
+      "headShape": "soft_oval",
+      "heightScale": 0.98,
+      "bodyColor": "#0D9488",
+      "accentColor": "#FEF3C7",
+      "hairStyle": "tied_bun",
+      "hairColor": "#3B2820",
+      "accessory": "shawl",
+      "allowedExpressions": [
+        "neutral", "happy_relief", "nervous_sweat", "sad_slump",
+        "talking_animated", "shocked"
+      ]
+    },
+    "akira": {
+      "displayName": "AKIRA",
+      "roleTagColor": "#4D7C0F",
+      "isHost": true,
+      "backdropColor": "#9CAF88",
+      "referenceImage": "public/assets/akira_ref.png",
+      "allowedExpressions": ["deadpan", "smirk", "shout", "wide-eyed", "big_grin"]
+    }
+  }
+}
